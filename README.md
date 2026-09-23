@@ -1,66 +1,201 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌴 AW Tour Operator — Platform Biro Perjalanan & Manajemen Wisata
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://www.php.net/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-6.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-## About Laravel
+Platform digital terintegrasi untuk **AW Tour Operator Surabaya**, dirancang untuk modernisasi operasional biro perjalanan wisata, otomasi penerimaan penawaran rombongan (*custom quotation*), etalase paket wisata (*open trip* & *destinasi*), serta promosi produk UMKM lokal.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Ringkasan & Arah Pengembangan Proyek
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Platform ini dibangun untuk menyelesaikan friksi konvensional pada biro perjalanan wisata dengan fokus pada:
 
-## Learning Laravel
+1. **Digitalisasi Penawaran Rombongan (*Custom Group Quotation*):**
+   - Menghilangkan proses tawar-menawar manual yang lambat melalui form *multi-step* terstruktur.
+   - Penerbitan otomatis **Nomor Tiket Permintaan** untuk kemudahan penelusuran status penawaran oleh klien rombongan (perusahaan, sekolah, instansi, atau komunitas).
+2. **Ketersediaan Transparan (*Interactive Availability Calendar*):**
+   - Kalender ketersediaan tanggal/armada (*booked dates*) interaktif yang dapat diakses publik guna mencegah *double-booking*.
+3. **Pemberdayaan Ekonomi Lokal (*Etalase UMKM*):**
+   - Etalase khusus produk oleh-oleh dan kerajinan khas daerah dari mitra UMKM lokal untuk diintegrasikan ke dalam paket perjalanan wisata.
+4. **Sentralisasi Operasional (*Back-Office Admin Dashboard*):**
+   - Pengelolaan alur penawaran masuk (*approval pipeline*), pembaruan status pemesanan, penjadwalan kalender, serta manajemen katalog destinasi dan produk UMKM.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Fitur Utama
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 👥 Sisi Pengunjung (Publik)
+- **Halaman Utama (*Landing Page*):** *Showcase* layanan unggulan, testimoni, dan nilai tambah biro perjalanan.
+- **Katalog Destinasi Wisata:** Informasi komprehensif terkait rute perjalanan, fasilitas, dan detail tiap destinasi.
+- **Custom Group Quotation Builder:** Form multi-step dinamis untuk pengajuan paket rombongan kustom.
+- **Jadwal Open Trip:** Informasi jadwal tur terbuka (*lead generation* wisatawan individual/kelompok kecil).
+- **Etalase Produk UMKM:** Katalog produk oleh-oleh khas daerah mitra lokal.
+- **Kalender Ketersediaan:** Pengecekan tanggal operasional yang sudah terisi (*booked*) atau masih tersedia.
 
-## Laravel Sponsors
+### 🛡️ Sisi Pengelola (Admin Back-Office)
+- **Dashboard Ringkasan & Metrik:** Statistik jumlah permintaan quotation, pesanan, dan status operasional.
+- **Manajemen Permintaan (*Request Pipeline*):** Detail permintaan grup, verifikasi data, perubahan status (*pending, processed, approved, rejected*).
+- **Pengelolaan Kalender Tanggal Terpesan:** Menandai dan mengunci tanggal operasional tur.
+- **CRUD Destinasi Wisata:** Penambahan, modifikasi, dan manajemen visual destinasi.
+- **CRUD Produk UMKM:** Pengelolaan katalog produk, harga, dan ketersediaan barang mitra.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 🛠️ Tech Stack
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- **Backend Framework:** [Laravel 11](https://laravel.com/)
+- **Bahasa Pemrograman:** PHP >= 8.2
+- **Frontend / UI:** Blade Templates, [Tailwind CSS 3.4](https://tailwindcss.com/), JavaScript (ES Modules)
+- **Asset Bundler:** [Vite 6](https://vitejs.dev/)
+- **Database:** SQLite (default lokal) / MySQL (rekomendasi *production*)
+- **Task Runner / Concurrency:** Concurrently
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 📋 Prasyarat Sistem
 
-## Code of Conduct
+Sebelum memulai instalasi, pastikan lingkungan lokal Anda telah terpasang:
+- **PHP** versi 8.2 atau lebih baru
+- Ekstensi PHP: `pdo_sqlite`, `mbstring`, `openssl`, `curl`, `xml`, `fileinfo`
+- **Composer** (Dependency Manager PHP)
+- **Node.js** (versi 18.x atau LTS terbaru) & **NPM**
+- **Git**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## ⚙️ Panduan Setup Lokal (Step-by-Step)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Ikuti langkah-langkah berikut untuk menjalankan proyek di komputer lokal:
 
-## License
+### 1. Clone Repository
+```bash
+git clone https://github.com/Agnshaaaa/aw-tour-operator.git
+cd aw-tour-operator
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 2. Install Dependensi
+Pasang semua paket pustaka PHP dan JavaScript yang dibutuhkan:
+```bash
+# Dependensi PHP
+composer install
+
+# Dependensi Frontend (Node.js)
+npm install
+```
+
+### 3. Konfigurasi Environment File
+Salin template konfigurasi dan hasilkan Application Key unik:
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 4. Setup Database & Migrasi
+Secara bawaan, konfigurasi lokal menggunakan **SQLite**. Buat file databasenya:
+
+```bash
+# Buat file database SQLite jika belum ada
+touch database/database.sqlite
+```
+
+Jalankan migrasi tabel beserta *seeder* data awal (akun admin, kategori, destinasi, UMKM, open trip):
+```bash
+php artisan migrate --seed
+```
+
+> **Catatan jika menggunakan MySQL:**
+> Ubah variabel berikut pada file `.env` sebelum menjalankan `migrate`:
+> ```env
+> DB_CONNECTION=mysql
+> DB_HOST=127.0.0.1
+> DB_PORT=3306
+> DB_DATABASE=aw_tour_operator
+> DB_USERNAME=root
+> DB_PASSWORD=your_password
+> ```
+
+### 5. Buat Storage Symlink
+Tautkan direktori penyimpanan publik untuk menangani berkas unggahan gambar/media:
+```bash
+php artisan storage:link
+```
+
+### 6. Menjalankan Server Lokal
+Aplikasi menyediakan *concurrent runner* melalui Composer untuk menyalakan Laravel server, antrean, dan Vite secara bersamaan:
+
+```bash
+composer run dev
+```
+
+*Atau jika ingin menjalankan terminal secara terpisah:*
+```bash
+# Terminal 1: Laravel Web Server
+php artisan serve
+
+# Terminal 2: Vite Hot Reloading
+npm run dev
+```
+
+Aplikasi sekarang dapat diakses melalui peramban web di:
+**`http://localhost:8000`**
+
+---
+
+## 🔐 Kredensial Pengujian (Demo / Seeder)
+
+Setelah menjalankan `php artisan migrate --seed`, akun admin bawaan berikut siap digunakan untuk mengakses dashboard manajemen:
+
+| Role | URL Login | Email | Password |
+|---|---|---|---|
+| **Super Admin** | `http://localhost:8000/admin/login` | `admin@awtour.com` | `admin123` |
+| **Admin Operasional** | `http://localhost:8000/admin/login` | `admin2@awtour.com` | `admin123` |
+
+> ⚠️ **Peringatan Keamanan:** Ganti kata sandi bawaan ini segera setelah aplikasi di-*deploy* ke lingkungan staging atau produksi!
+
+---
+
+## 📂 Struktur Direktori Utama
+
+```plaintext
+aw-tour-operator/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── Admin/         # Controller back-office & dashboard
+│   │   │   └── Auth/          # Autentikasi sesi admin
+│   │   └── Middleware/        # Proteksi rute & verifikasi role admin
+│   └── Models/                # Model Eloquent (Destination, CustomRequest, UMKM, dll.)
+├── database/
+│   ├── migrations/            # Skema basis data
+│   └── seeders/               # Data dummy & akun inisial
+├── resources/
+│   ├── css/                   # Asset styling (Tailwind CSS)
+│   ├── js/                    # Modul script frontend
+│   └── views/                 # Blade Templates (Halaman publik & admin)
+├── routes/
+│   └── web.php                # Rute aplikasi (Publik & Panel Admin)
+└── tests/                     # Automated Test Suites (Unit & Feature)
+```
+
+---
+
+## 🧪 Pengujian (*Testing*) & Kode Kualitas
+
+Jalankan automated test suite untuk memastikan seluruh fitur berjalan dengan baik:
+```bash
+# Menjalankan PHPUnit test suite
+php artisan test
+
+# Format kode sesuai standar PSR-12 menggunakan Laravel Pint
+./vendor/bin/pint
+```
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dirilis di bawah naungan lisensi [MIT License](LICENSE).
