@@ -92,7 +92,7 @@
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-slate-500">Destinasi:</span>
-                                <span class="font-bold text-aw-navy">{{ $customRequest->destination->name }}</span>
+                                <span class="font-bold text-aw-navy">{{ $customRequest->destination_display_name }}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-slate-500">Tgl Keberangkatan:</span>

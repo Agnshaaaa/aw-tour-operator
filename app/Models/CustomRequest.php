@@ -113,17 +113,30 @@ class CustomRequest extends Model
     }
 
     /**
+     * Nama destinasi tampilan (mendukung Destinasi Custom/Request).
+     */
+    public function getDestinationDisplayNameAttribute(): string
+    {
+        if ($this->notes && preg_match('/📍 DESTINASI REQUEST KLIEN: (.*)/', $this->notes, $matches)) {
+            return trim(explode("\n", $matches[1])[0]);
+        }
+        return $this->destination ? $this->destination->name : 'Destinasi Custom';
+    }
+
+    /**
      * Format nomor WhatsApp untuk redirect ke WhatsApp Admin.
      * Contoh output URL: "https://wa.me/6282233119092?text=..."
      */
     public function getWhatsappUrlAttribute(): string
     {
-        $phone  = '6282233119092'; // Nomor admin AW Tour Operator
-        $message = urlencode(
+        $phone    = '6282233119092'; // Nomor admin AW Tour Operator
+        $destName = $this->destination_display_name;
+        $message  = urlencode(
             "Halo Admin AW Tour Operator,\n" .
             "Saya {$this->client_name} dari {$this->institution_name}.\n" .
             "Nomor Tiket: {$this->ticket_number}\n" .
-            "Destinasi: {$this->destination->name}\n" .
+            "Jenis Acara: {$this->event_type}\n" .
+            "Destinasi: {$destName}\n" .
             "Tanggal: {$this->event_date->format('d M Y')}\n" .
             "Peserta: {$this->pax} orang\n\n" .
             "Mohon konfirmasi quotation kami. Terima kasih."

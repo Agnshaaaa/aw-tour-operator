@@ -97,7 +97,10 @@
 
                     <a href="{{ route('umkm.index') }}" 
                        class="{{ request()->routeIs('umkm.*') ? 'text-aw-gold font-semibold' : 'hover:text-aw-gold' }} transition-colors py-1 relative">
-                        Oleh-Oleh UMKM
+                        Pilihan Transportasi
+                        @if(request()->routeIs('umkm.*'))
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-aw-gold rounded-full"></span>
+                        @endif
                     </a>
                 </div>
 
@@ -146,7 +149,7 @@
             <a href="{{ route('quotation.create') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Quotation Builder</a>
             <a href="{{ route('calendar.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Kalender Booking</a>
             <a href="{{ route('open-trips.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Open Trip</a>
-            <a href="{{ route('umkm.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Oleh-Oleh UMKM</a>
+            <a href="{{ route('umkm.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Pilihan Transportasi</a>
             <a href="https://wa.me/6282233119092" target="_blank" class="block text-center bg-emerald-600 text-white font-semibold py-2.5 rounded-lg shadow-md mt-4">
                 Chat WhatsApp Admin (+62 822-3311-9092)
             </a>
