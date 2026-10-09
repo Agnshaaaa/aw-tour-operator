@@ -102,7 +102,7 @@ Secara bawaan, konfigurasi lokal menggunakan **SQLite**. Buat file databasenya:
 touch database/database.sqlite
 ```
 
-Jalankan migrasi tabel beserta *seeder* data awal (akun admin, kategori, destinasi, UMKM, open trip):
+Jalankan migrasi tabel beserta *seeder* data awal (akun admin, kategori, destinasi, armada, dan open trip):
 ```bash
 php artisan migrate --seed
 ```
@@ -143,6 +143,8 @@ npm run dev
 Aplikasi sekarang dapat diakses melalui peramban web di:
 **`http://localhost:8000`**
 
+Untuk menjaga agar tautan masuk admin tidak tercantum di situs publik, atur nilai `ADMIN_PATH` di `.env` ke path privat yang hanya dibagikan kepada staf. Jangan gunakan nilai contoh `admin` pada server publik. Setelah mengubahnya, bersihkan cache konfigurasi dengan `php artisan config:clear`.
+
 ---
 
 ## 🔐 Kredensial Pengujian (Demo / Seeder)
@@ -151,10 +153,10 @@ Setelah menjalankan `php artisan migrate --seed`, akun admin bawaan berikut siap
 
 | Role | URL Login | Email | Password |
 |---|---|---|---|
-| **Super Admin** | `http://localhost:8000/admin/login` | `admin@awtour.com` | `admin123` |
-| **Admin Operasional** | `http://localhost:8000/admin/login` | `admin2@awtour.com` | `admin123` |
+| **Super Admin** | `http://localhost:8000/{ADMIN_PATH}/login` | `admin@awtour.com` | `admin123` |
+| **Admin Operasional** | `http://localhost:8000/{ADMIN_PATH}/login` | `admin2@awtour.com` | `admin123` |
 
-> ⚠️ **Peringatan Keamanan:** Ganti kata sandi bawaan ini segera setelah aplikasi di-*deploy* ke lingkungan staging atau produksi!
+> ⚠️ **Peringatan Keamanan:** Akun di atas hanya untuk pengembangan lokal. Ganti kata sandi bawaan dan `ADMIN_PATH` sebelum staging/produksi. URL privat hanya mengurangi kemudahan penemuan; tetap gunakan autentikasi kuat, HTTPS, dan akses admin berbasis role.
 
 ---
 

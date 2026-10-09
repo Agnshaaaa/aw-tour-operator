@@ -252,7 +252,7 @@
                     <p class="text-xs text-gray-600 leading-relaxed mb-2">
                         Tim Admin kami bersiaga membantu jadwal padat rombongan Anda.
                     </p>
-                    <a href="https://wa.me/6282233119092?text=Halo%20Admin%20AW%20Tour,%20saya%20ingin%20tanya%20ketersediaan%20jadwal%20tour" 
+                    <a href="{{ $siteSettings->whatsapp_url }}?text={{ urlencode('Halo Admin AW Tour, saya ingin tanya ketersediaan jadwal tour') }}"
                        target="_blank" 
                        class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 hover:text-emerald-800">
                         <span>Hubungi WhatsApp Admin</span> →
@@ -317,7 +317,7 @@
                         </p>
 
                         <div class="pt-2 flex flex-col gap-2">
-                            <a :href="'https://wa.me/6282233119092?text=Halo%20Admin%20AW%20Tour,%20saya%20ingin%20tanya%20opsi%20keberangkatan%20di%20tanggal%20' + modalData.date" 
+                            <a :href="'{{ $siteSettings->whatsapp_url }}?text=' + encodeURIComponent('Halo Admin AW Tour, saya ingin tanya opsi keberangkatan di tanggal ' + modalData.date)"
                                target="_blank" 
                                class="w-full py-3 px-4 rounded-xl bg-emerald-600 text-white font-semibold text-sm hover:bg-emerald-700 transition-all text-center flex items-center justify-center gap-2 shadow-md">
                                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">

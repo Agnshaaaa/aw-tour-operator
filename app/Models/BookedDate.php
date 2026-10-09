@@ -36,6 +36,14 @@ class BookedDate extends Model
         'booked_date' => 'date',   // Otomatis jadi Carbon date object
     ];
 
+    /**
+     * Mutator agar tanggal disimpan seragam dalam format Y-m-d.
+     */
+    public function setBookedDateAttribute($value)
+    {
+        $this->attributes['booked_date'] = \Carbon\Carbon::parse($value)->format('Y-m-d');
+    }
+
     // ── Relasi ────────────────────────────────────────────────────────────
 
     /**

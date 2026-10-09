@@ -22,13 +22,13 @@
             {{-- Trust & Value Pill Badges --}}
             <div class="pt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-slate-300">
                 <div class="flex items-center gap-2 bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md border border-white/10">
-                    <span>✨ Armada Bersih & Terawat</span>
+                    <span>Armada Bersih & Terawat</span>
                 </div>
                 <div class="flex items-center gap-2 bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md border border-white/10">
-                    <span>👨‍✈️ Driver Profesional & Berpengalaman</span>
+                    <span>Driver Profesional & Berpengalaman</span>
                 </div>
                 <div class="flex items-center gap-2 bg-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md border border-white/10">
-                    <span>🧮 Penawaran Transparan</span>
+                    <span>Penawaran Transparan</span>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                     {{-- Badge Capacity --}}
                     <div class="absolute top-4 left-4 z-10">
                         <span class="bg-aw-gold text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
-                            🚐 Rombongan Kecil
+                            Rombongan Kecil
                         </span>
                     </div>
 

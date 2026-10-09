@@ -77,7 +77,7 @@
                 
                 {{-- Banner Image --}}
                 <div class="bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 relative">
-                    <img src="{{ $openTrip->destination->image_url ?? 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1200&q=80' }}" 
+                    <img src="{{ $openTrip->destination->cover_image ?? 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1200&q=80' }}" 
                          alt="{{ $openTrip->title }}" 
                          class="w-full h-80 sm:h-96 object-cover">
                 </div>
@@ -224,7 +224,7 @@
                                           `📱 *No WA:* ${encodeURIComponent(this.phone || '-')}\n` +
                                           `👥 *Jumlah Peserta:* ${this.pax} orang\n` +
                                           `💰 *Total Estimasi:* Rp ${this.totalPrice.toLocaleString('id-ID')}`;
-                             return `https://wa.me/6282233119092?text=${text}`;
+                             return `{{ $siteSettings->whatsapp_url }}?text=${text}`;
                          }
                      }">
 

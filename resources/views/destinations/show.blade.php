@@ -5,8 +5,12 @@
 @section('content')
 
 <!-- BREADCRUMB & HERO BANNER -->
-<div class="bg-aw-navy text-white pt-10 pb-16 border-b border-aw-sage/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+<div class="relative overflow-hidden bg-aw-navy text-white pt-10 pb-16 border-b border-aw-sage/20">
+    @if($destination->cover_image)
+        <img src="{{ $destination->cover_image }}" alt="{{ $destination->name }}" class="absolute inset-0 h-full w-full object-cover opacity-20">
+    @endif
+    <div class="absolute inset-0 bg-gradient-to-r from-aw-navy via-aw-navy/90 to-aw-navy/60"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
         
         <!-- Breadcrumb -->
         <nav class="flex items-center gap-2 text-xs text-slate-400">
@@ -157,10 +161,10 @@
                             <span>🧮 Buat Custom Quotation</span>
                         </a>
 
-                        <a href="https://wa.me/6282233119092?text=Halo%20Admin%20AW%20Tour,%20saya%20tertarik%20konsultasi%20paket%20{{ urlencode($destination->name) }}" 
+                        <a href="{{ $siteSettings->whatsapp_url }}?text={{ urlencode('Halo Admin AW Tour, saya tertarik konsultasi paket ' . $destination->name) }}" 
                            target="_blank"
                            class="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 px-4 rounded-full transition-all text-xs">
-                            <span>💬 Chat WA Admin (+62 822 3311 9092)</span>
+                            <span>💬 Chat WA Admin (+{{ $siteSettings->whatsapp_number }})</span>
                         </a>
                     </div>
 

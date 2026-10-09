@@ -92,6 +92,15 @@ class Destination extends Model
         return $this->hasMany(CustomRequest::class);
     }
 
+    /**
+     * Destinasi ini memiliki banyak dokumentasi perjalanan.
+     * Penggunaan: $destination->documentations
+     */
+    public function documentations(): HasMany
+    {
+        return $this->hasMany(Documentation::class);
+    }
+
     // ── Scope (Filter Query) ───────────────────────────────────────────────
 
     /**

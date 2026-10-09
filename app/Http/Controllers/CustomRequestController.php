@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BookedDate;
 use App\Models\CustomRequest;
 use App\Models\Destination;
-use App\Models\UmkmOrder;
-use App\Models\UmkmProduct;
+use App\Models\TransportOffering;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,15 +29,14 @@ class CustomRequestController extends Controller
         // Ambil semua destinasi aktif
         $destinations = Destination::active()->with('category')->get();
 
-        // Ambil semua produk UMKM yang tersedia untuk add-on
-        $umkmProducts = UmkmProduct::available()->get();
+        $transportOfferings = TransportOffering::active()->vehicles()->orderBy('sort_order')->orderBy('name')->get();
 
         // Pre-select destinasi/tanggal/transport jika ada query string
         $selectedDestinationId = $request->query('destination_id');
         $selectedDate          = $request->query('date');
         $selectedTransport     = $request->query('transport');
 
-        return view('quotation.create', compact('destinations', 'umkmProducts', 'selectedDestinationId', 'selectedDate', 'selectedTransport'));
+        return view('quotation.create', compact('destinations', 'transportOfferings', 'selectedDestinationId', 'selectedDate', 'selectedTransport'));
     }
 
     /**
@@ -70,10 +68,6 @@ class CustomRequestController extends Controller
             'special_notes'            => 'nullable|string',
             'notes'                    => 'nullable|string',
 
-            // Add-on UMKM (opsional)
-            'umkm_products'             => 'nullable|array',
-            'umkm_products.*.id'       => 'required_with:umkm_products|exists:umkm_products,id',
-            'umkm_products.*.quantity' => 'required_with:umkm_products|integer|min:1',
         ]);
 
         // 2. Simpan menggunakan DB Transaction untuk keamanan data
@@ -172,23 +166,6 @@ class CustomRequestController extends Controller
                 'label'             => $validated['institution_name'] . ' - ' . $validated['event_type'],
             ]);
 
-            // Simpan add-on produk UMKM jika dipilih
-            if (!empty($request->umkm_products)) {
-                foreach ($request->umkm_products as $item) {
-                    if (isset($item['id']) && isset($item['quantity']) && $item['quantity'] > 0) {
-                        $product = UmkmProduct::find($item['id']);
-                        if ($product) {
-                            UmkmOrder::create([
-                                'custom_request_id' => $customRequest->id,
-                                'umkm_product_id'   => $product->id,
-                                'quantity'          => $item['quantity'],
-                                'price_at_order'    => $product->price,
-                            ]);
-                        }
-                    }
-                }
-            }
-
             DB::commit();
 
             // Redirect ke halaman sukses dengan nomor tiket
@@ -206,7 +183,7 @@ class CustomRequestController extends Controller
      */
     public function success(string $ticketNumber)
     {
-        $customRequest = CustomRequest::with(['destination', 'umkmOrders.product'])
+        $customRequest = CustomRequest::with('destination')
             ->where('ticket_number', $ticketNumber)
             ->firstOrFail();
 

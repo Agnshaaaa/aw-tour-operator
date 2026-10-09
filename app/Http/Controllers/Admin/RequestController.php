@@ -76,6 +76,9 @@ class RequestController extends Controller
             ], [
                 'label' => $customRequest->institution_name . ' - ' . $customRequest->event_type,
             ]);
+        } elseif ($validated['status'] === 'cancelled') {
+            // Otomatis lepaskan tanggal dari kalender terpesan jika dibatalkan
+            BookedDate::where('custom_request_id', $customRequest->id)->delete();
         }
 
         return back()->with('success', 'Status permintaan berhasil diperbarui!');
@@ -87,6 +90,9 @@ class RequestController extends Controller
     public function destroy(int $id)
     {
         $customRequest = CustomRequest::findOrFail($id);
+        
+        // Hapus booked_dates terkait
+        BookedDate::where('custom_request_id', $customRequest->id)->delete();
         $customRequest->delete();
 
         return redirect()->route('admin.requests.index')

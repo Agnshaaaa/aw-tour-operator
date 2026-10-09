@@ -60,6 +60,9 @@
                         <div>
                             <!-- Visual Banner Card -->
                             <div class="relative h-52 bg-slate-800 overflow-hidden">
+                                @if($dest->cover_image)
+                                    <img src="{{ $dest->cover_image }}" alt="{{ $dest->name }}" class="absolute inset-0 h-full w-full object-cover" loading="lazy">
+                                @endif
                                 <div class="absolute inset-0 bg-gradient-to-t from-aw-navy/90 via-transparent to-transparent z-10"></div>
                                 
                                 <span class="absolute top-3 left-3 z-20 bg-aw-navy/90 backdrop-blur-sm text-aw-mint text-[11px] font-semibold px-3 py-1 rounded-full border border-aw-sage/30">

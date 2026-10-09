@@ -14,8 +14,6 @@ use Illuminate\Database\Seeder;
  * 1. UserSeeder        → Buat akun admin (tidak ada dependency)
  * 2. CategorySeeder    → Buat kategori layanan (tidak ada dependency)
  * 3. DestinationSeeder → Buat destinasi & detailnya (butuh Category)
- * 4. UmkmProductSeeder → Buat katalog produk UMKM (tidak ada dependency)
- *
  * Cara jalankan semua:
  * php artisan db:seed
  */
@@ -30,8 +28,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             DestinationSeeder::class,
-            UmkmProductSeeder::class,
             OpenTripSeeder::class,
+            TransportOfferingSeeder::class,
         ]);
     }
 }

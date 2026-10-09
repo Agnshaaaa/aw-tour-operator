@@ -28,17 +28,17 @@
     <!-- ========================================================================= -->
     <nav x-data="{ open: false, scrolled: false }" 
          @scroll.window="scrolled = (window.pageYOffset > 20)"
-         :class="scrolled ? 'bg-aw-navy/95 backdrop-blur-md shadow-xl py-3 border-b border-aw-sage/20' : 'bg-aw-navy py-5'"
-         class="sticky top-0 z-50 transition-all duration-300">
+         :class="scrolled ? 'bg-aw-navy/95 backdrop-blur-md shadow-xl py-3 border-b border-white/10' : 'bg-black/30 backdrop-blur-md border-b border-white/10 py-5'"
+         class="sticky top-0 z-50 transition-all duration-500">
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between">
+            <div class="flex min-w-0 items-center justify-between gap-3">
                 
                 <!-- BRAND LOGO (Gambar Logo Utama AW Tour Operator) -->
-                <a href="{{ route('home') }}" class="flex items-center gap-3 group">
+                <a href="{{ route('home') }}" class="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3 group">
                     <img src="{{ asset('images/logo.png') }}" 
                          alt="AW Tour Operator Surabaya" 
-                         class="h-10 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                         class="block h-8 w-auto max-w-[5rem] shrink-0 object-contain sm:h-9 sm:max-w-[6rem] lg:h-10 lg:max-w-[7rem]"
                          onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                     
                     {{-- Fallback Badge jika logo.png belum dimasukkan ke public/images/ --}}
@@ -57,7 +57,7 @@
                 </a>
 
                 <!-- DESKTOP NAVIGATION MENU -->
-                <div class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-200">
+                <div class="hidden min-w-0 flex-1 items-center justify-center gap-3 font-medium text-xs text-slate-200 md:flex lg:gap-4 xl:gap-6 xl:text-sm">
                     <a href="{{ route('home') }}" 
                        class="{{ request()->routeIs('home') ? 'text-aw-gold font-semibold' : 'hover:text-aw-gold' }} transition-colors py-1 relative">
                         Beranda
@@ -95,18 +95,26 @@
                         Open Trip
                     </a>
 
-                    <a href="{{ route('umkm.index') }}" 
-                       class="{{ request()->routeIs('umkm.*') ? 'text-aw-gold font-semibold' : 'hover:text-aw-gold' }} transition-colors py-1 relative">
+                    <a href="{{ route('gallery.index') }}" 
+                       class="{{ request()->routeIs('gallery.*') ? 'text-aw-gold font-semibold' : 'hover:text-aw-gold' }} transition-colors py-1 relative">
+                        Galeri Tour
+                        @if(request()->routeIs('gallery.*'))
+                            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-aw-gold rounded-full"></span>
+                        @endif
+                    </a>
+
+                    <a href="{{ route('transport.index') }}" 
+                       class="{{ request()->routeIs('transport.*') ? 'text-aw-gold font-semibold' : 'hover:text-aw-gold' }} transition-colors py-1 relative">
                         Pilihan Transportasi
-                        @if(request()->routeIs('umkm.*'))
+                        @if(request()->routeIs('transport.*'))
                             <span class="absolute bottom-0 left-0 w-full h-0.5 bg-aw-gold rounded-full"></span>
                         @endif
                     </a>
                 </div>
 
                 <!-- CTA BUTTON (WHATSAPP ADMIN) -->
-                <div class="hidden lg:flex items-center gap-3">
-                    <a href="https://wa.me/6282233119092?text=Halo%20Admin%20AW%20Tour%20Surabaya,%20saya%20ingin%20konsultasi%20paket%20tour%20rombongan" 
+                <div class="hidden shrink-0 items-center gap-3 xl:flex">
+                    <a href="{{ $siteSettings->whatsapp_url }}?text={{ urlencode('Halo Admin AW Tour Surabaya, saya ingin konsultasi paket tour rombongan') }}" 
                        target="_blank"
                        rel="noopener"
                        class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-lg shadow-emerald-900/20 hover:scale-105 active:scale-95 transition-all">
@@ -146,12 +154,13 @@
              class="md:hidden bg-aw-navy border-b border-aw-sage/20 px-4 pt-2 pb-6 space-y-3 font-medium text-sm text-slate-200">
             <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Beranda</a>
             <a href="{{ route('destinations.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Destinasi Tour</a>
+            <a href="{{ route('gallery.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Galeri Tour</a>
             <a href="{{ route('quotation.create') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Quotation Builder</a>
             <a href="{{ route('calendar.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Kalender Booking</a>
             <a href="{{ route('open-trips.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Open Trip</a>
-            <a href="{{ route('umkm.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Pilihan Transportasi</a>
-            <a href="https://wa.me/6282233119092" target="_blank" class="block text-center bg-emerald-600 text-white font-semibold py-2.5 rounded-lg shadow-md mt-4">
-                Chat WhatsApp Admin (+62 822-3311-9092)
+            <a href="{{ route('transport.index') }}" class="block px-3 py-2 rounded-md hover:bg-white/10 hover:text-aw-gold">Pilihan Transportasi</a>
+            <a href="{{ $siteSettings->whatsapp_url }}" target="_blank" rel="noopener" class="block text-center bg-emerald-600 text-white font-semibold py-2.5 rounded-lg shadow-md mt-4">
+                Chat WhatsApp Admin (+{{ $siteSettings->whatsapp_number }})
             </a>
         </div>
     </nav>
@@ -213,13 +222,11 @@
                         <div class="hidden w-10 h-7 rounded-full bg-gradient-to-r from-[#00a3e0] to-[#006286] flex items-center justify-center shadow-md border border-[#80ee11]/40">
                             <span class="font-extrabold text-xs text-[#80ee11] italic">AW</span>
                         </div>
-                        <span class="font-display font-bold text-xl text-white">AW TOUR</span>
+                        <span class="font-display font-bold text-xl text-white">{{ $siteSettings->company_name }}</span>
                     </div>
-                    <p class="text-xs text-slate-400 leading-relaxed">
-                        Spesialis **Group Customized Tour Operator** di Surabaya. Melayani perjalanan rombongan Studi Tour Kampus/Sekolah, Capacity Building Perusahaan, dan Family Gathering dengan itinerary fleksibel.
-                    </p>
+                    <p class="text-xs text-slate-400 leading-relaxed">{{ $siteSettings->profile_description }}</p>
                     <div class="pt-2 flex items-center gap-3 text-xs text-aw-gold font-semibold">
-                        <span>📍 Surabaya, Jawa Timur</span>
+                        <span>📍 {{ $siteSettings->location }}</span>
                     </div>
                 </div>
 
@@ -240,11 +247,9 @@
                     <h3 class="font-display font-semibold text-white text-sm tracking-wider uppercase text-aw-gold">Partner & Klien</h3>
                     <p class="text-xs text-slate-400">Dipercaya oleh institusi pendidikan dan instansi terkemuka:</p>
                     <div class="flex flex-wrap gap-2 pt-1 text-[11px] font-semibold">
-                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">ITS Surabaya</span>
-                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">UNAIR</span>
-                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">UNESA</span>
-                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">Instansi Swasta</span>
-                        <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">UMKM Jatim</span>
+                        @foreach($siteSettings->partners ?? [] as $partner)
+                            <span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700">{{ $partner }}</span>
+                        @endforeach
                     </div>
                 </div>
 
@@ -255,17 +260,15 @@
                     <div class="space-y-2 text-xs">
                         <p class="flex items-center gap-2">
                             <span class="text-emerald-400">📱 WhatsApp Admin:</span>
-                            <a href="https://wa.me/6282233119092" target="_blank" class="font-bold text-white hover:text-aw-gold">+62 822 3311 9092</a>
+                            <a href="{{ $siteSettings->whatsapp_url }}" target="_blank" rel="noopener" class="font-bold text-white hover:text-aw-gold">+{{ $siteSettings->whatsapp_number }}</a>
                         </p>
+                        @if($siteSettings->email)
+                            <p class="flex items-center gap-2 text-slate-400"><span>✉</span><a href="mailto:{{ $siteSettings->email }}" class="hover:text-aw-gold">{{ $siteSettings->email }}</a></p>
+                        @endif
                         <p class="flex items-center gap-2 text-slate-400">
                             <span>🕒 Jam Operasional:</span>
-                            <span>Senin - Sabtu (08.00 - 17.00 WIB)</span>
+                            <span>{{ $siteSettings->operational_hours }}</span>
                         </p>
-                        <div class="pt-2">
-                            <a href="{{ route('admin.login') }}" class="text-[11px] text-slate-500 hover:text-slate-300 underline">
-                                Area Login Staff / Admin
-                            </a>
-                        </div>
                     </div>
                 </div>
 

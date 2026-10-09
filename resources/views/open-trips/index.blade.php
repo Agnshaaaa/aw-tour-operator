@@ -178,7 +178,7 @@
             <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="space-y-2 text-center md:text-left max-w-2xl">
                     <span class="text-xs font-bold text-aw-gold uppercase tracking-widest bg-white/10 px-3 py-1 rounded-full">
-                        🏢 Layanan Rombongan B2B Kampus & Instansi
+                        Layanan Rombongan B2B Kampus & Instansi
                     </span>
                     <h3 class="font-serif text-2xl sm:text-3xl font-bold">Punya Rombongan Sendiri?</h3>
                     <p class="text-xs sm:text-sm text-slate-300">
@@ -190,7 +190,7 @@
                     <a href="{{ route('quotation.create') }}" class="px-6 py-3.5 rounded-xl bg-aw-gold text-white font-bold text-xs hover:bg-amber-600 transition-all shadow-lg text-center">
                         ⚡ Buat Custom Quotation
                     </a>
-                    <a href="https://wa.me/6282233119092?text=Halo%20Admin%20AW%20Tour,%20saya%20ingin%20tanya%20paket%20open%20trip%20dan%20rombongan" 
+                    <a href="{{ $siteSettings->whatsapp_url }}?text={{ urlencode('Halo Admin AW Tour, saya ingin tanya paket open trip dan rombongan') }}"
                        target="_blank" 
                        class="px-6 py-3.5 rounded-xl bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-500 transition-all shadow-lg text-center flex items-center justify-center gap-2">
                         <span>Konsultasi WA</span>

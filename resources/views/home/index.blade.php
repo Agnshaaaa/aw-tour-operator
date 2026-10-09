@@ -7,14 +7,28 @@
 <!-- ========================================================================= -->
 <!-- 1. HERO SECTION (Header Utama Landing Page) -->
 <!-- ========================================================================= -->
-<section class="relative bg-aw-navy text-white overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32">
+<section class="relative isolate min-h-[min(85vh,58rem)] w-full max-w-full overflow-hidden text-white pt-12 pb-16 sm:pb-24 lg:pt-20 lg:pb-32 flex items-center">
     
-    <!-- Background Decorator & Gradient Glow -->
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-aw-forest/60 via-aw-navy to-aw-navy opacity-90"></div>
-    <div class="absolute -top-24 -right-24 w-96 h-96 bg-aw-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-10 w-80 h-80 bg-aw-sage/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Cinematic Background Photo -->
+    <div class="absolute inset-0 z-0 h-full w-full overflow-hidden">
+        <img src="{{ asset('images/Bromo.jpg') }}"
+             alt="Pemandangan Bromo Indonesia"
+             class="absolute inset-0 block h-full w-full max-w-none object-cover object-center"
+             onerror="this.style.display='none'; document.getElementById('hero-fallback').classList.remove('hidden');"
+             loading="eager">
+        <!-- Fallback gradient if image fails -->
+        <div id="hero-fallback" class="hidden absolute inset-0 bg-gradient-to-br from-aw-navy via-aw-forest to-aw-navy"></div>
+        <!-- Dark cinematic overlay -->
+        <div class="absolute inset-0 bg-gradient-to-br from-aw-navy/85 via-aw-navy/70 to-aw-forest/60"></div>
+        <!-- Extra bottom gradient for text readability -->
+        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-aw-navy/80 to-transparent"></div>
+    </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Glassmorphism Glow Orbs -->
+    <div class="absolute -top-12 -right-12 h-56 w-56 rounded-full bg-aw-gold/15 blur-3xl pointer-events-none z-0 sm:-top-20 sm:-right-20 sm:h-80 sm:w-80 lg:h-96 lg:w-96"></div>
+    <div class="absolute bottom-0 left-4 h-48 w-48 rounded-full bg-aw-sage/15 blur-3xl pointer-events-none z-0 sm:left-10 sm:h-64 sm:w-64 lg:h-80 lg:w-80"></div>
+
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <!-- LEFT COLUMN: Headline & CTA -->
@@ -33,7 +47,7 @@
 
                 <!-- Subtitle Description -->
                 <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                    Solusi kustomisasi paket <strong class="text-white">Studi Tour, Capacity Building, & Family Gathering</strong> untuk Kampus (ITS, UNAIR, UNESA), Sekolah, dan Perusahaan. Pilih destinasi, jumlah armada, hingga add-on oleh-oleh UMKM lokal!
+                    Solusi kustomisasi paket <strong class="text-white">Studi Tour, Capacity Building, & Family Gathering</strong> untuk kampus, sekolah, dan perusahaan. Pilih destinasi serta armada yang sesuai dengan kebutuhan rombongan.
                 </p>
 
                 <!-- CTA Action Buttons -->
@@ -47,7 +61,7 @@
                         <span>Buat Custom Quotation</span>
                     </a>
 
-                    <a href="https://wa.me/6282233119092?text=Halo%20Admin%20AW%20Tour,%20saya%20tertarik%20konsultasi%20paket%20tour%20rombongan" 
+                    <a href="{{ $siteSettings->whatsapp_url }}?text={{ urlencode('Halo Admin AW Tour, saya tertarik konsultasi paket tour rombongan') }}" 
                        target="_blank"
                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800/80 hover:bg-slate-700 text-white border border-slate-600/80 font-semibold px-6 py-3.5 rounded-full hover:border-emerald-400 transition-all text-sm">
                         <svg class="w-5 h-5 text-emerald-400 fill-current" viewBox="0 0 24 24">
@@ -76,57 +90,80 @@
 
             </div>
 
-            <!-- RIGHT COLUMN: Visual Card Showcase -->
+            <!-- RIGHT COLUMN: Interactive Documentation Gallery Preview Card -->
             <div class="lg:col-span-5 relative">
-                <div class="relative rounded-2xl bg-gradient-to-b from-aw-forest to-aw-navy p-6 border border-aw-sage/30 shadow-2xl space-y-5">
+                
+                {{-- Floating Background Glow --}}
+                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-teal-500/20 via-aw-gold/20 to-emerald-500/20 blur-xl opacity-70 group-hover:opacity-100 transition-opacity"></div>
+
+                <div class="relative rounded-3xl bg-slate-900/50 backdrop-blur-xl border border-white/15 shadow-2xl shadow-slate-950/60 p-4 sm:p-5 space-y-4 hover:scale-[1.02] hover:border-teal-400/40 hover:shadow-[0_0_35px_rgba(45,212,191,0.18)] transition-all duration-300 group">
                     
-                    <!-- Decorative Badge -->
-                    <div class="flex items-center justify-between border-b border-slate-700/60 pb-4">
+                    {{-- Header Top Bar --}}
+                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded-full bg-rose-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-amber-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span class="text-xs font-bold text-white tracking-wide">DOKUMENTASI RESMI ROMBONGAN</span>
                         </div>
-                        <span class="text-[11px] font-mono text-aw-mint uppercase tracking-wider">AW Quotation System</span>
+                        <span class="text-[10px] font-mono text-teal-300 font-bold uppercase tracking-wider bg-teal-500/10 px-2.5 py-1 rounded-full border border-teal-400/30">
+                            50+ Trip
+                        </span>
                     </div>
 
-                    <!-- Visual Mock Feature Card 1 -->
-                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 flex items-start gap-4">
-                        <div class="p-3 bg-aw-gold/20 text-aw-gold rounded-lg">
-                            🎓
+                    {{-- Main Photo Showcase --}}
+                    <div class="relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-white/10 shadow-lg">
+                        <img src="{{ $heroDocumentation ? $heroDocumentation->image_url : asset('images/Bromo.jpg') }}" 
+                             alt="{{ $heroDocumentation ? $heroDocumentation->title : 'Dokumentasi Tour Rombongan AW Tour' }}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                             loading="eager">
+                        
+                        {{-- Dark Gradient Overlay for Readability --}}
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-black/30"></div>
+
+                        {{-- Top Badge: "Rombongan Tour Terbanyak - 50+ Trip" --}}
+                        <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2">
+                            <span class="px-3 py-1 rounded-full bg-slate-950/85 text-teal-300 font-extrabold text-[11px] tracking-wide border border-teal-400/40 backdrop-blur-md shadow-md flex items-center gap-1.5">
+                                <span>🏆</span>
+                                <span>{{ $heroDocumentation && $heroDocumentation->badge_text ? $heroDocumentation->badge_text : 'Rombongan Tour Terbanyak - 50+ Trip' }}</span>
+                            </span>
+
+                            <span class="px-2 py-0.5 rounded-md bg-black/60 text-slate-300 text-[10px] font-medium border border-white/10 backdrop-blur-sm">
+                                Real Photo
+                            </span>
                         </div>
-                        <div>
-                            <h4 class="font-semibold text-white text-sm">Studi Tour Kampus & Sekolah</h4>
-                            <p class="text-xs text-slate-400">Kunjungan industri, tempat bersejarah, & pusat studi.</p>
+
+                        {{-- Bottom Photo Info --}}
+                        <div class="absolute bottom-3 inset-x-3 space-y-1">
+                            @if($heroDocumentation && $heroDocumentation->destination)
+                                <span class="inline-block text-[10px] font-bold text-amber-300 bg-black/70 px-2 py-0.5 rounded border border-amber-400/30 backdrop-blur-sm">
+                                    📍 {{ $heroDocumentation->destination->name }}
+                                </span>
+                            @else
+                                <span class="inline-block text-[10px] font-bold text-amber-300 bg-black/70 px-2 py-0.5 rounded border border-amber-400/30 backdrop-blur-sm">
+                                    📍 Gunung Bromo &amp; Malang Tour
+                                </span>
+                            @endif
+                            <p class="text-xs font-bold text-white line-clamp-1 drop-shadow-md">
+                                {{ $heroDocumentation ? $heroDocumentation->title : 'Studi Tour & Gathering Rombongan B2B Surabaya' }}
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Visual Mock Feature Card 2 -->
-                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 flex items-start gap-4">
-                        <div class="p-3 bg-aw-sage/20 text-aw-mint rounded-lg">
-                            🏢
+                    {{-- Mini Strip: Trust Points --}}
+                    <div class="grid grid-cols-2 gap-2 text-center text-[11px] font-semibold text-slate-300 py-1">
+                        <div class="bg-slate-950/40 border border-white/10 rounded-xl py-1.5 px-2 flex items-center justify-center gap-1.5">
+                            <span class="text-teal-300">✓</span> <span>Dokumentasi Asli</span>
                         </div>
-                        <div>
-                            <h4 class="font-semibold text-white text-sm">Capacity Building & Outbound</h4>
-                            <p class="text-xs text-slate-400">Program motivasi & team building karyawan di Batu Malang.</p>
-                        </div>
-                    </div>
-
-                    <!-- Visual Mock Feature Card 3 -->
-                    <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 flex items-start gap-4">
-                        <div class="p-3 bg-emerald-500/20 text-emerald-400 rounded-lg">
-                            🛍️
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-white text-sm">Add-on Oleh-Oleh UMKM</h4>
-                            <p class="text-xs text-slate-400">Paket batik, keripik, & sambal lokal siap dibagikan ke peserta.</p>
+                        <div class="bg-slate-950/40 border border-white/10 rounded-xl py-1.5 px-2 flex items-center justify-center gap-1.5">
+                            <span class="text-amber-300">★</span> <span>Review B2B 5.0</span>
                         </div>
                     </div>
 
-                    <!-- Interactive Link -->
-                    <div class="pt-2 text-center">
-                        <a href="{{ route('quotation.create') }}" class="text-xs text-aw-gold hover:underline font-medium">
-                            Hitung Penawaran Rombongan Anda Sekarang &rarr;
+                    {{-- Action Button: Buka Dokumentasi & Galeri Foto --}}
+                    <div class="pt-1">
+                        <a href="{{ route('gallery.index') }}" 
+                           class="w-full flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-2xl bg-gradient-to-r from-teal-500/20 via-teal-400/30 to-emerald-500/20 hover:from-teal-500/30 hover:to-emerald-500/30 text-teal-200 hover:text-white border border-teal-400/40 font-bold text-xs shadow-lg shadow-teal-950/40 transition-all duration-200 group-hover:border-teal-300">
+                            <span>Buka Dokumentasi &amp; Galeri Foto</span>
+                            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
                         </a>
                     </div>
 
@@ -147,11 +184,9 @@
             Dipercaya Oleh Berbagai Rombongan Kampus, Sekolah, & Perusahaan Terkemuka
         </p>
         <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14 opacity-80">
-            <span class="font-display font-bold text-lg text-slate-700 tracking-wide">ITS SURABAYA</span>
-            <span class="font-display font-bold text-lg text-slate-700 tracking-wide">UNAIR</span>
-            <span class="font-display font-bold text-lg text-slate-700 tracking-wide">UNESA</span>
-            <span class="font-display font-bold text-lg text-slate-700 tracking-wide">INSTANSI SWASTA</span>
-            <span class="font-display font-bold text-lg text-slate-700 tracking-wide">UMKM JATIM</span>
+            @foreach($siteSettings->partners ?? [] as $partner)
+                <span class="font-display font-bold text-lg text-slate-700 tracking-wide">{{ $partner }}</span>
+            @endforeach
         </div>
     </div>
 </section>
@@ -237,6 +272,9 @@
                     <div>
                         <!-- Header Visual / Placeholder Image -->
                         <div class="relative h-48 bg-slate-800 overflow-hidden">
+                            @if($destination->cover_image)
+                                <img src="{{ $destination->cover_image }}" alt="{{ $destination->name }}" class="absolute inset-0 h-full w-full object-cover" loading="lazy">
+                            @endif
                             <!-- Gradient Overlay -->
                             <div class="absolute inset-0 bg-gradient-to-t from-aw-navy/80 via-transparent to-transparent z-10"></div>
                             
@@ -398,54 +436,6 @@
 
 
 <!-- ========================================================================= -->
-<!-- 7. HIGHLIGHT ETALASE PRODUK UMKM LOKAL -->
-<!-- ========================================================================= -->
-<section class="py-20 bg-aw-cream/40 border-t border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-12 gap-4">
-            <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-aw-gold">Add-on Spesial Rombongan</span>
-                <h2 class="font-display text-3xl font-bold text-aw-navy">Oleh-Oleh Khas UMKM Jawa Timur</h2>
-            </div>
-            <a href="{{ route('umkm.index') }}" 
-               class="inline-flex items-center gap-2 text-sm font-semibold text-aw-gold hover:text-aw-gold-700 underline">
-                <span>Lihat Katalog Lengkap UMKM &rarr;</span>
-            </a>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            @foreach($umkmProducts as $product)
-                <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-                    <div class="space-y-2">
-                        <span class="text-[10px] uppercase font-bold text-aw-sage tracking-wider">
-                            {{ $product->producer ?? 'UMKM Jawa Timur' }}
-                        </span>
-                        <h3 class="font-display font-bold text-base text-aw-navy">
-                            {{ $product->name }}
-                        </h3>
-                        <p class="text-xs text-slate-500 line-clamp-2">
-                            {{ $product->description }}
-                        </p>
-                    </div>
-
-                    <div class="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                        <span class="font-extrabold text-aw-navy text-sm">
-                            {{ $product->formatted_price }}
-                        </span>
-                        <span class="text-[10px] bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded border border-emerald-200">
-                            Tersedia Add-on
-                        </span>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-    </div>
-</section>
-
-
-<!-- ========================================================================= -->
 <!-- 8. BOTTOM CTA BANNER (Konfirmasi Rombongan) -->
 <!-- ========================================================================= -->
 <section class="py-20 bg-aw-navy text-white text-center relative overflow-hidden">
@@ -461,10 +451,10 @@
                class="w-full sm:w-auto bg-aw-gold hover:bg-aw-gold-600 text-white font-bold px-8 py-4 rounded-full shadow-xl shadow-aw-gold/20 hover:scale-105 transition-all text-sm">
                 Mulai Custom Quotation Builder
             </a>
-            <a href="https://wa.me/6282233119092" 
+            <a href="{{ $siteSettings->whatsapp_url }}" 
                target="_blank" 
                class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-all text-sm">
-                Chat Admin WA (+62 822 3311 9092)
+                Chat Admin WA (+{{ $siteSettings->whatsapp_number }})
             </a>
         </div>
     </div>

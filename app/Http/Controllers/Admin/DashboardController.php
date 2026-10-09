@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BookedDate;
 use App\Models\CustomRequest;
 use App\Models\Destination;
-use App\Models\UmkmProduct;
+use App\Models\TransportOffering;
 use Illuminate\Http\Request;
 
 /**
@@ -28,7 +28,7 @@ class DashboardController extends Controller
             'pending_requests'   => CustomRequest::where('status', 'pending')->count(),
             'confirmed_requests' => CustomRequest::where('status', 'confirmed')->count(),
             'total_destinations' => Destination::count(),
-            'total_umkm'         => UmkmProduct::count(),
+            'total_transport'    => TransportOffering::active()->vehicles()->count(),
         ];
 
         // 2. Ambil 5 permintaan rombongan terbaru

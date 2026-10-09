@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Destination;
+use App\Models\Documentation;
 use App\Models\OpenTrip;
-use App\Models\UmkmProduct;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 
 /**
@@ -16,7 +17,7 @@ use Illuminate\Http\Request;
  * - Kategori layanan (Studi Tour, Capacity Building, Family Gathering)
  * - Destinasi wisata unggulan (featured destinations)
  * - Jadwal Open Trip mendatang
- * - Produk UMKM pilihan (oleh-oleh add-on)
+ * - Dokumentasi galeri perjalanan rombongan
  */
 class HomeController extends Controller
 {
@@ -44,18 +45,21 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        // 4. Ambil produk UMKM yang tersedia untuk highlight
-        $umkmProducts = UmkmProduct::available()
-            ->latest()
-            ->take(4)
-            ->get();
+        // 4. Ambil dokumentasi untuk Hero Preview Card & Galeri Showcase
+        $heroDocumentation = Documentation::active()->featured()->latest()->first() 
+            ?? Documentation::active()->latest()->first();
 
-        // Kirim data ke view home.index
+        $galleryPreviews = Documentation::active()->ordered()->take(6)->get();
+
+        $siteSettings = SiteSetting::current();
+
         return view('home.index', compact(
             'categories',
             'featuredDestinations',
             'openTrips',
-            'umkmProducts'
+            'heroDocumentation',
+            'galleryPreviews',
+            'siteSettings'
         ));
     }
 }

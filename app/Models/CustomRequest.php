@@ -129,7 +129,7 @@ class CustomRequest extends Model
      */
     public function getWhatsappUrlAttribute(): string
     {
-        $phone    = '6282233119092'; // Nomor admin AW Tour Operator
+        $phone    = \App\Models\SiteSetting::current()->whatsapp_number;
         $destName = $this->destination_display_name;
         $message  = urlencode(
             "Halo Admin AW Tour Operator,\n" .
