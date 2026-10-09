@@ -141,6 +141,123 @@
                 @enderror
             </div>
 
+            {{-- SECTION: KOLEKSI MEDIA DALAM ALBUM SAAT INI --}}
+            <div class="sm:col-span-2 pt-4 border-t border-slate-800 space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                            <span>📸 Koleksi Foto &amp; Video Album</span>
+                            <span class="px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-bold text-xs border border-teal-500/30">
+                                {{ $documentation->media->count() }} Media
+                            </span>
+                        </h4>
+                        <p class="text-[11px] text-slate-400">Daftar semua memori foto dan video yang ada dalam kotakan album rombongan ini.</p>
+                    </div>
+                </div>
+
+                @if($documentation->media->isEmpty())
+                    <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800 text-center text-xs text-slate-400">
+                        Belum ada item foto/video tambahan di dalam album ini. Tambahkan melalui form di bawah!
+                    </div>
+                @else
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                        @foreach($documentation->media as $m)
+                            <div class="relative group rounded-xl bg-slate-900 border border-slate-800 overflow-hidden shadow">
+                                <div class="aspect-video bg-slate-950 flex items-center justify-center overflow-hidden">
+                                    @if($m->type === 'image')
+                                        <img src="{{ $m->url }}" alt="{{ $m->caption }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                                    @else
+                                        <div class="p-2 text-center text-xs text-amber-300 flex flex-col items-center gap-1">
+                                            <span class="text-xl">🎥</span>
+                                            <span class="text-[10px] truncate max-w-[100px]">{{ $m->is_youtube ? 'YouTube Video' : 'Video' }}</span>
+                                        </div>
+                                    @endif
+                                </div>
+
+                                {{-- Type Badge --}}
+                                <div class="absolute top-1.5 left-1.5 pointer-events-none">
+                                    <span class="px-1.5 py-0.5 rounded text-[9px] font-bold {{ $m->type === 'image' ? 'bg-black/70 text-slate-300' : 'bg-amber-500/90 text-slate-950' }}">
+                                        {{ $m->type === 'image' ? 'Foto' : 'Video' }}
+                                    </span>
+                                </div>
+
+                                {{-- Delete Button --}}
+                                <div class="p-2 bg-slate-900/95 flex items-center justify-between border-t border-slate-800">
+                                    <span class="text-[10px] text-slate-400 truncate max-w-[90px]" title="{{ $m->caption }}">
+                                        {{ $m->caption ?: 'Tanpa keterangan' }}
+                                    </span>
+                                    
+                                    <button type="button" 
+                                            onclick="if(confirm('Hapus media ini dari album?')) { document.getElementById('delete-media-{{ $m->id }}').submit(); }"
+                                            class="text-rose-400 hover:text-rose-300 text-xs p-1 rounded hover:bg-rose-500/10 transition-colors"
+                                            title="Hapus media ini">
+                                        🗑️
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+
+            {{-- SECTION: TAMBAH FOTO BARU KE ALBUM (MULTI-UPLOAD) --}}
+            <div class="sm:col-span-2 pt-2 border-t border-slate-800" x-data="{ addPhotoCount: 0 }">
+                <label class="block text-xs font-bold uppercase tracking-wider text-teal-300 mb-1.5">
+                    ➕ Tambah Banyak Foto Baru ke Album Ini
+                </label>
+                <p class="text-[11px] text-slate-400 mb-2">Pilih satu atau lebih file foto untuk ditambahkan ke dalam memori rombongan ini.</p>
+                
+                <div class="border-2 border-dashed border-slate-700 hover:border-teal-400/60 rounded-2xl p-5 text-center transition-colors bg-slate-900/50">
+                    <input type="file" name="photos[]" multiple accept="image/*" id="additional-photos-upload" class="hidden"
+                           @change="addPhotoCount = $event.target.files.length">
+                    
+                    <label for="additional-photos-upload" class="cursor-pointer flex flex-col items-center gap-1.5">
+                        <div class="w-10 h-10 rounded-xl bg-slate-800 text-teal-300 flex items-center justify-center text-xl shadow">
+                            📁
+                        </div>
+                        <template x-if="addPhotoCount === 0">
+                            <div>
+                                <span class="text-xs font-semibold text-white">Klik untuk memilih tambahan foto (Bisa pilih sekaligus)</span>
+                                <span class="text-[10px] text-slate-500 block">Format: JPG, PNG, WEBP (Maksimal 5MB per file)</span>
+                            </div>
+                        </template>
+                        <template x-if="addPhotoCount > 0">
+                            <div>
+                                <span class="text-xs font-bold text-teal-300" x-text="addPhotoCount + ' foto baru siap diunggah saat disimpan'"></span>
+                                <span class="text-[10px] text-slate-400 block">Klik untuk memilih ulang foto</span>
+                            </div>
+                        </template>
+                    </label>
+                </div>
+                @error('photos.*')
+                    <span class="text-rose-400 text-xs mt-1 block">{{ $message }}</span>
+                @enderror
+            </div>
+
+            {{-- SECTION: TAMBAH VIDEO KE ALBUM --}}
+            <div class="sm:col-span-2 pt-2 border-t border-slate-800 space-y-3">
+                <label class="block text-xs font-bold uppercase tracking-wider text-amber-300">
+                    ➕ Tambah Video Dokumentasi (YouTube / Link Video)
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] text-slate-300 mb-1">URL Video (YouTube / Direct Video Link)</label>
+                        <input type="url" name="video_url" value="{{ old('video_url') }}"
+                               placeholder="https://www.youtube.com/watch?v=..."
+                               class="w-full rounded-xl bg-slate-900 border-slate-700 text-xs py-2 px-3 text-white placeholder-slate-500 focus:border-aw-gold focus:ring-aw-gold">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-slate-300 mb-1">Keterangan / Caption Video</label>
+                        <input type="text" name="video_caption" value="{{ old('video_caption') }}"
+                               placeholder="Contoh: Aftermovie Cinematic Tour Bromo"
+                               class="w-full rounded-xl bg-slate-900 border-slate-700 text-xs py-2 px-3 text-white placeholder-slate-500 focus:border-aw-gold focus:ring-aw-gold">
+                    </div>
+                </div>
+                @error('video_url')
+                    <span class="text-rose-400 text-xs block">{{ $message }}</span>
+                @enderror
+            </div>
+
             {{-- Checkboxes Featured & Active --}}
             <div class="sm:col-span-2 flex flex-wrap gap-6 pt-2 border-t border-slate-800">
                 <label class="inline-flex items-center gap-2.5 cursor-pointer">
@@ -169,6 +286,16 @@
         </div>
 
     </form>
+
+    {{-- Hidden Delete Forms for Media Items --}}
+    @foreach($documentation->media as $m)
+        <form id="delete-media-{{ $m->id }}" 
+              action="{{ route('admin.gallery.media.destroy', $m->id) }}" 
+              method="POST" class="hidden">
+            @csrf
+            @method('DELETE')
+        </form>
+    @endforeach
 
 </div>
 

@@ -19,7 +19,7 @@ class GalleryController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Documentation::active()->with('destination')->ordered();
+        $query = Documentation::active()->with(['destination', 'media'])->ordered();
 
         // Filter per destinasi jika dipilih
         if ($request->filled('destination')) {

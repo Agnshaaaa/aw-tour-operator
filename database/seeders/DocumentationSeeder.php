@@ -69,11 +69,53 @@ class DocumentationSeeder extends Seeder
             ],
         ];
 
+        $albumMedia = [
+            'Corporate Gathering PT Semen Indonesia — Sunrise Bromo Expedition' => [
+                ['type' => 'image', 'file_path' => 'images/Bromo.jpg', 'caption' => 'Foto Bersama Rombongan 120 Karyawan di Penanjakan 1 Bromo'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Konvoi 20 Unit Jeep Hardtop 4x4 Menyusuri Lautan Pasir'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Puncak Kawah Bromo & Keindahan Kaldera Tengger'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Sesi Fun Games & Ice Breaking di Bukit Teletubbies'],
+                ['type' => 'video', 'file_path' => 'https://www.youtube.com/watch?v=1F3X1N_wTio', 'caption' => 'Aftermovie Sinematik: Sunrise Bromo Gathering PT Semen Indonesia'],
+            ],
+            'Studi Ekskursi BEM FT Universitas Negeri Surabaya — Yogyakarta Smart City' => [
+                ['type' => 'image', 'file_path' => 'images/Bromo.jpg', 'caption' => 'Rombongan Mahasiswa UNESA di Depan Candi Prambanan'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Eksplorasi Budaya & Kerajinan Khas Malioboro Yogyakarta'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80', 'caption' => '2 Armada Big Bus Executive Pariwisata AW Tour Standby'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Sunset Gathering & Gala Dinner di Pantai Indrayanti'],
+                ['type' => 'video', 'file_path' => 'https://www.youtube.com/watch?v=1F3X1N_wTio', 'caption' => 'Vlog Keseruan Studi Ekskursi Yogyakarta — BEM FT UNESA'],
+            ],
+            'Capacity Building & Team Bonding Bank Jatim — Coban Rondo Batu Malang' => [
+                ['type' => 'image', 'file_path' => 'images/Bromo.jpg', 'caption' => 'Foto Pelepasan Armada Bus Bank Jatim dari Kantor Pusat Surabaya'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Outbound Training & Rafting di Coban Rondo Batu Malang'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Malam Keakraban & Barbeque Dinner di Resort Batu'],
+                ['type' => 'video', 'file_path' => 'https://www.youtube.com/watch?v=1F3X1N_wTio', 'caption' => 'Highlight Video Capacity Building Bank Jatim 2026'],
+            ],
+            'Family Gathering Ikatan Alumni SMA Negeri 5 Surabaya — Bali Island Heritage' => [
+                ['type' => 'image', 'file_path' => 'images/Bromo.jpg', 'caption' => 'Foto Keluarga Besar Alumni di Garuda Wisnu Kencana (GWK) Bali'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Pemandangan Tebing dan Sunset di Pura Uluwatu'],
+                ['type' => 'image', 'file_path' => 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1200&q=80', 'caption' => 'Romantic Seafood Dinner Bersama Rombongan di Pantai Jimbaran'],
+                ['type' => 'video', 'file_path' => 'https://www.youtube.com/watch?v=1F3X1N_wTio', 'caption' => 'Dokumentasi Video Kenangan Liburan Keluarga Alumni di Bali'],
+            ],
+        ];
+
         foreach ($samples as $sample) {
-            Documentation::updateOrCreate(
+            $doc = Documentation::updateOrCreate(
                 ['title' => $sample['title']],
                 $sample
             );
+
+            // Re-seed media items jika belum ada
+            if ($doc->media()->count() === 0 && isset($albumMedia[$doc->title])) {
+                $sort = 1;
+                foreach ($albumMedia[$doc->title] as $item) {
+                    $doc->media()->create([
+                        'type'       => $item['type'],
+                        'file_path'  => $item['file_path'],
+                        'caption'    => $item['caption'],
+                        'sort_order' => $sort++,
+                    ]);
+                }
+            }
         }
     }
 }
