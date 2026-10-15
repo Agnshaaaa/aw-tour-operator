@@ -352,7 +352,7 @@
                     }
                     this.step = 2;
                     this.saveDraft();
-                    window.scrollTo({ top: 180, behavior: 'smooth' });
+                    if (window.lenis) { window.lenis.scrollTo(180); } else { window.scrollTo({ top: 180, behavior: 'smooth' }); }
                 },
 
                 // Step 2 Validation
@@ -371,7 +371,7 @@
                     }
                     this.step = 3;
                     this.saveDraft();
-                    window.scrollTo({ top: 180, behavior: 'smooth' });
+                    if (window.lenis) { window.lenis.scrollTo(180); } else { window.scrollTo({ top: 180, behavior: 'smooth' }); }
                 },
 
                 // Step 3 Validation
@@ -402,7 +402,7 @@
                     }
                     this.step = 4;
                     this.saveDraft();
-                    window.scrollTo({ top: 180, behavior: 'smooth' });
+                    if (window.lenis) { window.lenis.scrollTo(180); } else { window.scrollTo({ top: 180, behavior: 'smooth' }); }
                 },
 
                 // Computed Duration String
