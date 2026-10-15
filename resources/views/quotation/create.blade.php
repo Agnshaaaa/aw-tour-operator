@@ -3,7 +3,7 @@
 @section('title', 'Custom Group Quotation Builder — AW Tour Operator Surabaya')
 @push('styles')
 <style>
-    /* ─── Global Dark Form Inputs ─────────────────────────────────────── */
+    /* ─── Global Altesa Luxury Form Inputs ─────────────────────────────── */
 
     /* Covers: input[type=text/email/tel/number/date/time], select, textarea */
     .aw-input,
@@ -11,10 +11,10 @@
     select.aw-input,
     textarea.aw-input {
         width: 100%;
-        background-color: rgba(2, 6, 23, 0.65) !important;
+        background-color: rgba(24, 24, 27, 0.75) !important;
         background-image: none !important; /* reset Tailwind Forms bg */
-        border: 1px solid rgba(255, 255, 255, 0.20) !important;
-        border-radius: 0.75rem !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 1rem !important;
         color: #ffffff !important;
         font-size: 0.875rem !important;
         padding: 0.625rem 0.875rem !important;
@@ -27,15 +27,15 @@
     input.aw-input::placeholder,
     select.aw-input::placeholder,
     textarea.aw-input::placeholder {
-        color: rgba(148, 163, 184, 0.65) !important;
+        color: rgba(156, 163, 175, 0.65) !important;
     }
     .aw-input:focus,
     input.aw-input:focus,
     select.aw-input:focus,
     textarea.aw-input:focus {
-        border-color: rgba(45, 212, 191, 0.8) !important;
-        box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15) !important;
-        background-color: rgba(2, 6, 23, 0.90) !important;
+        border-color: rgba(245, 185, 144, 0.9) !important;
+        box-shadow: 0 0 0 3px rgba(245, 185, 144, 0.25) !important;
+        background-color: rgba(24, 24, 27, 0.95) !important;
     }
     /* Date & Time pickers — make calendar/clock icon white (Webkit) */
     .aw-input::-webkit-calendar-picker-indicator {
@@ -52,43 +52,43 @@
     .aw-select {
         appearance: none !important;
         -webkit-appearance: none !important;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%232dd4bf'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23F5B990'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E") !important;
         background-repeat: no-repeat !important;
         background-position: right 0.75rem center !important;
         background-size: 1.1rem !important;
         padding-right: 2.25rem !important;
     }
     .aw-select option {
-        background-color: #0b132b;
+        background-color: #18181B;
         color: #ffffff;
     }
 
     /* ─── Transport / Hotel radio card ─────────────────────────────── */
     .aw-radio-card {
         border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 1rem;
+        border-radius: 1.25rem;
         padding: 1rem;
         cursor: pointer;
         display: flex;
         align-items: flex-start;
         gap: 0.75rem;
-        background: rgba(2, 6, 23, 0.50);
+        background: rgba(24, 24, 27, 0.60);
         color: #e2e8f0;
         transition: all 0.2s;
     }
     .aw-radio-card:hover {
-        background: rgba(45, 212, 191, 0.10);
-        border-color: rgba(45, 212, 191, 0.45);
+        background: rgba(245, 185, 144, 0.12);
+        border-color: rgba(245, 185, 144, 0.55);
     }
 
     /* ─── Sub-section card within a step ────────────────────────────── */
     .aw-sub-card {
-        background: rgba(15, 23, 42, 0.55);
+        background: rgba(24, 24, 27, 0.70);
         border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 1.25rem;
+        border-radius: 1.5rem;
         padding: 1.25rem;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
     }
 
     /* ─── High-contrast form label ──────────────────────────────────── */
@@ -98,7 +98,7 @@
         font-weight: 700;
         letter-spacing: 0.07em;
         text-transform: uppercase;
-        color: #f1f5f9 !important; /* slate-100, always white */
+        color: #f4f4f5 !important;
         margin-bottom: 0.4rem;
     }
 
@@ -108,10 +108,10 @@
         font-weight: 800;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: #2dd4bf;
+        color: #F5B990;
         display: inline-block;
         padding-bottom: 0.25rem;
-        border-bottom: 2px solid rgba(45, 212, 191, 0.35);
+        border-bottom: 2px solid rgba(245, 185, 144, 0.45);
         margin-bottom: 0.75rem;
     }
 
@@ -123,7 +123,7 @@
             position: absolute !important; left: 0 !important; top: 0 !important;
             width: 100% !important; margin: 0 !important; padding: 24px !important;
             box-shadow: none !important; border: 1px solid #cbd5e1 !important;
-            background: #ffffff !important; color: #010818 !important;
+            background: #ffffff !important; color: #18181B !important;
         }
         .no-print { display: none !important; }
         @page { size: A4; margin: 12mm; }
@@ -135,16 +135,16 @@
 
 <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0">
     <img src="{{ asset('images/Bromo.jpg') }}" alt="" class="h-full w-full object-cover object-center">
-    <div class="absolute inset-0 bg-slate-950/30"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/10 via-slate-950/20 to-slate-950/45"></div>
+    <div class="absolute inset-0 bg-[#18181B]/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#18181B]/20 via-[#18181B]/40 to-[#18181B]/60"></div>
 </div>
 
-<!-- Header Banner -->
-<div class="relative z-10 bg-slate-950/35 text-white py-12 border-b border-white/10 backdrop-blur-sm no-print">
+<!-- Header Banner (Altesa Dark Warm Luxury) -->
+<div class="relative z-10 bg-[#18181B]/80 text-white pt-28 pb-16 sm:pt-36 sm:pb-20 border-b border-white/10 backdrop-blur-md no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-        <span class="text-xs font-bold uppercase tracking-widest text-aw-gold">B2B Customized Group Tour System</span>
-        <h1 class="font-display text-3xl sm:text-4xl font-extrabold">Custom Group Quotation Builder</h1>
-        <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto">
+        <span class="badge-altesa-dark">B2B Customized Group Tour System</span>
+        <h1 class="font-display text-3xl sm:text-5xl font-extrabold text-white">Custom Group Quotation Builder</h1>
+        <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed">
             Rancang perjalanan rombongan Anda hanya dalam 4 langkah mudah. Dapatkan estimasi penawaran harga resmi (*Quotation Ticket*) dan terhubung langsung ke WhatsApp Admin.
         </p>
     </div>
@@ -464,7 +464,7 @@
                     }
                 }
              }" 
-             class="rounded-3xl shadow-2xl overflow-hidden relative border backdrop-blur-md bg-slate-900/50 border-white/15 shadow-slate-950/40">
+             class="rounded-3xl shadow-2xl overflow-hidden relative border backdrop-blur-md bg-[#18181B]/90 border-white/10 shadow-2xl">
             
             <!-- TOAST NOTIFICATION POPUP -->
             <div x-show="toast.show" 
@@ -475,7 +475,7 @@
                  x-transition:leave="transition ease-in duration-200 transform"
                  x-transition:leave-start="opacity-100 translate-y-0 scale-100"
                  x-transition:leave-end="opacity-0 translate-y-4 scale-95"
-                 class="fixed top-6 right-6 z-50 max-w-sm bg-aw-navy text-white px-5 py-4 rounded-2xl shadow-2xl border border-aw-gold/40 flex items-center gap-3.5 backdrop-blur-md no-print">
+                 class="fixed top-6 right-6 z-50 max-w-sm bg-[#18181B] text-white px-5 py-4 rounded-2xl shadow-2xl border border-aw-gold/40 flex items-center gap-3.5 backdrop-blur-md no-print">
                 <div class="w-8 h-8 rounded-xl bg-aw-gold/20 text-aw-gold flex items-center justify-center shrink-0 font-bold text-base">
                     ⚠️
                 </div>
@@ -489,15 +489,15 @@
             </div>
 
             <!-- STEP PROGRESS BAR -->
-                <div class="px-6 py-4 text-white border-b no-print bg-slate-950/80 border-white/10">
+            <div class="px-6 py-5 text-white border-b no-print bg-[#18181B] border-white/10">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-semibold mb-3 gap-2">
                     <div class="flex items-center gap-3">
-                        <span :class="step === 1 ? 'text-emerald-300' : 'text-aw-gold'" class="uppercase tracking-wider">
+                        <span class="text-aw-gold uppercase tracking-wider font-bold">
                             Langkah <span x-text="step"></span> dari <span x-text="totalSteps"></span>
                         </span>
                         <!-- Status Badge Draft Tersimpan -->
-                        <span x-show="hasDraft" x-cloak class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-medium border border-emerald-500/30">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span x-show="hasDraft" x-cloak class="badge-altesa-peach font-bold text-[10px]">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
                             <span>Draft Tersimpan</span>
                         </span>
                     </div>
@@ -520,24 +520,48 @@
                 </div>
 
                 <!-- Progress Track -->
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                    <div class="h-full transition-all duration-500"
-                        :class="step === 1 ? 'bg-gradient-to-r from-emerald-400 to-green-300 shadow-[0_0_12px_rgba(52,211,153,0.8)]' : 'bg-gradient-to-r from-aw-gold to-aw-mint'"
+                <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                    <div class="h-full transition-all duration-500 bg-gradient-to-r from-aw-gold to-aw-gold-600 shadow-[0_0_12px_rgba(245,185,144,0.5)]"
                          :style="'width: ' + (step / totalSteps * 100) + '%'"></div>
                 </div>
 
                 <!-- Step Tabs Header -->
                 <div class="grid grid-cols-4 gap-2 text-center text-[11px] pt-4 text-slate-400">
-                    <div :class="step >= 1 ? (step === 1 ? 'text-emerald-300 font-bold' : 'text-aw-gold font-bold') : ''">1. Acara & Destinasi</div>
-                    <div :class="step >= 2 ? (step === 1 ? 'text-emerald-300 font-bold' : 'text-aw-gold font-bold') : ''">2. Data Instansi</div>
-                    <div :class="step >= 3 ? (step === 1 ? 'text-emerald-300 font-bold' : 'text-aw-gold font-bold') : ''">3. Logistik & Jadwal</div>
-                    <div :class="step >= 4 ? (step === 1 ? 'text-emerald-300 font-bold' : 'text-aw-gold font-bold') : ''">4. Review & Kirim</div>
+                    <div :class="step >= 1 ? 'text-aw-gold font-bold' : ''">1. Acara & Destinasi</div>
+                    <div :class="step >= 2 ? 'text-aw-gold font-bold' : ''">2. Data Instansi</div>
+                    <div :class="step >= 3 ? 'text-aw-gold font-bold' : ''">3. Logistik & Jadwal</div>
+                    <div :class="step >= 4 ? 'text-aw-gold font-bold' : ''">4. Review & Kirim</div>
+                </div>
+            </div>       <div :class="step >= 2 ? (step === 2 ? 'text-aw-gold font-bold' : 'text-aw-mint font-semibold') : ''">2. Data Instansi</div>
+                    <div :class="step >= 3 ? (step === 3 ? 'text-aw-gold font-bold' : 'text-aw-mint font-semibold') : ''">3. Logistik & Jadwal</div>
+                    <div :class="step >= 4 ? (step === 4 ? 'text-aw-gold font-bold' : 'text-aw-mint font-semibold') : ''">4. Review & Kirim</div>
                 </div>
             </div>
 
             <!-- FORM START -->
             <form action="{{ route('quotation.store') }}" method="POST" id="quotation-form" class="p-6 sm:p-10" @input="saveDraft()" @change="saveDraft()">
                 @csrf
+
+                @if(!empty($selectedDate))
+                <!-- Alert Banner Tanggal Terpilih dari Kalender -->
+                <div class="mb-6 p-4 rounded-2xl bg-aw-gold/15 border border-aw-gold/30 text-white flex items-center justify-between gap-3 shadow-lg">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-aw-gold/25 text-aw-gold flex items-center justify-center font-bold text-lg shrink-0 border border-aw-gold/30">
+                            📅
+                        </div>
+                        <div>
+                            <p class="text-[11px] font-bold text-aw-gold uppercase tracking-wider">Tanggal Terpilih dari Kalender</p>
+                            <p class="text-sm font-bold text-white">
+                                {{ \Carbon\Carbon::parse($selectedDate)->translatedFormat('l, d F Y') }}
+                                <span class="text-xs text-slate-300 font-normal hidden sm:inline">(Otomatis disiapkan untuk jadwal keberangkatan rombongan)</span>
+                            </p>
+                        </div>
+                    </div>
+                    <span class="inline-flex text-[11px] px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 font-semibold shrink-0">
+                        Slot Tersedia
+                    </span>
+                </div>
+                @endif
 
                 <!-- HIDDEN INPUTS TO SUBMIT ALL FORM DATA -->
                 <input type="hidden" name="destination_id" :value="['singapore','malaysia','vietnam','other'].includes(destinationChoice) ? '' : destinationChoice">
@@ -767,7 +791,7 @@
                     <div class="pt-6 flex justify-end">
                         <button type="button" 
                                 @click="validateStep1()"
-                                class="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold px-7 py-3 rounded-xl text-sm shadow-lg shadow-orange-950/40 hover:shadow-[0_0_24px_rgba(249,115,22,0.45)] hover:scale-[1.02] transition-all duration-200 flex items-center gap-2">
+                                class="btn-altesa-primary">
                             <span>Lanjut: Data Instansi</span> &rarr;
                         </button>
                     </div>
@@ -828,11 +852,11 @@
 
                     <!-- Step 2 Buttons -->
                     <div class="pt-4 flex justify-between items-center">
-                        <button type="button" @click="step = 1" class="bg-white/10 hover:bg-white/15 text-slate-200 border border-white/15 font-semibold px-5 py-3 rounded-xl text-sm transition-all">
+                        <button type="button" @click="step = 1" class="px-5 py-3 rounded-full border border-white/20 text-slate-200 hover:bg-white/10 transition-all font-semibold text-xs">
                             &larr; Kembali
                         </button>
-                        <button type="button" @click="validateStep2()" class="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold px-7 py-3 rounded-xl text-sm shadow-lg shadow-orange-950/40 hover:scale-[1.02] transition-all">
-                            Lanjut: Logistik &amp; Jadwal &rarr;
+                        <button type="button" @click="validateStep2()" class="btn-altesa-primary">
+                            <span>Lanjut: Logistik &amp; Jadwal</span> &rarr;
                         </button>
                     </div>
                 </div>
@@ -851,7 +875,7 @@
                     <div class="aw-sub-card space-y-4">
                         <div class="flex items-center justify-between">
                             <span class="aw-section-title" style="margin-bottom:0;padding-bottom:0;border:none;">A. Jadwal Perjalanan Rombongan <span class="text-rose-400">*</span></span>
-                            <span class="text-xs font-bold text-teal-300 bg-teal-500/15 px-3 py-1 rounded-full border border-teal-400/30" x-text="durationText"></span>
+                            <span class="text-xs font-bold text-aw-gold bg-aw-gold/15 px-3 py-1 rounded-full border border-aw-gold/30" x-text="durationText"></span>
                         </div>
                         <div class="border-t border-white/10 pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <!-- Tanggal Keberangkatan -->
@@ -902,7 +926,7 @@
                                        required 
                                        min="1" 
                                        class="aw-input pr-20 font-bold text-white text-base">
-                                <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-xs font-bold text-teal-300">
+                                <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-xs font-bold text-aw-gold">
                                     Peserta
                                 </div>
                             </div>
@@ -954,8 +978,8 @@
                         {{-- 3 Radio Choices for Transport Type --}}
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <label class="aw-radio-card"
-                                   :class="transportType === 'darat' ? 'border-teal-400/80 bg-teal-500/15 text-white ring-2 ring-teal-400/30' : ''">
-                                <input type="radio" value="darat" x-model="transportType" class="text-teal-400 focus:ring-teal-400 mt-1">
+                                   :class="transportType === 'darat' ? 'border-aw-gold/80 bg-aw-gold/15 text-white ring-2 ring-aw-gold/30' : ''">
+                                <input type="radio" value="darat" x-model="transportType" class="text-aw-gold focus:ring-aw-gold mt-1">
                                 <div>
                                     <span class="font-bold text-sm text-white block">Transportasi Darat</span>
                                     <span class="text-xs text-slate-300 block mt-0.5">Bus Pariwisata / Hiace langsung ke tujuan</span>
@@ -963,8 +987,8 @@
                             </label>
 
                             <label class="aw-radio-card"
-                                   :class="transportType === 'kereta' ? 'border-teal-400/80 bg-teal-500/15 text-white ring-2 ring-teal-400/30' : ''">
-                                <input type="radio" value="kereta" x-model="transportType" class="text-teal-400 focus:ring-teal-400 mt-1">
+                                   :class="transportType === 'kereta' ? 'border-aw-gold/80 bg-aw-gold/15 text-white ring-2 ring-aw-gold/30' : ''">
+                                <input type="radio" value="kereta" x-model="transportType" class="text-aw-gold focus:ring-aw-gold mt-1">
                                 <div>
                                     <span class="font-bold text-sm text-white block">Kereta Api + Lokal</span>
                                     <span class="text-xs text-slate-300 block mt-0.5">Kereta antar kota &amp; bus/Hiace lokal</span>
@@ -972,8 +996,8 @@
                             </label>
 
                             <label class="aw-radio-card"
-                                   :class="transportType === 'pesawat' ? 'border-teal-400/80 bg-teal-500/15 text-white ring-2 ring-teal-400/30' : ''">
-                                <input type="radio" value="pesawat" x-model="transportType" class="text-teal-400 focus:ring-teal-400 mt-1">
+                                   :class="transportType === 'pesawat' ? 'border-aw-gold/80 bg-aw-gold/15 text-white ring-2 ring-aw-gold/30' : ''">
+                                <input type="radio" value="pesawat" x-model="transportType" class="text-aw-gold focus:ring-aw-gold mt-1">
                                 <div>
                                     <span class="font-bold text-sm text-white block">Pesawat + Lokal</span>
                                     <span class="text-xs text-slate-300 block mt-0.5">Penerbangan &amp; armada lokal di destinasi</span>
@@ -987,14 +1011,14 @@
                         <div x-show="transportType === 'darat'" 
                              x-transition:enter="transition ease-out duration-200"
                              class="bg-black/40 border border-white/15 rounded-2xl p-5 space-y-4 backdrop-blur-md">
-                            <label class="aw-label text-teal-300">
+                            <label class="aw-label text-aw-gold">
                                 PILIH JENIS KENDARAAN ARMADA:
                             </label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 @forelse($transportOfferings as $vehicle)
-                                    <label class="bg-slate-950/60 border border-white/15 rounded-xl p-3.5 cursor-pointer flex items-center gap-3 text-xs font-bold text-white hover:border-teal-400/50 transition-all"
-                                           :class="daratVehicle === @js($vehicle->name) ? 'border-teal-400 bg-teal-500/20 text-teal-200 ring-2 ring-teal-400/30' : ''">
-                                        <input type="radio" value="{{ $vehicle->name }}" x-model="daratVehicle" class="text-teal-400 focus:ring-teal-400">
+                                    <label class="bg-slate-950/60 border border-white/15 rounded-xl p-3.5 cursor-pointer flex items-center gap-3 text-xs font-bold text-white hover:border-aw-gold/50 transition-all"
+                                           :class="daratVehicle === @js($vehicle->name) ? 'border-aw-gold bg-aw-gold/20 text-aw-gold ring-2 ring-aw-gold/30' : ''">
+                                        <input type="radio" value="{{ $vehicle->name }}" x-model="daratVehicle" class="text-aw-gold focus:ring-aw-gold">
                                         <span class="text-slate-100">{{ $vehicle->name }}@if($vehicle->capacity) ({{ $vehicle->capacity }})@endif</span>
                                     </label>
                                 @empty
@@ -1026,17 +1050,17 @@
                              x-transition:enter="transition ease-out duration-200"
                              class="bg-black/40 border border-white/15 rounded-2xl p-5 space-y-4 backdrop-blur-md">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-200">Transportasi Antar Kota: <strong class="text-teal-300">Kereta Api Group</strong></span>
+                                <span class="text-xs font-bold text-slate-200">Transportasi Antar Kota: <strong class="text-aw-gold">Kereta Api Group</strong></span>
                             </div>
 
-                            <label class="aw-label text-teal-300">
+                            <label class="aw-label text-aw-gold">
                                 Transportasi Lokal di Destinasi:
                             </label>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                                 @foreach($transportOfferings as $vehicle)
-                                    <label class="bg-slate-950/60 border border-white/15 rounded-xl p-3 cursor-pointer flex items-center gap-2 text-xs font-semibold text-white hover:border-teal-400/50 transition-all"
-                                           :class="localTransport === @js($vehicle->name) ? 'border-teal-400 bg-teal-500/20 text-teal-200 ring-2 ring-teal-400/30' : ''">
-                                        <input type="radio" value="{{ $vehicle->name }}" x-model="localTransport" class="text-teal-400 focus:ring-teal-400">
+                                    <label class="bg-slate-950/60 border border-white/15 rounded-xl p-3 cursor-pointer flex items-center gap-2 text-xs font-semibold text-white hover:border-aw-gold/50 transition-all"
+                                           :class="localTransport === @js($vehicle->name) ? 'border-aw-gold bg-aw-gold/20 text-aw-gold ring-2 ring-aw-gold/30' : ''">
+                                        <input type="radio" value="{{ $vehicle->name }}" x-model="localTransport" class="text-aw-gold focus:ring-aw-gold">
                                         <span class="text-slate-100">{{ $vehicle->name }}</span>
                                     </label>
                                 @endforeach
@@ -1048,17 +1072,17 @@
                              x-transition:enter="transition ease-out duration-200"
                              class="bg-black/40 border border-white/15 rounded-2xl p-5 space-y-4 backdrop-blur-md">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-bold text-slate-200">Transportasi Antar Kota / Negara: <strong class="text-teal-300">Pesawat Terbang Charter / Group</strong></span>
+                                <span class="text-xs font-bold text-slate-200">Transportasi Antar Kota / Negara: <strong class="text-aw-gold">Pesawat Terbang Charter / Group</strong></span>
                             </div>
 
-                            <label class="aw-label text-teal-300">
+                            <label class="aw-label text-aw-gold">
                                 Transportasi Lokal di Destinasi:
                             </label>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                                 @foreach($transportOfferings as $vehicle)
-                                    <label class="bg-slate-950/60 border border-white/15 rounded-xl p-3 cursor-pointer flex items-center gap-2 text-xs font-semibold text-white hover:border-teal-400/50 transition-all"
-                                           :class="localTransport === @js($vehicle->name) ? 'border-teal-400 bg-teal-500/20 text-teal-200 ring-2 ring-teal-400/30' : ''">
-                                        <input type="radio" value="{{ $vehicle->name }}" x-model="localTransport" class="text-teal-400 focus:ring-teal-400">
+                                    <label class="bg-slate-950/60 border border-white/15 rounded-xl p-3 cursor-pointer flex items-center gap-2 text-xs font-semibold text-white hover:border-aw-gold/50 transition-all"
+                                           :class="localTransport === @js($vehicle->name) ? 'border-aw-gold bg-aw-gold/20 text-aw-gold ring-2 ring-aw-gold/30' : ''">
+                                        <input type="radio" value="{{ $vehicle->name }}" x-model="localTransport" class="text-aw-gold focus:ring-aw-gold">
                                         <span class="text-slate-100">{{ $vehicle->name }}</span>
                                     </label>
                                 @endforeach
@@ -1069,7 +1093,7 @@
                         <div x-show="transportType === 'custom'" 
                              x-transition:enter="transition ease-out duration-200"
                              class="bg-black/40 border border-white/15 rounded-2xl p-5 space-y-3 backdrop-blur-md">
-                            <label class="aw-label text-teal-300">
+                            <label class="aw-label text-aw-gold">
                                 Jelaskan Kebutuhan Transportasi Anda <span class="text-rose-400">*</span>
                             </label>
                             <textarea x-model="customTransportDetails" 
@@ -1114,14 +1138,14 @@
 
                         <div class="grid grid-cols-2 gap-3 max-w-xs">
                             <label class="aw-radio-card justify-center text-center text-xs font-bold"
-                                   :class="needHotel === 'Ya' ? 'border-teal-400/80 bg-teal-500/15 text-white ring-2 ring-teal-400/30' : ''">
-                                <input type="radio" value="Ya" x-model="needHotel" class="text-teal-400 focus:ring-teal-400 mr-1.5">
+                                   :class="needHotel === 'Ya' ? 'border-aw-gold/80 bg-aw-gold/15 text-white ring-2 ring-aw-gold/30' : ''">
+                                <input type="radio" value="Ya" x-model="needHotel" class="text-aw-gold focus:ring-aw-gold mr-1.5">
                                 <span>Ya, Butuh Hotel</span>
                             </label>
 
                             <label class="aw-radio-card justify-center text-center text-xs font-bold"
-                                   :class="needHotel === 'Tidak' ? 'border-teal-400/80 bg-teal-500/15 text-white ring-2 ring-teal-400/30' : ''">
-                                <input type="radio" value="Tidak" x-model="needHotel" class="text-teal-400 focus:ring-teal-400 mr-1.5">
+                                   :class="needHotel === 'Tidak' ? 'border-aw-gold/80 bg-aw-gold/15 text-white ring-2 ring-aw-gold/30' : ''">
+                                <input type="radio" value="Tidak" x-model="needHotel" class="text-aw-gold focus:ring-aw-gold mr-1.5">
                                 <span>Tidak Perlu</span>
                             </label>
                         </div>
@@ -1129,7 +1153,7 @@
                         {{-- SUB-OPTIONS IF NEED HOTEL = YA --}}
                         <div x-show="needHotel === 'Ya'"
                              x-transition:enter="transition ease-out duration-200"
-                             class="bg-black/35 border border-teal-400/25 rounded-2xl p-5 space-y-4">
+                             class="bg-black/35 border border-aw-gold/30 rounded-2xl p-5 space-y-4">
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 {{-- Jumlah Kamar Stepper --}}
                                 <div>
@@ -1185,14 +1209,14 @@
                     {{-- G. RINGKASAN DINAMIS STEP 3 --}}
                     <div class="bg-slate-950/70 text-white rounded-2xl p-5 border border-white/15 space-y-3 text-xs shadow-xl backdrop-blur-md">
                         <div class="flex items-center justify-between border-b border-white/10 pb-2">
-                            <span class="font-bold text-teal-300 uppercase tracking-wider text-[11px]">Ringkasan Kebutuhan Perjalanan:</span>
+                            <span class="font-bold text-aw-gold uppercase tracking-wider text-[11px]">Ringkasan Kebutuhan Perjalanan:</span>
                             <span class="text-slate-400">Step 3 Preview</span>
                         </div>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-slate-200">
                             <div>
                                 <span class="text-slate-400 block text-[11px]">Destinasi Tujuan:</span>
-                                <strong class="text-teal-300 text-sm" x-text="destinationDisplayName"></strong>
+                                <strong class="text-aw-gold text-sm" x-text="destinationDisplayName"></strong>
                             </div>
 
                             <div>
@@ -1224,11 +1248,11 @@
 
                     <!-- Step 3 Buttons -->
                     <div class="pt-4 flex justify-between items-center">
-                        <button type="button" @click="step = 2" class="bg-white/10 hover:bg-white/15 text-slate-200 border border-white/15 font-semibold px-5 py-3 rounded-xl text-sm transition-all">
+                        <button type="button" @click="step = 2" class="px-5 py-3 rounded-full border border-white/20 text-slate-200 hover:bg-white/10 transition-all font-semibold text-xs">
                             &larr; Kembali
                         </button>
-                        <button type="button" @click="validateStep3()" class="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-bold px-7 py-3 rounded-xl text-sm shadow-lg shadow-orange-950/40 hover:scale-[1.02] transition-all">
-                            Lanjut: Review &amp; Kirim &rarr;
+                        <button type="button" @click="validateStep3()" class="btn-altesa-primary">
+                            <span>Lanjut: Review &amp; Kirim</span> &rarr;
                         </button>
                     </div>
                 </div>
@@ -1259,14 +1283,14 @@
                                      class="h-9 w-auto object-contain"
                                      onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
                                 <div class="hidden w-10 h-7 rounded-full bg-gradient-to-r from-[#00a3e0] to-[#006286] flex items-center justify-center">
-                                    <span class="font-extrabold text-xs text-[#80ee11] italic">AW</span>
+                                     <span class="font-extrabold text-xs text-[#80ee11] italic">AW</span>
                                 </div>
                                 <div>
                                     <h3 class="font-display font-bold text-base text-white tracking-wide">AW TOUR OPERATOR</h3>
-                                    <p class="text-[10px] font-semibold text-teal-400 uppercase tracking-widest">Surabaya · B2B Group Tour</p>
+                                    <p class="text-[10px] font-semibold text-aw-gold uppercase tracking-widest">Surabaya · B2B Group Tour</p>
                                 </div>
                             </div>
-                            <span class="inline-block px-3 py-1.5 bg-teal-500/15 text-teal-300 font-mono font-bold text-[10px] rounded-lg uppercase tracking-wider border border-teal-400/25">
+                            <span class="inline-block px-3 py-1.5 bg-aw-gold/15 text-aw-gold font-mono font-bold text-[10px] rounded-lg uppercase tracking-wider border border-aw-gold/30">
                                 RINCIAN PERMINTAAN QUOTATION
                             </span>
                         </div>
@@ -1283,7 +1307,7 @@
                                     </div>
                                     <div class="flex justify-between items-baseline gap-2">
                                         <span class="text-slate-400 shrink-0">Destinasi Tujuan</span>
-                                        <span class="font-bold text-teal-300 text-right" x-text="destinationDisplayName"></span>
+                                        <span class="font-bold text-aw-gold text-right" x-text="destinationDisplayName"></span>
                                     </div>
                                     <div class="flex justify-between items-baseline gap-2">
                                         <span class="text-slate-400 shrink-0">Tgl. Keberangkatan</span>
@@ -1332,16 +1356,16 @@
                                         <span class="font-bold text-white text-right" x-text="
                                             transportType === 'darat' ? '🚌 Transportasi Darat' :
                                             (transportType === 'kereta' ? '🚂 Kereta Api + Transportasi Lokal' :
-                                            (transportType === 'pesawat' ? '✈️ Pesawat + Transportasi Lokal' : '⚙️ Kombinasi / Custom'))
+                                             (transportType === 'pesawat' ? '✈️ Pesawat + Transportasi Lokal' : '⚙️ Kombinasi / Custom'))
                                         "></span>
                                     </div>
                                     <div x-show="transportType === 'darat'" class="flex justify-between items-baseline gap-2">
                                         <span class="text-slate-400 shrink-0">Jenis Kendaraan</span>
-                                        <span class="font-bold text-teal-300 text-right" x-text="daratVehicle"></span>
+                                        <span class="font-bold text-aw-gold text-right" x-text="daratVehicle"></span>
                                     </div>
                                     <div x-show="transportType === 'kereta' || transportType === 'pesawat'" class="flex justify-between items-baseline gap-2">
                                         <span class="text-slate-400 shrink-0">Transportasi Lokal</span>
-                                        <span class="font-bold text-teal-300 text-right" x-text="localTransport"></span>
+                                        <span class="font-bold text-aw-gold text-right" x-text="localTransport"></span>
                                     </div>
                                     <div x-show="transportType === 'custom'" class="flex justify-between items-start gap-2">
                                         <span class="text-slate-400 shrink-0">Detail Custom</span>
@@ -1420,9 +1444,9 @@
                     </div>
 
                     <!-- ACTION BUTTONS BAR -->
-                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 no-print">
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 no-print">
                         <button type="button" @click="step = 3"
-                                class="w-full sm:w-auto bg-white/10 hover:bg-white/15 text-slate-200 border border-white/15 font-semibold px-5 py-3 rounded-xl text-sm transition-all">
+                                class="w-full sm:w-auto px-5 py-3 rounded-full border border-white/20 text-slate-200 hover:bg-white/10 transition-all font-semibold text-xs">
                             &larr; Kembali
                         </button>
 
@@ -1430,7 +1454,7 @@
                             {{-- Button 1: Cetak Rincian --}}
                             <button type="button"
                                     @click="window.print()"
-                                    class="py-3 px-4 rounded-xl border border-white/15 text-slate-300 text-xs font-bold hover:bg-white/10 transition-all flex items-center gap-2">
+                                    class="py-3 px-5 rounded-full border border-white/20 text-slate-200 text-xs font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
                                 <span>🖨 Cetak Rincian</span>
                             </button>
 
@@ -1439,7 +1463,7 @@
                                     @click="
                                         const card = document.getElementById('quotation-document-card');
                                         if (typeof html2canvas !== 'undefined' && card) {
-                                            html2canvas(card, { scale: 2, backgroundColor: '#050a1e' }).then(canvas => {
+                                            html2canvas(card, { scale: 2, backgroundColor: '#18181B' }).then(canvas => {
                                                 const link = document.createElement('a');
                                                 link.download = 'AWT-Quotation-Request.png';
                                                 link.href = canvas.toDataURL('image/png');
@@ -1450,13 +1474,13 @@
                                             window.print();
                                         }
                                     "
-                                    class="py-3 px-4 rounded-xl border border-white/15 text-slate-300 text-xs font-bold hover:bg-white/10 transition-all flex items-center gap-2">
+                                    class="py-3 px-5 rounded-full border border-white/20 text-slate-200 text-xs font-semibold hover:bg-white/10 transition-all flex items-center gap-2">
                                 <span>⬇ Simpan / Download</span>
                             </button>
 
                             {{-- Button 3: Submit --}}
                             <button type="submit"
-                                    class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold px-7 py-3.5 rounded-2xl text-sm shadow-xl shadow-emerald-950/40 hover:scale-105 transition-all flex items-center justify-center gap-2">
+                                    class="w-full sm:w-auto btn-altesa-primary !py-3.5 !px-8 text-sm flex items-center justify-center gap-2">
                                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
                                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.157 4.228 4.223-1.111z"/>
                                 </svg>

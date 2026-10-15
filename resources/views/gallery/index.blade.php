@@ -6,15 +6,13 @@
 @section('content')
 
 {{-- ========================================================================= --}}
-{{-- 1. CINEMATIC HERO HEADER SECTION --}}
+{{-- 1. CINEMATIC HERO HEADER SECTION (Altesa Dark Warm Luxury) --}}
 {{-- ========================================================================= --}}
-<section class="relative isolate overflow-hidden bg-aw-navy text-white pt-16 pb-20 sm:pb-28 lg:pt-24 lg:pb-32">
+<section class="relative isolate overflow-hidden bg-[#18181B] text-white pt-28 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28 border-b border-white/10">
     {{-- Glow Accents & Decorative Backdrops --}}
     <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-        <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-teal-500/15 blur-3xl"></div>
-        <div class="absolute top-1/2 -right-40 w-96 h-96 rounded-full bg-aw-gold/15 blur-3xl"></div>
-        <div class="absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent"></div>
+        <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-aw-gold/15 blur-3xl"></div>
+        <div class="absolute top-1/2 -right-40 w-96 h-96 rounded-full bg-aw-gold/10 blur-3xl"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,20 +20,20 @@
         <nav class="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-6">
             <a href="{{ route('home') }}" class="hover:text-aw-gold transition-colors">Beranda</a>
             <span>/</span>
-            <span class="text-teal-300">Dokumentasi &amp; Galeri Rombongan</span>
+            <span class="text-aw-gold">Dokumentasi &amp; Galeri Rombongan</span>
         </nav>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-8 space-y-5">
                 {{-- Super Badge --}}
-                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-teal-500/15 border border-teal-400/30 text-teal-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                <div class="badge-altesa-dark">
+                    <span class="w-2 h-2 rounded-full bg-aw-gold animate-pulse"></span>
                     <span>Portofolio &amp; Dokumentasi Perjalanan Nyata</span>
                 </div>
 
                 <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
                     Setiap Rombongan Memiliki <br class="hidden sm:inline">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-aw-gold to-amber-200">
+                    <span class="text-aw-gold italic">
                         Kenangan &amp; Cerita Terbaik
                     </span>
                 </h1>
@@ -46,15 +44,15 @@
 
                 {{-- Fast Proof Stats Pills --}}
                 <div class="pt-2 flex flex-wrap items-center gap-4 text-xs font-bold text-slate-200">
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md">
+                    <div class="flex items-center gap-2 bg-white/10 border border-white/15 px-4 py-2 rounded-full backdrop-blur-md">
                         <span class="text-aw-gold font-display text-base">50+</span>
                         <span class="text-slate-300">Rombongan Sukses</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md">
-                        <span class="text-teal-300 font-display text-base">{{ number_format($totalPax, 0, ',', '.') }}+</span>
+                    <div class="flex items-center gap-2 bg-white/10 border border-white/15 px-4 py-2 rounded-full backdrop-blur-md">
+                        <span class="text-aw-gold font-display text-base">{{ number_format($totalPax, 0, ',', '.') }}+</span>
                         <span class="text-slate-300">Peserta Terlayani</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md">
+                    <div class="flex items-center gap-2 bg-white/10 border border-white/15 px-4 py-2 rounded-full backdrop-blur-md">
                         <span class="text-emerald-400 font-display text-base">100%</span>
                         <span class="text-slate-300">Dokumentasi Nyata</span>
                     </div>
@@ -63,17 +61,17 @@
 
             {{-- Quick Hero Card / Quotation Teaser --}}
             <div class="lg:col-span-4">
-                <div class="rounded-3xl bg-slate-900/70 border border-white/15 p-6 backdrop-blur-xl shadow-2xl space-y-4 text-center lg:text-left">
+                <div class="rounded-3xl bg-white/10 border border-white/20 p-6 backdrop-blur-xl shadow-2xl space-y-4 text-center lg:text-left">
                     <div class="w-12 h-12 rounded-2xl bg-aw-gold/20 text-aw-gold flex items-center justify-center text-2xl mx-auto lg:mx-0 shadow-inner">
                         🚌
                     </div>
                     <div>
-                        <h2 class="text-white font-bold text-base">Rencanakan Rombongan Anda</h2>
-                        <p class="text-xs text-slate-300 mt-1">Dapatkan estimasi biaya transparan dan armada terbaik sesuai kebutuhan grup Anda.</p>
+                        <h2 class="text-white font-display font-bold text-base">Rencanakan Rombongan Anda</h2>
+                        <p class="text-xs text-slate-300 mt-1 leading-relaxed">Dapatkan estimasi biaya transparan dan armada terbaik sesuai kebutuhan grup Anda.</p>
                     </div>
                     <a href="{{ route('quotation.create') }}" 
-                       class="block w-full py-3 px-4 rounded-xl bg-gradient-to-r from-aw-gold to-amber-500 text-slate-950 font-bold text-xs uppercase tracking-wider text-center hover:brightness-110 shadow-lg shadow-aw-gold/20 transition-all">
-                        Hitung Biaya Rombongan (Quotation) →
+                       class="block w-full py-3 px-4 rounded-full bg-aw-gold hover:bg-aw-gold-600 text-aw-navy font-bold text-xs uppercase tracking-wider text-center shadow-lg shadow-aw-gold/20 transition-all">
+                        Hitung Biaya Rombongan →
                     </a>
                 </div>
             </div>
@@ -84,7 +82,7 @@
 {{-- ========================================================================= --}}
 {{-- 2. GALLERY INTERACTIVE SHOWCASE SECTION (ALPINE CONTROLLER) --}}
 {{-- ========================================================================= --}}
-<section class="py-12 sm:py-16 bg-[#0a1128] text-slate-100 min-h-screen relative" 
+<section class="py-16 bg-[#FCFAF7] text-slate-900 min-h-screen relative" 
          x-data="galleryViewer()"
          @keydown.escape.window="closeModal()"
          @keydown.arrow-right.window="if(modalOpen) nextMedia()"
@@ -93,27 +91,27 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
         {{-- FILTER BAR DESTINASI --}}
-        <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-white/10 pb-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-[#F5F0E8] pb-6">
             <div>
-                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <h3 class="text-xl font-display font-bold text-aw-navy flex items-center gap-2">
                     <span>Arsip Album Rombongan</span>
-                    <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">
+                    <span class="badge-altesa-peach text-[10px]">
                         {{ $documentations->total() }} Album
                     </span>
                 </h3>
-                <p class="text-xs text-slate-400">Pilih kotak album di bawah untuk melihat seluruh foto dan video dari rombongan tersebut.</p>
+                <p class="text-xs text-slate-500 mt-1">Pilih kotak album di bawah untuk melihat seluruh foto dan video dari rombongan tersebut.</p>
             </div>
 
             {{-- Filter Pills --}}
             <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
                 <a href="{{ route('gallery.index') }}" 
-                   class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all {{ !request('destination') ? 'bg-aw-gold text-slate-950 font-bold shadow-md' : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-white/10' }}">
+                   class="px-4 py-2 rounded-full text-xs font-bold transition-all {{ !request('destination') ? 'bg-[#18181B] text-aw-gold shadow-md' : 'bg-white text-slate-700 border border-gray-200 hover:border-aw-gold' }}">
                     Semua Destinasi
                 </a>
 
                 @foreach($destinations as $dest)
                     <a href="{{ route('gallery.index', ['destination' => $dest->slug]) }}" 
-                       class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all {{ request('destination') === $dest->slug ? 'bg-aw-gold text-slate-950 font-bold shadow-md' : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-white border border-white/10' }}">
+                       class="px-4 py-2 rounded-full text-xs font-bold transition-all {{ request('destination') === $dest->slug ? 'bg-[#18181B] text-aw-gold shadow-md' : 'bg-white text-slate-700 border border-gray-200 hover:border-aw-gold' }}">
                         {{ $dest->name }}
                         @if($dest->documentations_count > 0)
                             <span class="opacity-70 text-[10px]">({{ $dest->documentations_count }})</span>
@@ -127,14 +125,14 @@
         {{-- 3. GRID KOTAK ALBUM DOKUMENTASI (MULTI-PHOTO & VIDEO CARDS) --}}
         {{-- ========================================================================= --}}
         @if($documentations->isEmpty())
-            <div class="rounded-3xl bg-slate-900/50 border border-white/10 p-16 text-center space-y-4 max-w-lg mx-auto">
-                <div class="w-16 h-16 rounded-2xl bg-slate-800 text-teal-300 flex items-center justify-center text-3xl mx-auto shadow-inner">
+            <div class="card-altesa p-16 text-center space-y-4 max-w-lg mx-auto">
+                <div class="w-16 h-16 rounded-2xl bg-aw-gold/20 text-aw-navy flex items-center justify-center text-3xl mx-auto shadow-inner">
                     📷
                 </div>
-                <h4 class="text-white font-bold text-lg">Belum Ada Dokumentasi untuk Kategori Ini</h4>
-                <p class="text-xs text-slate-400">Pilih filter destinasi lain atau kembali ke seluruh koleksi galeri.</p>
+                <h4 class="font-display font-bold text-xl text-aw-navy">Belum Ada Dokumentasi untuk Kategori Ini</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Pilih filter destinasi lain atau kembali ke seluruh koleksi galeri.</p>
                 <div class="pt-2">
-                    <a href="{{ route('gallery.index') }}" class="inline-flex items-center gap-2 px-5 py-2.5 bg-aw-gold text-slate-950 text-xs font-bold rounded-xl hover:bg-aw-gold/90 transition-all">
+                    <a href="{{ route('gallery.index') }}" class="btn-altesa-primary !text-xs !py-2.5 !px-5">
                         Tampilkan Semua Dokumentasi
                     </a>
                 </div>
@@ -188,14 +186,11 @@
                     @endphp
 
                     {{-- KOTAK ALBUM ROMBONGAN --}}
-                    <article class="relative flex flex-col justify-between rounded-3xl bg-slate-900/60 backdrop-blur-xl border border-white/10 hover:border-teal-400/50 hover:shadow-[0_15px_45px_rgba(20,184,166,0.15)] transition-all duration-300 group overflow-hidden">
+                    <article class="card-altesa overflow-hidden flex flex-col justify-between group">
                         
-                        {{-- STACKED EFFECT VISUAL ACCENT (Menandakan banyak foto di dalam kotak) --}}
-                        <div class="absolute -top-1.5 inset-x-4 h-2 bg-slate-800/40 rounded-t-2xl -z-10 group-hover:-top-2.5 transition-all duration-300"></div>
-
                         <div>
                             {{-- 1. MAIN COVER PREVIEW --}}
-                            <div class="relative aspect-[16/10] bg-slate-950 overflow-hidden cursor-pointer"
+                            <div class="relative aspect-[16/10] bg-slate-900 overflow-hidden cursor-pointer"
                                  @click="openModal({{ json_encode($albumPayload) }}, 0)">
                                 
                                 <img src="{{ $doc->image_url }}" 
@@ -204,13 +199,13 @@
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out">
                                 
                                 {{-- Dark Overlay Gradient --}}
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-black/30 pointer-events-none"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#18181B]/85 via-transparent to-black/20 pointer-events-none"></div>
 
                                 {{-- TOP BADGES --}}
                                 <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 pointer-events-none">
                                     {{-- Left Badge --}}
                                     @if($doc->badge_text)
-                                        <span class="px-2.5 py-1 rounded-full bg-slate-950/85 text-amber-300 font-bold text-[10px] tracking-wide border border-amber-400/40 backdrop-blur-md shadow flex items-center gap-1">
+                                        <span class="px-2.5 py-1 rounded-full bg-black/75 text-aw-gold font-bold text-[10px] tracking-wide border border-aw-gold/30 backdrop-blur-md shadow flex items-center gap-1">
                                             <span>⭐</span>
                                             <span class="truncate max-w-[150px]">{{ $doc->badge_text }}</span>
                                         </span>
@@ -219,17 +214,17 @@
                                     @endif
 
                                     {{-- Right Badge: JUMLAH MEMORI DALAM KOTAK --}}
-                                    <span class="px-2.5 py-1 rounded-full bg-slate-950/90 text-teal-300 font-extrabold text-[11px] border border-teal-400/50 backdrop-blur-md shadow-lg flex items-center gap-1.5">
+                                    <span class="px-2.5 py-1 rounded-full bg-black/80 text-white font-bold text-[10px] border border-white/20 backdrop-blur-md shadow-lg flex items-center gap-1">
                                         <span>📸 {{ $photoCount }} Foto</span>
                                         @if($videoCount > 0)
-                                            <span class="text-amber-300">· 🎥 {{ $videoCount }} Video</span>
+                                            <span class="text-aw-gold">· 🎥 {{ $videoCount }} Video</span>
                                         @endif
                                     </span>
                                 </div>
 
                                 {{-- HOVER OVERLAY PROMPT --}}
-                                <div class="absolute inset-0 bg-teal-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                                    <div class="px-4 py-2 rounded-xl bg-slate-950/90 border border-teal-400/60 text-teal-300 text-xs font-bold tracking-wide shadow-2xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                                    <div class="px-4 py-2 rounded-full bg-[#18181B]/90 border border-aw-gold/50 text-aw-gold text-xs font-bold tracking-wide shadow-2xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform">
                                         <span>🔍 Klik untuk Buka {{ $totalMediaCount }} Memori</span>
                                     </div>
                                 </div>
@@ -237,15 +232,15 @@
                                 {{-- BOTTOM DESTINATION CHIP --}}
                                 @if($doc->destination)
                                     <div class="absolute bottom-3 left-3 pointer-events-none">
-                                        <span class="px-2.5 py-1 rounded-lg bg-black/75 text-white font-semibold text-[10px] border border-white/15 backdrop-blur-md">
+                                        <span class="px-2.5 py-1 rounded-full bg-black/75 text-white font-semibold text-[10px] border border-white/15 backdrop-blur-md">
                                             📍 {{ $doc->destination->name }}
                                         </span>
                                     </div>
                                 @endif
                             </div>
 
-                            {{-- 2. MINI THUMBNAIL STRIP PREVIEW (Teaser foto-foto lain di dalam kotak) --}}
-                            <div class="p-3 bg-slate-950/80 border-b border-white/10 flex items-center gap-2">
+                            {{-- 2. MINI THUMBNAIL STRIP PREVIEW --}}
+                            <div class="p-3 bg-[#FCFAF7] border-b border-[#F5F0E8] flex items-center gap-2">
                                 <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 shrink-0">
                                     Preview:
                                 </span>
@@ -254,19 +249,19 @@
                                     @foreach($mediaItems->take(4) as $idx => $previewItem)
                                         <button type="button" 
                                                 @click.stop="openModal({{ json_encode($albumPayload) }}, {{ $idx }})"
-                                                class="relative w-12 h-9 rounded-lg overflow-hidden border border-white/15 hover:border-teal-400 transition-all shrink-0 group/thumb"
+                                                class="relative w-12 h-9 rounded-lg overflow-hidden border border-gray-200 hover:border-aw-gold transition-all shrink-0"
                                                 title="{{ $previewItem['caption'] ?: 'Foto ' . ($idx+1) }}">
                                             @if($previewItem['type'] === 'image')
                                                 <img src="{{ $previewItem['url'] }}" alt="thumb" class="w-full h-full object-cover">
                                             @else
-                                                <div class="w-full h-full bg-slate-800 flex items-center justify-center text-[10px] text-amber-300">
+                                                <div class="w-full h-full bg-[#18181B] flex items-center justify-center text-[10px] text-aw-gold">
                                                     ▶
                                                 </div>
                                             @endif
 
                                             {{-- Last Thumbnail Counter Overlay if more than 4 items --}}
                                             @if($idx === 3 && $totalMediaCount > 4)
-                                                <div class="absolute inset-0 bg-black/75 flex items-center justify-center text-teal-300 font-extrabold text-[10px]">
+                                                <div class="absolute inset-0 bg-black/75 flex items-center justify-center text-aw-gold font-extrabold text-[10px]">
                                                     +{{ $totalMediaCount - 3 }}
                                                 </div>
                                             @endif
@@ -277,19 +272,19 @@
 
                             {{-- 3. CARD BODY (INFO ROMBONGAN) --}}
                             <div class="p-5 space-y-3">
-                                <h3 class="font-display font-bold text-white text-base leading-snug group-hover:text-teal-300 transition-colors line-clamp-2"
+                                <h3 class="font-display font-bold text-aw-navy text-lg leading-snug group-hover:text-aw-gold transition-colors line-clamp-2"
                                     title="{{ $doc->title }}">
                                     {{ $doc->title }}
                                 </h3>
 
                                 @if($doc->description)
-                                    <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                                    <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
                                         {{ $doc->description }}
                                     </p>
                                 @endif
 
                                 {{-- Meta Badges: Tanggal & Pax --}}
-                                <div class="pt-2 flex items-center gap-3 text-xs text-slate-400 border-t border-white/10">
+                                <div class="pt-3 flex items-center gap-4 text-xs text-slate-500 border-t border-[#F5F0E8]">
                                     @if($doc->trip_date)
                                         <span class="flex items-center gap-1">
                                             <span>📅</span>
@@ -297,9 +292,9 @@
                                         </span>
                                     @endif
                                     @if($doc->participant_count)
-                                        <span class="flex items-center gap-1">
+                                        <span class="flex items-center gap-1 font-semibold text-aw-gold-700">
                                             <span>👥</span>
-                                            <span class="font-semibold text-teal-300">{{ $doc->participant_count }} Pax</span>
+                                            <span>{{ $doc->participant_count }} Pax</span>
                                         </span>
                                     @endif
                                 </div>
@@ -307,10 +302,10 @@
                         </div>
 
                         {{-- 4. CARD FOOTER CALL-TO-ACTION --}}
-                        <div class="p-4 bg-slate-900/90 border-t border-white/10 flex items-center justify-between gap-3">
+                        <div class="p-5 pt-0">
                             <button type="button" 
                                     @click="openModal({{ json_encode($albumPayload) }}, 0)"
-                                    class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-teal-500/20 to-teal-400/10 hover:from-teal-500 hover:to-teal-400 hover:text-slate-950 border border-teal-500/30 text-teal-300 font-bold text-xs text-center transition-all duration-300 flex items-center justify-center gap-2 shadow-sm">
+                                    class="w-full btn-altesa-dark !py-2.5 !text-xs">
                                 <span>Lihat Semua {{ $totalMediaCount }} Foto &amp; Video</span>
                                 <span>→</span>
                             </button>
@@ -345,32 +340,32 @@
         <div class="absolute inset-0" @click="closeModal()"></div>
 
         {{-- MODAL CONTAINER --}}
-        <div class="relative z-10 w-full max-w-5xl bg-slate-950/95 border border-white/20 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
+        <div class="relative z-10 w-full max-w-5xl bg-[#18181B] border border-white/20 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
              @click.stop>
             
             {{-- MODAL TOP HEADER --}}
-            <div class="flex items-center justify-between p-4 sm:p-5 border-b border-white/10 bg-slate-900/90 gap-4">
+            <div class="flex items-center justify-between p-4 sm:p-5 border-b border-white/10 bg-[#18181B] gap-4">
                 <div class="min-w-0">
                     <div class="flex items-center gap-2 flex-wrap">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-teal-500/20 text-teal-300 border border-teal-500/40"
+                        <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-aw-gold/20 text-aw-gold border border-aw-gold/40"
                               x-text="currentDoc ? currentDoc.badge_text || 'Dokumentasi Rombongan' : ''"></span>
                         
                         <template x-if="currentDoc && currentDoc.destination">
-                            <span class="text-xs text-slate-400" x-text="'📍 ' + currentDoc.destination"></span>
+                            <span class="text-xs text-slate-300" x-text="'📍 ' + currentDoc.destination"></span>
                         </template>
 
                         <template x-if="currentDoc && currentDoc.trip_date">
-                            <span class="text-xs text-slate-400" x-text="'· 📅 ' + currentDoc.trip_date"></span>
+                            <span class="text-xs text-slate-300" x-text="'· 📅 ' + currentDoc.trip_date"></span>
                         </template>
                     </div>
 
-                    <h3 class="text-sm sm:text-base font-bold text-white truncate mt-1" 
+                    <h3 class="font-display text-sm sm:text-base font-bold text-white truncate mt-1" 
                         x-text="currentDoc ? currentDoc.title : ''"></h3>
                 </div>
 
                 {{-- Counter & Close Button --}}
                 <div class="flex items-center gap-3 shrink-0">
-                    <span class="px-3 py-1 rounded-full bg-slate-800 text-teal-300 text-xs font-mono font-bold border border-white/10">
+                    <span class="px-3 py-1 rounded-full bg-white/10 text-aw-gold text-xs font-mono font-bold border border-white/10">
                         <span x-text="(currentIndex + 1)"></span> / <span x-text="mediaList.length"></span>
                     </span>
 
@@ -390,7 +385,7 @@
                 <button type="button" 
                         @click="prevMedia()" 
                         x-show="mediaList.length > 1"
-                        class="absolute left-3 sm:left-5 z-20 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-teal-500 hover:text-slate-950 text-white border border-white/20 flex items-center justify-center backdrop-blur-md transition-all shadow-xl text-lg font-bold"
+                        class="absolute left-3 sm:left-5 z-20 w-11 h-11 rounded-full bg-[#18181B]/80 hover:bg-aw-gold hover:text-aw-navy text-white border border-white/20 flex items-center justify-center backdrop-blur-md transition-all shadow-xl text-lg font-bold"
                         title="Sebelumnya (Panah Kiri)">
                     ‹
                 </button>
@@ -399,7 +394,7 @@
                 <button type="button" 
                         @click="nextMedia()" 
                         x-show="mediaList.length > 1"
-                        class="absolute right-3 sm:right-5 z-20 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-teal-500 hover:text-slate-950 text-white border border-white/20 flex items-center justify-center backdrop-blur-md transition-all shadow-xl text-lg font-bold"
+                        class="absolute right-3 sm:right-5 z-20 w-11 h-11 rounded-full bg-[#18181B]/80 hover:bg-aw-gold hover:text-aw-navy text-white border border-white/20 flex items-center justify-center backdrop-blur-md transition-all shadow-xl text-lg font-bold"
                         title="Berikutnya (Panah Kanan)">
                     ›
                 </button>
@@ -413,7 +408,7 @@
                         
                         {{-- Caption Overlay --}}
                         <template x-if="currentMedia.caption">
-                            <p class="mt-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-white/10 text-xs text-slate-200 text-center max-w-xl backdrop-blur-sm shadow"
+                            <p class="mt-2.5 px-4 py-1.5 rounded-full bg-[#18181B]/80 border border-white/10 text-xs text-slate-200 text-center max-w-xl backdrop-blur-sm shadow"
                                x-text="currentMedia.caption"></p>
                         </template>
                     </div>
@@ -422,7 +417,7 @@
                 <template x-if="currentMedia && currentMedia.type === 'video'">
                     <div class="w-full h-full flex flex-col items-center justify-center p-2 sm:p-6 max-w-4xl">
                         <template x-if="currentMedia.is_youtube">
-                            <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-slate-950">
+                            <div class="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-black">
                                 <iframe :src="currentMedia.youtube_embed" 
                                         class="w-full h-full" 
                                         frameborder="0" 
@@ -440,7 +435,7 @@
 
                         {{-- Caption Overlay --}}
                         <template x-if="currentMedia.caption">
-                            <p class="mt-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-white/10 text-xs text-amber-300 text-center max-w-xl backdrop-blur-sm shadow"
+                            <p class="mt-2.5 px-4 py-1.5 rounded-full bg-[#18181B]/80 border border-white/10 text-xs text-aw-gold text-center max-w-xl backdrop-blur-sm shadow"
                                x-text="'🎥 ' + currentMedia.caption"></p>
                         </template>
                     </div>
@@ -449,8 +444,8 @@
             </div>
 
             {{-- BOTTOM THUMBNAILS CAROUSEL FILMSTRIP --}}
-            <div class="p-3 bg-slate-950 border-t border-white/10">
-                <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700">
+            <div class="p-3 bg-black border-t border-white/10">
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
                     <template x-for="(item, idx) in mediaList" :key="idx">
                         <button type="button" 
                                 @click="selectMedia(idx)"
@@ -462,7 +457,7 @@
                             </template>
 
                             <template x-if="item.type === 'video'">
-                                <div class="w-full h-full bg-slate-900 flex items-center justify-center text-amber-300 text-xs">
+                                <div class="w-full h-full bg-slate-900 flex items-center justify-center text-aw-gold text-xs">
                                     ▶
                                 </div>
                             </template>
@@ -475,7 +470,7 @@
             </div>
 
             {{-- BOTTOM DRAWER: ALBUM STORY & WHATSAPP ACTION --}}
-            <div class="p-4 sm:p-5 bg-slate-900/90 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="p-4 sm:p-5 bg-[#18181B] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="text-xs text-slate-300 max-w-2xl text-center sm:text-left">
                     <template x-if="currentDoc && currentDoc.description">
                         <p x-text="currentDoc.description" class="line-clamp-2"></p>
@@ -486,10 +481,10 @@
                 </div>
 
                 {{-- WhatsApp Booking Inquiry Button --}}
-                <a :href="'https://wa.me/6281234567890?text=' + encodeURIComponent('Halo Admin AW Tour, saya melihat dokumentasi rombongan: ' + (currentDoc ? currentDoc.title : '') + '. Saya tertarik untuk merencanakan trip serupa untuk rombongan kami.')" 
+                <a :href="'https://wa.me/{{ \App\Models\SiteSetting::current()->whatsapp_number }}?text=' + encodeURIComponent('Halo Admin AW Tour, saya melihat dokumentasi rombongan: ' + (currentDoc ? currentDoc.title : '') + '. Saya tertarik untuk merencanakan trip serupa untuk rombongan kami.')" 
                    target="_blank" 
                    rel="noopener"
-                   class="shrink-0 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition-all">
+                   class="shrink-0 btn-altesa-primary !text-xs !py-2.5 !px-5">
                     <span>💬 Tanya Paket Seperti Ini via WA</span>
                 </a>
             </div>

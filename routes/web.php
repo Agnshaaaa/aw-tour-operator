@@ -45,6 +45,7 @@ Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index
 // Custom Group Quotation Builder (Form Multi-step Rombongan)
 Route::get('/quotation/builder', [CustomRequestController::class, 'create'])->name('quotation.create');
 Route::post('/quotation/builder', [CustomRequestController::class, 'store'])->name('quotation.store');
+Route::get('/quotation/track', [CustomRequestController::class, 'track'])->name('quotation.track');
 Route::get('/quotation/success/{ticket_number}', [CustomRequestController::class, 'success'])->name('quotation.success');
 
 // Jadwal Open Trip (Lead Generator)

@@ -189,4 +189,24 @@ class CustomRequestController extends Controller
 
         return view('quotation.success', compact('customRequest'));
     }
+
+    /**
+     * Cari status permintaan quotation berdasarkan nomor tiket dari modal navigasi.
+     */
+    public function track(Request $request)
+    {
+        $ticketNumber = trim((string) $request->query('ticket_number'));
+
+        if (!$ticketNumber) {
+            return redirect()->back()->with('error', 'Silakan masukkan nomor tiket permintaan tour Anda.');
+        }
+
+        $exists = CustomRequest::where('ticket_number', $ticketNumber)->exists();
+
+        if (!$exists) {
+            return redirect()->back()->with('error', 'Nomor tiket "' . $ticketNumber . '" tidak ditemukan. Mohon periksa kembali nomor tiket Anda (contoh: AW-202610-0001).');
+        }
+
+        return redirect()->route('quotation.success', ['ticket_number' => $ticketNumber]);
+    }
 }

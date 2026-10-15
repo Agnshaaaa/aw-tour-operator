@@ -12,48 +12,50 @@ export default {
     theme: {
         extend: {
             colors: {
-                // ── Website Color Palette (Earthy & Nature Tones) ──────────────
-                // Digunakan untuk semua halaman website
+                // ── Altesa Design System Color Palette ──────────────────────
+                // Warm luxury visual identity — peach, amber, cream, charcoal
 
                 'aw-cream': {
-                    DEFAULT: '#EEE8E2',   // Latar belakang terang / section putih
-                    50:  '#FDFCFB',
-                    100: '#F7F4F1',
-                    200: '#EEE8E2',
-                    300: '#DDD5CB',
+                    DEFAULT: '#FCFAF7',   // Background Base: Soft Cream / Warm Off-White
+                    50:  '#FFFFFF',
+                    100: '#FEFDFB',
+                    200: '#FCFAF7',
+                    300: '#F5F0E8',
+                    400: '#EDE5D8',
                 },
                 'aw-gold': {
-                    DEFAULT: '#D39252',   // Aksen hangat / CTA button / highlight
-                    300: '#E8B98A',
-                    400: '#DDA56A',
-                    500: '#D39252',
-                    600: '#B87A3A',
-                    700: '#9A6228',
+                    DEFAULT: '#F5B990',   // Primary Accent / CTA Fill: Warm Pastel Peach
+                    300: '#FBDCC4',
+                    400: '#F8C8A4',
+                    500: '#F5B990',
+                    600: '#E89C62',       // Accent Highlight & Ratings: Warm Amber Gold
+                    700: '#D4863E',
                 },
                 'aw-navy': {
-                    DEFAULT: '#010818',   // Teks utama / background gelap (hero, footer)
-                    800: '#010D28',
-                    900: '#010818',
+                    DEFAULT: '#1C1C1C',   // Primary Text: Dark Charcoal
+                    700: '#2D2D2D',
+                    800: '#1C1C1C',
+                    900: '#111111',
                 },
                 'aw-forest': {
-                    DEFAULT: '#203027',   // Elemen gelap sekunder / card background
-                    700: '#2A3D33',
-                    800: '#203027',
-                    900: '#162019',
+                    DEFAULT: '#18181B',   // Dark Footer & Overlays: Deep Blackish Charcoal
+                    700: '#27272A',
+                    800: '#18181B',
+                    900: '#09090B',
                 },
                 'aw-sage': {
-                    DEFAULT: '#5A8F78',   // Aksen hijau medium / ikon / border
-                    400: '#7AB099',
-                    500: '#5A8F78',
-                    600: '#487361',
-                    700: '#37584B',
+                    DEFAULT: '#6B7280',   // Secondary Text: Muted Warm Gray
+                    400: '#9CA3AF',
+                    500: '#6B7280',
+                    600: '#4B5563',
+                    700: '#374151',
                 },
                 'aw-mint': {
-                    DEFAULT: '#9CC5A1',   // Aksen hijau muda / badge / tag
-                    200: '#C5DFC9',
-                    300: '#B4D5B9',
-                    400: '#9CC5A1',
-                    500: '#80AF87',
+                    DEFAULT: '#F5B990',   // Mapped to peach tints for badge/tag usage
+                    200: '#FDE8D8',
+                    300: '#FBDCC4',
+                    400: '#F5B990',
+                    500: '#E89C62',
                 },
 
                 // ── Logo Colors (hanya untuk elemen logo AW) ────────────────
@@ -67,8 +69,10 @@ export default {
                 // Font aksen (judul, headline)
                 display: ['Playfair Display', ...defaultTheme.fontFamily.serif],
             },
+            borderRadius: {
+                '4xl': '2rem',
+            },
         },
     },
     plugins: [],
 };
-
