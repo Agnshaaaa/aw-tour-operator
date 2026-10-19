@@ -1,2 +1,16 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /admin
+Disallow: /quotation/success/
+Disallow: /quotation/track
+
+# Allow public pages and assets
+Allow: /
+Allow: /destinations
+Allow: /open-trips
+Allow: /transportasi
+Allow: /calendar
+Allow: /gallery
+Allow: /quotation/builder
+Allow: /build/
+Allow: /images/

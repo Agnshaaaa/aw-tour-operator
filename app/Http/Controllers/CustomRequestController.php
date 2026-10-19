@@ -8,6 +8,7 @@ use App\Models\Destination;
 use App\Models\TransportOffering;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Controller: CustomRequestController
@@ -174,7 +175,13 @@ class CustomRequestController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->withInput()->with('error', 'Gagal mengirim permintaan: ' . $e->getMessage());
+            Log::error('Gagal memproses pengiriman custom quotation: ' . $e->getMessage(), ['exception' => $e]);
+
+            $message = config('app.debug')
+                ? 'Gagal mengirim permintaan: ' . $e->getMessage()
+                : 'Terjadi kendala saat memproses permintaan quotation Anda. Silakan coba kembali atau hubungi admin via WhatsApp.';
+
+            return back()->withInput()->with('error', $message);
         }
     }
 

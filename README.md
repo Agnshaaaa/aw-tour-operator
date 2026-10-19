@@ -198,6 +198,47 @@ php artisan test
 
 ---
 
+## 🚀 Checklist Kesiapan Masuk Production
+
+Sebelum meluncurkan situs ke server produksi (VPS / Cloud Hosting), pastikan seluruh poin berikut telah diselesaikan:
+
+1. **Konfigurasi Environment (`.env`):**
+   - `APP_ENV=production`
+   - `APP_DEBUG=false` *(Sangat krusial agar error stack trace tidak terekspos)*
+   - `APP_KEY` telah di-generate (`php artisan key:generate`)
+   - `APP_URL=https://domain-anda.com`
+   - `ADMIN_PATH=path-rahasia-admin` *(Ganti dari default 'admin')*
+   - `SESSION_SECURE_COOKIE=true` *(Wajib saat menggunakan HTTPS)*
+2. **Kredensial Admin Bawaan:**
+   - Ubah password default admin (`admin123`) dari seeder menjadi password kuat.
+3. **Koneksi Database:**
+   - Gunakan database produksi (MySQL / MariaDB / PostgreSQL), jalankan migrasi:
+     ```bash
+     php artisan migrate --force
+     ```
+4. **Compile Asset Frontend:**
+   - Lakukan build asset Vite untuk produksi:
+     ```bash
+     npm ci
+     npm run build
+     ```
+5. **Storage Symlink:**
+   - Buat symlink publik untuk berkas media/gambar destinasi:
+     ```bash
+     php artisan storage:link
+     ```
+6. **Optimasi & Cache Laravel:**
+   - Aktifkan cache konfigurasi, rute, dan blade view:
+     ```bash
+     php artisan config:cache
+     php artisan route:cache
+     php artisan view:cache
+     ```
+7. **Pengaturan Mailer / Notifikasi:**
+   - Konfigurasi `MAIL_MAILER` (SMTP / Resend / SES / Mailgun) untuk menerima notifikasi penawaran rombongan.
+
+---
+
 ## 📄 Lisensi
 
 Proyek ini dirilis di bawah naungan lisensi [MIT License](LICENSE).
