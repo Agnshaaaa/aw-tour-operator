@@ -301,9 +301,8 @@
             </div>
 
             <!-- COPYRIGHT -->
-            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <div class="pt-8 flex items-center justify-center text-center text-xs text-slate-500">
                 <p>&copy; {{ date('Y') }} {{ $siteSettings->footer_text ?? 'AW Tour Operator Surabaya. All rights reserved.' }}</p>
-                <p class="text-[11px]">Dikembangkan untuk Tugas Akhir D4 Manajemen Informatika</p>
             </div>
         </div>
     </footer>
