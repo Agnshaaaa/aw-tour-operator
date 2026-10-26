@@ -5,14 +5,19 @@
 
 @section('content')
 {{-- HERO BANNER --}}
-<section class="bg-aw-navy text-white pt-12 pb-16 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D39252_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<section class="relative z-10 block bg-slate-950 text-white pt-28 pb-12 md:pt-32 md:pb-16 border-b border-white/10 overflow-hidden">
+    <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-emerald-500/15 blur-3xl"></div>
+        <div class="absolute top-1/2 -right-40 w-96 h-96 rounded-full bg-sky-500/15 blur-3xl"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-sky-950/20 to-slate-950"></div>
+    </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-3xl mx-auto space-y-4">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-aw-gold/20 text-aw-gold text-xs font-semibold uppercase tracking-wider border border-aw-gold/30">
-                🚌 Katalog Transportasi Rombongan
+            <span class="inline-block px-4 py-1.5 rounded-full bg-aw-gold/20 text-aw-gold text-xs font-semibold uppercase tracking-wider border border-aw-gold/30 flex items-center gap-1.5 w-fit mx-auto">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8m-8 4h8m-4 4h4m-12 3h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v12a1 1 0 001 1zm3 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm10 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+                Katalog Transportasi Rombongan
             </span>
-            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight">
                 Pilihan Transportasi
             </h1>
             <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
@@ -42,7 +47,9 @@
         {{-- IMPORTANT PRICE DISCLAIMER BANNER --}}
         <div class="bg-amber-50 border border-amber-200/80 rounded-2xl p-4 sm:p-5 mb-10 shadow-sm flex items-start gap-3.5">
             <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 text-lg font-bold">
-                ℹ️
+                <svg class="w-5 h-5 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
             </div>
             <div class="text-xs sm:text-sm text-amber-900 leading-relaxed space-y-1">
                 <p class="font-bold text-amber-950">Keterangan Estimasi Harga:</p>
@@ -130,8 +137,9 @@
                     
                     {{-- Badge Capacity --}}
                     <div class="absolute top-4 left-4 z-10">
-                        <span class="bg-aw-gold text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
-                            🚌 Rombongan Menengah
+                        <span class="bg-aw-gold text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h8m-8 4h8m-4 4h4m-12 3h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v12a1 1 0 001 1zm3 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm10 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+                            Rombongan Menengah
                         </span>
                     </div>
 
@@ -249,48 +257,7 @@
 
         </div>
 
-        {{-- INFORMASI ARMADA SECTION --}}
-        <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-lg mb-16">
-            <div class="max-w-3xl mx-auto">
-                <div class="text-center space-y-2 mb-8">
-                    <span class="text-xs font-bold uppercase tracking-widest text-aw-gold">Varian Tipe Kendaraan</span>
-                    <h2 class="font-display font-bold text-2xl text-aw-navy">Pilihan Armada</h2>
-                    <p class="text-xs sm:text-sm text-slate-500">
-                        Informasi jenis/tipe bodi armada yang tersedia dalam jaringan operasional kami:
-                    </p>
-                </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto">
-                    {{-- Jet Bus --}}
-                    <div class="bg-aw-cream/40 border border-slate-200/90 rounded-2xl p-6 text-center space-y-2 hover:border-aw-gold/60 transition-colors">
-                        <div class="w-12 h-12 rounded-xl bg-aw-navy text-aw-gold font-bold flex items-center justify-center mx-auto text-lg shadow-sm">
-                            🚍
-                        </div>
-                        <h4 class="font-display font-bold text-lg text-aw-navy">Jet Bus</h4>
-                        <div class="inline-block px-3.5 py-1 rounded-full bg-aw-gold/20 text-aw-gold text-xs font-extrabold border border-aw-gold/30">
-                            5 unit
-                        </div>
-                        <p class="text-[11px] text-slate-500 pt-1">
-                            Tipe bodi armada bus modern dengan kenyamanan kabin optimal.
-                        </p>
-                    </div>
-
-                    {{-- SR --}}
-                    <div class="bg-aw-cream/40 border border-slate-200/90 rounded-2xl p-6 text-center space-y-2 hover:border-aw-gold/60 transition-colors">
-                        <div class="w-12 h-12 rounded-xl bg-aw-navy text-aw-gold font-bold flex items-center justify-center mx-auto text-lg shadow-sm">
-                            🚌
-                        </div>
-                        <h4 class="font-display font-bold text-lg text-aw-navy">SR</h4>
-                        <div class="inline-block px-3.5 py-1 rounded-full bg-aw-gold/20 text-aw-gold text-xs font-extrabold border border-aw-gold/30">
-                            3 unit
-                        </div>
-                        <p class="text-[11px] text-slate-500 pt-1">
-                            Tipe bodi armada bus dengan desain aerodinamis & pandangan luas.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         {{-- ALUR PROSES QUOTATION --}}
         <div class="bg-aw-navy text-white rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-xl mb-16">
@@ -351,8 +318,8 @@
         {{-- WHATSAPP CTA SECTION --}}
         <div class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl text-center relative overflow-hidden">
             <div class="max-w-2xl mx-auto space-y-5 relative z-10">
-                <div class="w-16 h-16 rounded-full bg-emerald-700/60 border border-emerald-400/30 flex items-center justify-center mx-auto text-2xl shadow-inner">
-                    💬
+                <div class="w-16 h-16 rounded-full bg-emerald-700/60 border border-emerald-400/30 flex items-center justify-center mx-auto shadow-inner text-white">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                 </div>
                 <h3 class="font-display font-bold text-2xl sm:text-3xl text-white">
                     Masih bingung memilih kendaraan?

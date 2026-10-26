@@ -131,16 +131,18 @@ class CustomRequest extends Model
     {
         $phone    = \App\Models\SiteSetting::current()->whatsapp_number;
         $destName = $this->destination_display_name;
+        $token    = $this->ticket_number;
         $message  = urlencode(
             "Halo Admin AW Tour Operator,\n" .
             "Saya {$this->client_name} dari {$this->institution_name}.\n" .
             "Nomor Tiket: {$this->ticket_number}\n" .
+            "Quotation ID: {$token}\n" .
             "Jenis Acara: {$this->event_type}\n" .
             "Destinasi: {$destName}\n" .
             "Tanggal: {$this->event_date->format('d M Y')}\n" .
             "Peserta: {$this->pax} orang\n\n" .
             "Mohon konfirmasi quotation kami. Terima kasih."
         );
-        return "https://wa.me/{$phone}?text={$message}";
+        return "https://wa.me/{$phone}?text={$message}?quotation_id={$token}";
     }
 }

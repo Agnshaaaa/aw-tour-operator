@@ -44,8 +44,11 @@
     }
     .aw-input::-webkit-inner-spin-button,
     .aw-input::-webkit-outer-spin-button {
-        filter: invert(1);
-        opacity: 0.6;
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
     }
 
     /* ─── Select dropdown custom arrow ──────────────────────────────── */
@@ -114,46 +117,91 @@
         border-bottom: 2px solid rgba(45, 212, 191, 0.35);
         margin-bottom: 0.75rem;
     }
+    #quotation-document-card .aw-section-title {
+        color: #0f766e !important;
+        border-bottom: 2px solid rgba(15, 118, 110, 0.25) !important;
+    }
 
     /* ─── CSS Print Rules untuk Cetak Dokumen A4 Rinci ─────────────── */
     @media print {
-        body * { visibility: hidden !important; }
-        #quotation-document-card, #quotation-document-card * { visibility: visible !important; }
-        #quotation-document-card {
-            position: absolute !important; left: 0 !important; top: 0 !important;
-            width: 100% !important; margin: 0 !important; padding: 24px !important;
-            box-shadow: none !important; border: 1px solid #cbd5e1 !important;
-            background: #ffffff !important; color: #010818 !important;
+        body, html {
+            background: #ffffff !important;
+            color: #000000 !important;
+            height: auto !important;
+            min-height: 0 !important;
+            overflow: visible !important;
         }
-        .no-print { display: none !important; }
-        @page { size: A4; margin: 12mm; }
+        body * {
+            visibility: hidden !important;
+        }
+        .printable-quotation-card,
+        .printable-quotation-card * {
+            visibility: visible !important;
+            opacity: 1 !important;
+            color: #000000 !important;
+        }
+        .printable-quotation-card {
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            height: auto !important;
+            margin: 0 !important;
+            margin-bottom: 0 !important;
+            padding: 8mm !important;
+            box-shadow: none !important;
+            border: none !important;
+            background: #ffffff !important;
+            border-radius: 0 !important;
+            page-break-inside: avoid !important;
+            overflow: visible !important;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .printable-quotation-card img,
+        .printable-quotation-card svg {
+            display: inline-block !important;
+        }
+        .printable-quotation-card .grid {
+            display: grid !important;
+        }
+        .printable-quotation-card .flex {
+            display: flex !important;
+        }
+        header, nav, .navbar, .no-print, button {
+            display: none !important;
+        }
+        @page {
+            size: A4 portrait;
+            margin: 8mm;
+        }
     }
 </style>
 @endpush
 
 @section('content')
 
-<div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0">
-    <img src="{{ asset('images/Bromo.jpg') }}" alt="" class="h-full w-full object-cover object-center">
-    <div class="absolute inset-0 bg-slate-950/30"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/10 via-slate-950/20 to-slate-950/45"></div>
+<div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <img src="{{ asset('images/Bromo.jpg') }}" alt="Gunung Bromo" class="h-full w-full object-cover object-[center_30%] filter brightness-[0.98] contrast-[1.08] saturate-[1.1]">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0a101d]/75 via-[#0f172a]/30 to-[#070c14]/92"></div>
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 22%, rgba(245, 158, 11, 0.15) 0%, transparent 65%);"></div>
 </div>
 
-<!-- Header Banner -->
-<div class="relative z-10 bg-slate-950/35 text-white py-12 border-b border-white/10 backdrop-blur-sm no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-        <span class="text-xs font-bold uppercase tracking-widest text-aw-gold">B2B Customized Group Tour System</span>
-        <h1 class="font-display text-3xl sm:text-4xl font-extrabold">Custom Group Quotation Builder</h1>
-        <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto">
-            Rancang perjalanan rombongan Anda hanya dalam 4 langkah mudah. Dapatkan estimasi penawaran harga resmi (*Quotation Ticket*) dan terhubung langsung ke WhatsApp Admin.
-        </p>
-    </div>
-</div>
+<!-- Main Container Paling Luar -->
+<div class="relative w-full min-h-screen pt-20 md:pt-24 pb-20 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
 
-<!-- Main Form Section -->
-<div class="relative z-10 py-12 min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+        <!-- Kotakan Judul (Custom Group Quotation Builder) -->
+        <div class="w-full rounded-3xl py-7 px-6 sm:px-10 text-center no-print" 
+             style="background: rgba(15, 23, 42, 0.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.5);">
+            <h1 class="text-2xl sm:text-3xl md:text-[2.1rem] font-extrabold text-white mb-2 tracking-tight">Custom Group Quotation Builder</h1>
+            <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto leading-relaxed font-normal">
+                Rancang perjalanan rombongan Anda hanya dalam 4 langkah mudah. Dapatkan estimasi penawaran harga resmi 
+                <span class="text-amber-400 font-semibold underline decoration-amber-400/60 underline-offset-2">(Quotation Ticket)</span> 
+                dan terhubung langsung ke WhatsApp Admin.
+            </p>
+        </div>
+
         <!-- Form Multi-Step Container (Alpine.js State) -->
         <div x-data="{ 
                 step: {{ isset($selectedDestinationId) && $selectedDestinationId ? 2 : (isset($selectedTransport) && $selectedTransport ? 3 : 1) }}, 
@@ -464,7 +512,7 @@
                     }
                 }
              }" 
-             class="rounded-3xl shadow-2xl overflow-hidden relative border backdrop-blur-md bg-slate-900/50 border-white/15 shadow-slate-950/40">
+             class="w-full rounded-3xl shadow-2xl overflow-hidden relative border border-white/18 shadow-slate-950/40" style="background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);">
             
             <!-- TOAST NOTIFICATION POPUP -->
             <div x-show="toast.show" 
@@ -538,6 +586,17 @@
             <!-- FORM START -->
             <form action="{{ route('quotation.store') }}" method="POST" id="quotation-form" class="p-6 sm:p-10" @input="saveDraft()" @change="saveDraft()">
                 @csrf
+
+                @if($errors->any())
+                    <div class="mb-6 p-4 rounded-2xl bg-rose-950/85 border border-rose-500 text-white text-xs space-y-1">
+                        <p class="font-bold uppercase tracking-wider">Perhatian, terdapat kesalahan pengisian form:</p>
+                        <ul class="list-disc pl-4 space-y-1">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <!-- HIDDEN INPUTS TO SUBMIT ALL FORM DATA -->
                 <input type="hidden" name="destination_id" :value="['singapore','malaysia','vietnam','other'].includes(destinationChoice) ? '' : destinationChoice">
@@ -642,7 +701,7 @@
                                 </div>
 
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    @foreach($destinations as $dest)
+                                    @foreach(($destinations ?? $destinationsLokal ?? []) as $dest)
                                             <label class="border-2 rounded-2xl p-4 cursor-pointer transition-all duration-200 flex items-start justify-between bg-white/5 border-white/15 text-slate-100 hover:bg-white/10 hover:scale-[1.02] hover:border-emerald-400/60"
                                                 :class="destinationChoice == '{{ $dest->id }}' ? 'border-2 border-emerald-400 bg-emerald-900/60 ring-2 ring-emerald-500/50 shadow-lg shadow-emerald-500/20 text-white' : ''">
                                             <div class="space-y-1">
@@ -1137,24 +1196,30 @@
                                     <div class="flex items-center gap-2">
                                         <button type="button" @click="if(hotelRooms > 1) hotelRooms--"
                                                 class="w-10 h-10 rounded-xl bg-white/10 border border-white/15 font-bold text-white hover:bg-white/20 flex items-center justify-center transition-all">-</button>
-                                        <input type="number" x-model="hotelRooms" min="1"
-                                               class="aw-input w-20 text-center font-bold text-white">
+                                         <input type="number" x-model="hotelRooms" min="1"
+                                                class="aw-input w-20 text-center font-bold text-white [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
                                         <button type="button" @click="hotelRooms++"
                                                 class="w-10 h-10 rounded-xl bg-white/10 border border-white/15 font-bold text-white hover:bg-white/20 flex items-center justify-center transition-all">+</button>
-                                        <span class="text-xs font-semibold text-slate-300">Kamar</span>
                                     </div>
                                 </div>
 
                                 {{-- Preferensi Tipe Kamar --}}
                                 <div>
                                     <label class="aw-label">Preferensi Tipe Kamar</label>
-                                    <select x-model="hotelRoomType" class="aw-input aw-select">
-                                        <option value="Belum menentukan">Belum menentukan</option>
-                                        <option value="Twin Bed (2 Kasur)">Twin Bed (2 Kasur)</option>
-                                        <option value="Triple Bed (3 Kasur)">Triple Bed (3 Kasur)</option>
-                                        <option value="Quad Bed (4 Kasur)">Quad Bed (4 Kasur)</option>
-                                        <option value="Campuran">Campuran (Sesuai Rombongan)</option>
-                                    </select>
+                                     <div class="relative">
+                                         <select x-model="hotelRoomType" class="aw-input appearance-none pr-10">
+                                             <option value="Belum menentukan">Belum menentukan</option>
+                                             <option value="Twin Bed (2 Kasur)">Twin Bed (2 Kasur)</option>
+                                             <option value="Triple Bed (3 Kasur)">Triple Bed (3 Kasur)</option>
+                                             <option value="Quad Bed (4 Kasur)">Quad Bed (4 Kasur)</option>
+                                             <option value="Campuran">Campuran (Sesuai Rombongan)</option>
+                                         </select>
+                                         <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-teal-400">
+                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                             </svg>
+                                         </div>
+                                     </div>
                                 </div>
                             </div>
 
@@ -1247,12 +1312,10 @@
 
                     <!-- DARK GLASSMORPHISM REVIEW CARD -->
                     <div id="quotation-document-card"
-                         class="rounded-3xl border border-white/10 shadow-2xl shadow-slate-950/60 overflow-hidden"
-                         style="background: rgba(5, 10, 30, 0.75); backdrop-filter: blur(12px);">
+                         class="rounded-3xl border border-gray-200 shadow-2xl bg-white text-slate-900 overflow-hidden printable-quotation-card">
 
                         <!-- DOCUMENT HEADER -->
-                        <div class="px-6 py-5 border-b border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
-                             style="background: rgba(2, 6, 20, 0.60);">
+                        <div class="px-6 py-5 border-b border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-50">
                             <div class="flex items-center gap-3">
                                 <img src="{{ asset('images/logo.png') }}"
                                      alt="AW TOUR"
@@ -1262,115 +1325,115 @@
                                     <span class="font-extrabold text-xs text-[#80ee11] italic">AW</span>
                                 </div>
                                 <div>
-                                    <h3 class="font-display font-bold text-base text-white tracking-wide">AW TOUR OPERATOR</h3>
-                                    <p class="text-[10px] font-semibold text-teal-400 uppercase tracking-widest">Surabaya · B2B Group Tour</p>
+                                    <h3 class="font-display font-bold text-base text-slate-950 tracking-wide">AW TOUR OPERATOR</h3>
+                                    <p class="text-[10px] font-semibold text-teal-700 uppercase tracking-widest">Surabaya · B2B Group Tour</p>
                                 </div>
                             </div>
-                            <span class="inline-block px-3 py-1.5 bg-teal-500/15 text-teal-300 font-mono font-bold text-[10px] rounded-lg uppercase tracking-wider border border-teal-400/25">
+                            <span class="inline-block px-3 py-1.5 bg-teal-100 text-teal-800 font-mono font-bold text-[10px] rounded-lg uppercase tracking-wider border border-teal-200">
                                 RINCIAN PERMINTAAN QUOTATION
                             </span>
                         </div>
 
-                        <div class="p-6 space-y-5">
+                        <div class="p-6 space-y-6">
 
                             <!-- SECTION 1: PERJALANAN & DESTINASI -->
                             <div class="space-y-3">
                                 <p class="aw-section-title">1. Informasi Perjalanan &amp; Destinasi</p>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5 text-xs">
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Jenis Acara</span>
-                                        <span class="font-semibold text-white text-right" x-text="eventType"></span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-xs">
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Jenis Acara</span>
+                                        <span class="font-semibold text-slate-900 text-left" x-text="eventType"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Destinasi Tujuan</span>
-                                        <span class="font-bold text-teal-300 text-right" x-text="destinationDisplayName"></span>
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Destinasi Tujuan</span>
+                                        <span class="font-bold text-teal-700 text-left" x-text="destinationDisplayName"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Tgl. Keberangkatan</span>
-                                        <span class="font-semibold text-white text-right" x-text="eventDate || '-'"></span>
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Tgl. Keberangkatan</span>
+                                        <span class="font-semibold text-slate-900 text-left" x-text="eventDate || '-'"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Tgl. Pulang</span>
-                                        <span class="font-semibold text-white text-right" x-text="returnDate || '1 Hari (Day Trip)'"></span>
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Tgl. Pulang</span>
+                                        <span class="font-semibold text-slate-900 text-left" x-text="returnDate || '1 Hari (Day Trip)'"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2 sm:col-span-2">
-                                        <span class="text-slate-400 shrink-0">Durasi Perjalanan</span>
-                                        <span class="font-extrabold text-amber-300 text-right" x-text="durationText"></span>
+                                    <div class="flex items-baseline gap-3 sm:col-span-2">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Durasi Perjalanan</span>
+                                        <span class="font-extrabold text-amber-700 text-left" x-text="durationText"></span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- SECTION 2: ROMBONGAN & LOGISTIK -->
-                            <div class="space-y-3 pt-4 border-t border-white/10">
+                            <div class="space-y-3 pt-4 border-t border-gray-200">
                                 <p class="aw-section-title">2. Rombongan &amp; Titik Keberangkatan</p>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5 text-xs">
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Jumlah Peserta</span>
-                                        <span class="font-bold text-white text-right" x-text="paxCount + ' Orang (PAX)'"></span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-xs">
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Jumlah Peserta</span>
+                                        <span class="font-bold text-slate-900 text-left" x-text="paxCount + ' Orang (PAX)'"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Waktu Berangkat</span>
-                                        <span class="font-semibold text-white text-right" x-text="(departureTime || '07:00') + ' WIB'"></span>
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Waktu Berangkat</span>
+                                        <span class="font-semibold text-slate-900 text-left" x-text="(departureTime || '07:00') + ' WIB'"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2 sm:col-span-2">
-                                        <span class="text-slate-400 shrink-0">Titik Keberangkatan</span>
-                                        <span class="font-semibold text-white text-right" x-text="departurePoint || '-'"></span>
+                                    <div class="flex items-baseline gap-3 sm:col-span-2">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Titik Keberangkatan</span>
+                                        <span class="font-semibold text-slate-900 text-left" x-text="departurePoint || '-'"></span>
                                     </div>
-                                    <div x-show="pickupNotes" class="flex justify-between items-baseline gap-2 sm:col-span-2">
-                                        <span class="text-slate-400 shrink-0">Catatan Penjemputan</span>
-                                        <span class="font-medium text-slate-300 text-right" x-text="pickupNotes"></span>
+                                    <div x-show="pickupNotes" class="flex items-baseline gap-3 sm:col-span-2">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Catatan Penjemputan</span>
+                                        <span class="font-medium text-slate-700 text-left" x-text="pickupNotes"></span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- SECTION 3: TRANSPORTASI -->
-                            <div class="space-y-3 pt-4 border-t border-white/10">
+                            <div class="space-y-3 pt-4 border-t border-gray-200">
                                 <p class="aw-section-title">3. Rencana Transportasi</p>
-                                <div class="space-y-2 text-xs">
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Moda Utama</span>
-                                        <span class="font-bold text-white text-right" x-text="
-                                            transportType === 'darat' ? '🚌 Transportasi Darat' :
-                                            (transportType === 'kereta' ? '🚂 Kereta Api + Transportasi Lokal' :
-                                            (transportType === 'pesawat' ? '✈️ Pesawat + Transportasi Lokal' : '⚙️ Kombinasi / Custom'))
+                                <div class="space-y-3 text-xs">
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Moda Utama</span>
+                                        <span class="font-bold text-slate-900 text-left" x-text="
+                                            transportType === 'darat' ? 'Transportasi Darat' :
+                                            (transportType === 'kereta' ? 'Kereta Api + Transportasi Lokal' :
+                                            (transportType === 'pesawat' ? 'Pesawat + Transportasi Lokal' : 'Kombinasi / Custom'))
                                         "></span>
                                     </div>
-                                    <div x-show="transportType === 'darat'" class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Jenis Kendaraan</span>
-                                        <span class="font-bold text-teal-300 text-right" x-text="daratVehicle"></span>
+                                    <div x-show="transportType === 'darat'" class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Jenis Kendaraan</span>
+                                        <span class="font-bold text-teal-700 text-left" x-text="daratVehicle"></span>
                                     </div>
-                                    <div x-show="transportType === 'kereta' || transportType === 'pesawat'" class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Transportasi Lokal</span>
-                                        <span class="font-bold text-teal-300 text-right" x-text="localTransport"></span>
+                                    <div x-show="transportType === 'kereta' || transportType === 'pesawat'" class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Transportasi Lokal</span>
+                                        <span class="font-bold text-teal-700 text-left" x-text="localTransport"></span>
                                     </div>
-                                    <div x-show="transportType === 'custom'" class="flex justify-between items-start gap-2">
-                                        <span class="text-slate-400 shrink-0">Detail Custom</span>
-                                        <span class="font-medium text-slate-300 text-right" x-text="customTransportDetails"></span>
+                                    <div x-show="transportType === 'custom'" class="flex items-start gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Detail Custom</span>
+                                        <span class="font-medium text-slate-700 text-left" x-text="customTransportDetails"></span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- SECTION 4: PENGINAPAN -->
-                            <div class="space-y-3 pt-4 border-t border-white/10">
+                            <div class="space-y-3 pt-4 border-t border-gray-200">
                                 <p class="aw-section-title">4. Kebutuhan Penginapan / Hotel</p>
-                                <div class="space-y-2 text-xs">
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Status Penginapan</span>
-                                        <span class="font-bold text-white text-right" x-text="needHotel === 'Ya' ? '✅ Dibutuhkan' : '— Tidak Diperlukan'"></span>
+                                <div class="space-y-3 text-xs">
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Status Penginapan</span>
+                                        <span class="font-bold text-slate-900 text-left" x-text="needHotel === 'Ya' ? 'Dibutuhkan' : '— Tidak Diperlukan'"></span>
                                     </div>
                                     <template x-if="needHotel === 'Ya'">
-                                        <div class="space-y-2 pt-1">
-                                            <div class="flex justify-between items-baseline gap-2">
-                                                <span class="text-slate-400 shrink-0">Jumlah Kamar</span>
-                                                <span class="font-bold text-white text-right" x-text="hotelRooms + ' Kamar'"></span>
+                                        <div class="space-y-3 pt-1">
+                                            <div class="flex items-baseline gap-3">
+                                                <span class="text-slate-500 w-36 sm:w-40 shrink-0">Jumlah Kamar</span>
+                                                <span class="font-bold text-slate-900 text-left" x-text="hotelRooms + ' Kamar'"></span>
                                             </div>
-                                            <div class="flex justify-between items-baseline gap-2">
-                                                <span class="text-slate-400 shrink-0">Tipe Kamar</span>
-                                                <span class="font-bold text-white text-right" x-text="hotelRoomType"></span>
+                                            <div class="flex items-baseline gap-3">
+                                                <span class="text-slate-500 w-36 sm:w-40 shrink-0">Tipe Kamar</span>
+                                                <span class="font-bold text-slate-900 text-left" x-text="hotelRoomType"></span>
                                             </div>
-                                            <div x-show="hotelNotes" class="flex justify-between items-start gap-2">
-                                                <span class="text-slate-400 shrink-0">Catatan</span>
-                                                <span class="font-medium text-slate-300 text-right" x-text="hotelNotes"></span>
+                                            <div x-show="hotelNotes" class="flex items-start gap-3">
+                                                <span class="text-slate-500 w-36 sm:w-40 shrink-0">Catatan</span>
+                                                <span class="font-medium text-slate-700 text-left" x-text="hotelNotes"></span>
                                             </div>
                                         </div>
                                     </template>
@@ -1378,40 +1441,41 @@
                             </div>
 
                             <!-- SECTION 5: IDENTITAS PEMESAN -->
-                            <div class="space-y-3 pt-4 border-t border-white/10">
+                            <div class="space-y-3 pt-4 border-t border-gray-200">
                                 <p class="aw-section-title">5. Identitas Pemesan / Instansi</p>
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5 text-xs">
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Nama PIC</span>
-                                        <span class="font-bold text-white text-right" x-text="clientName || '-'"></span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-xs">
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Nama PIC</span>
+                                        <span class="font-bold text-slate-900 text-left" x-text="clientName || '-'"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Instansi / Kampus</span>
-                                        <span class="font-bold text-white text-right" x-text="institutionName || '-'"></span>
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Instansi / Kampus</span>
+                                        <span class="font-bold text-slate-900 text-left" x-text="institutionName || '-'"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">WhatsApp</span>
-                                        <span class="font-bold text-emerald-400 text-right" x-text="phone || '-'"></span>
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">WhatsApp</span>
+                                        <span class="font-bold text-emerald-700 text-left" x-text="phone || '-'"></span>
                                     </div>
-                                    <div class="flex justify-between items-baseline gap-2">
-                                        <span class="text-slate-400 shrink-0">Email</span>
-                                        <span class="font-medium text-slate-300 text-right" x-text="email || '-'"></span>
+                                    <div class="flex items-baseline gap-3">
+                                        <span class="text-slate-500 w-36 sm:w-40 shrink-0">Email</span>
+                                        <span class="font-medium text-slate-700 text-left" x-text="email || '-'"></span>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- SECTION 6: CATATAN KHUSUS -->
-                            <div x-show="specialNotes" class="space-y-2 pt-4 border-t border-white/10">
+                            <div x-show="specialNotes" class="space-y-2 pt-4 border-t border-gray-200">
                                 <p class="aw-section-title">6. Catatan / Permintaan Khusus</p>
-                                <p class="text-xs text-slate-300 italic bg-white/5 p-3 rounded-xl border border-white/10" x-text="specialNotes"></p>
+                                <p class="text-xs text-slate-700 italic bg-slate-100 p-3 rounded-xl border border-gray-200 text-left" x-text="specialNotes"></p>
                             </div>
 
                             <!-- STATUS NOTICE -->
-                            <div class="bg-amber-500/10 border border-amber-400/25 rounded-2xl p-4 text-xs space-y-1">
-                                <div class="flex items-center gap-2 font-bold text-amber-300">
-                                    <span>🟠 STATUS: MENUNGGU KONFIRMASI AW TOUR</span>
+                            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-xs space-y-1">
+                                <div class="flex items-center gap-2 font-bold text-amber-800">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    <span>STATUS: MENUNGGU KONFIRMASI AW TOUR</span>
                                 </div>
-                                <p class="text-amber-200/80 leading-relaxed text-[11px]">
+                                <p class="text-amber-900/80 leading-relaxed text-[11px]">
                                     Rincian ini merupakan permintaan quotation dan bukan harga final. Harga resmi, ketersediaan armada, transportasi, dan penginapan akan dikonfirmasi langsung oleh tim konsultan AW TOUR.
                                 </p>
                             </div>
@@ -1427,14 +1491,13 @@
                         </button>
 
                         <div class="flex flex-wrap items-center justify-end gap-3 w-full sm:w-auto">
-                            {{-- Button 1: Cetak Rincian --}}
                             <button type="button"
                                     @click="window.print()"
-                                    class="py-3 px-4 rounded-xl border border-white/15 text-slate-300 text-xs font-bold hover:bg-white/10 transition-all flex items-center gap-2">
-                                <span>🖨 Cetak Rincian</span>
+                                    title="Cetak Rincian"
+                                    class="w-11 h-11 rounded-xl border border-white/15 text-slate-300 hover:bg-white/10 transition-all flex items-center justify-center">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
                             </button>
 
-                            {{-- Button 2: Download PNG --}}
                             <button type="button"
                                     @click="
                                         const card = document.getElementById('quotation-document-card');
@@ -1450,8 +1513,9 @@
                                             window.print();
                                         }
                                     "
-                                    class="py-3 px-4 rounded-xl border border-white/15 text-slate-300 text-xs font-bold hover:bg-white/10 transition-all flex items-center gap-2">
-                                <span>⬇ Simpan / Download</span>
+                                    title="Simpan / Download"
+                                    class="w-11 h-11 rounded-xl border border-white/15 text-slate-300 hover:bg-white/10 transition-all flex items-center justify-center">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                             </button>
 
                             {{-- Button 3: Submit --}}

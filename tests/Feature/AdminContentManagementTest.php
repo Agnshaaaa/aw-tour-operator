@@ -95,6 +95,8 @@ class AdminContentManagementTest extends TestCase
         $admin = $this->admin();
         $this->actingAs($admin)->put(route('admin.site-settings.update'), [
             'company_name' => 'AW Tour Surabaya',
+            'site_title' => 'AW Tour Surabaya',
+            'hero_heading' => 'Wujudkan Perjalanan Impian',
             'profile_description' => 'Profil yang diperbarui.',
             'location' => 'Surabaya, Jawa Timur',
             'partners_text' => "ITS Surabaya\nUNAIR",

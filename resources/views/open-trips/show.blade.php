@@ -4,8 +4,21 @@
 @section('meta_description', 'Detail jadwal Open Trip ' . $openTrip->title . ' tanggal ' . $openTrip->departure_date->format('d M Y') . '. Kuota terbatas, amankan slot keberangkatan Anda!')
 
 @section('content')
+{{-- MINIMALIST BACK BAR (Replacing Navbar on Detail Page) --}}
+<div class="bg-slate-950 border-b border-slate-800 py-3.5 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="{{ route('open-trips.index') }}" class="inline-flex items-center gap-2 text-slate-300 hover:text-aw-gold transition-colors text-xs font-semibold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            <span>Kembali ke Open Trip</span>
+        </a>
+        <span class="text-xs text-aw-gold font-bold">AW Tour Operator</span>
+    </div>
+</div>
+
 {{-- BREADCRUMB & HEADER --}}
-<div class="bg-aw-navy text-white pt-8 pb-12">
+<div class="bg-aw-navy text-white pt-10 sm:pt-14 pb-14 border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Breadcrumb --}}
         <nav class="flex text-xs text-slate-300 mb-6" aria-label="Breadcrumb">
@@ -32,8 +45,9 @@
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div class="space-y-2 max-w-3xl">
                 <div class="flex flex-wrap items-center gap-2">
-                    <span class="bg-aw-gold text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        📍 {{ $openTrip->destination->location }}
+                    <span class="bg-aw-gold text-white text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        {{ $openTrip->destination->location }}
                     </span>
                     <span class="bg-white/10 text-slate-200 text-[11px] font-bold px-3 py-1 rounded-full border border-white/20">
                         {{ $openTrip->duration }}
@@ -168,7 +182,9 @@
                         {{-- Exclusions --}}
                         <div class="bg-rose-50/60 rounded-3xl p-6 border border-rose-200/80 space-y-3">
                             <h3 class="font-serif font-bold text-rose-900 text-base flex items-center gap-2">
-                                <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-bold">✕</span>
+                                <span class="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs font-bold">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                                </span>
                                 <span>Tidak Termasuk (Exclusions)</span>
                             </h3>
                             <ul class="text-xs text-rose-800 space-y-2">
@@ -221,7 +237,7 @@
                                           `📌 *Trip:* {{ addslashes($openTrip->title) }}\n` +
                                           `📅 *Jadwal:* {{ $openTrip->departure_date->format('d M Y') }}\n` +
                                           `👤 *Nama:* ${encodeURIComponent(this.name || '-')}\n` +
-                                          `📱 *No WA:* ${encodeURIComponent(this.phone || '-')}\n` +
+                                          `No WA: ${encodeURIComponent(this.phone || '-')}\n` +
                                           `👥 *Jumlah Peserta:* ${this.pax} orang\n` +
                                           `💰 *Total Estimasi:* Rp ${this.totalPrice.toLocaleString('id-ID')}`;
                              return `{{ $siteSettings->whatsapp_url }}?text=${text}`;
@@ -296,6 +312,7 @@
                            class="inline-block text-xs font-bold text-aw-gold hover:underline">
                             Buat Custom Group Quotation →
                         </a>
+                        <p class="text-[11px] text-slate-400 italic pt-2">*Syarat dan ketentuan berlaku.</p>
                     </div>
 
                 </div>

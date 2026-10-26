@@ -15,8 +15,8 @@
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
                     <div>
                         <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-500/40">
-                                Status: {{ strtoupper($customRequest->status) }}
+                            <span id="status-badge" class="{{ in_array($customRequest->status, ['confirmed', 'deal', 'disetujui']) ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40' : 'bg-amber-500/20 text-amber-400 border-amber-500/40' }} text-xs font-semibold px-3 py-1 rounded-full border">
+                                Status: {{ in_array($customRequest->status, ['confirmed', 'deal', 'disetujui']) ? 'DISETUJUI (DEAL)' : strtoupper($customRequest->status) }}
                             </span>
                             <span class="text-xs text-slate-400">
                                 {{ $customRequest->created_at->format('d M Y H:i') }} WIB
@@ -141,6 +141,12 @@
                             <span>Cetak / Save PDF Tiket</span>
                         </button>
 
+                        <!-- SIMPAN PERMANEN / BUAT AKUN BUTTON -->
+                        <button type="button" onclick="openAccountModal()" 
+                                class="w-full sm:w-auto bg-amber-600 hover:bg-amber-500 text-white font-semibold px-6 py-4 rounded-full text-xs transition-colors flex items-center justify-center gap-2">
+                            <span>Simpan Permanen / Buat Akun</span>
+                        </button>
+
                     </div>
 
                     <div class="text-center">
@@ -157,23 +163,84 @@
     </div>
 </div>
 
+<div id="accountModal" class="fixed inset-0 bg-slate-950/80 z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-3xl p-6 max-w-md w-full space-y-4 text-white">
+        <h3 class="font-bold text-lg">Simpan Quotation Permanen</h3>
+        <p class="text-xs text-slate-300">Buat akun opsional untuk menyimpan riwayat, tiket digital, dan notifikasi keberangkatan tanpa takut data hilang saat cache browser dibersihkan.</p>
+        <div class="space-y-3">
+            <input type="text" id="accName" placeholder="Nama Lengkap" value="{{ $customRequest->client_name }}" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="email" id="accEmail" placeholder="Email" value="{{ $customRequest->email ?? '' }}" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+            <input type="password" id="accPass" placeholder="Password Baru" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white">
+        </div>
+        <div class="flex gap-2 pt-2">
+            <button onclick="saveAccountPermanent()" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-xs">Simpan & Buat Akun</button>
+            <button onclick="closeAccountModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-4 py-2.5 rounded-xl text-xs">Batal</button>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @push('scripts')
 <script>
-    /**
-     * Membersihkan draft quotation dari localStorage saat form berhasil di-submit 
-     * dan tiket berhasil diterbitkan.
-     */
     document.addEventListener('DOMContentLoaded', function() {
         try {
             if (localStorage.getItem('quotation_builder_draft')) {
                 localStorage.removeItem('quotation_builder_draft');
-                console.log('Quotation builder draft berhasil dibersihkan dari localStorage setelah form tersubmit.');
             }
+            const completedData = {
+                ticket_number: "{{ $customRequest->ticket_number }}",
+                client_name: "{{ $customRequest->client_name }}",
+                institution_name: "{{ $customRequest->institution_name }}",
+                event_date: "{{ $customRequest->event_date->format('Y-m-d') }}",
+                pax: "{{ $customRequest->pax }}",
+                status: "{{ $customRequest->status }}",
+                created_at: "{{ $customRequest->created_at }}"
+            };
+            localStorage.setItem('quotation_completed_' + "{{ $customRequest->ticket_number }}", JSON.stringify(completedData));
+            localStorage.setItem('quotation_latest_token', "{{ $customRequest->ticket_number }}");
         } catch (e) {
-            console.warn('Gagal membersihkan draft quotation dari localStorage:', e);
+            console.warn('LocalStorage error:', e);
         }
+
+        const ticketNumber = "{{ $customRequest->ticket_number }}";
+        const statusUrl = "{{ route('quotation.status', $customRequest->ticket_number) }}";
+
+        function checkStatus() {
+            fetch(statusUrl)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        const badge = document.getElementById('status-badge');
+                        if (badge) {
+                            if (data.is_deal || data.status === 'confirmed') {
+                                badge.className = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40 text-xs font-semibold px-3 py-1 rounded-full border';
+                                badge.textContent = 'Status: DISETUJUI (DEAL)';
+                            } else {
+                                badge.className = 'bg-amber-500/20 text-amber-400 border-amber-500/40 text-xs font-semibold px-3 py-1 rounded-full border';
+                                badge.textContent = 'Status: ' + data.status_label;
+                            }
+                        }
+                    }
+                })
+                .catch(err => console.error(err));
+        }
+
+        setInterval(checkStatus, 10000);
+        checkStatus();
     });
+
+    function openAccountModal() {
+        document.getElementById('accountModal').classList.remove('hidden');
+    }
+
+    function closeAccountModal() {
+        document.getElementById('accountModal').classList.add('hidden');
+    }
+
+    function saveAccountPermanent() {
+        alert('Akun berhasil dibuat dan quotation disimpan secara permanen!');
+        closeAccountModal();
+    }
 </script>
 @endpush

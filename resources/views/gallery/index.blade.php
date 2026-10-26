@@ -8,18 +8,12 @@
 {{-- ========================================================================= --}}
 {{-- 1. CINEMATIC HERO HEADER SECTION --}}
 {{-- ========================================================================= --}}
-<section class="relative isolate overflow-hidden bg-aw-navy text-white pt-16 pb-20 sm:pb-28 lg:pt-24 lg:pb-32">
-    {{-- Glow Accents & Decorative Backdrops --}}
-    <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-        <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-teal-500/15 blur-3xl"></div>
-        <div class="absolute top-1/2 -right-40 w-96 h-96 rounded-full bg-aw-gold/15 blur-3xl"></div>
-        <div class="absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl"></div>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent"></div>
-    </div>
+<section class="relative z-10 min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] flex flex-col justify-center items-center overflow-hidden bg-cover bg-center px-4 sm:px-6 lg:px-8 py-16" style="background-image: url('{{ asset('images/laut-bg.png') }}');">
+    <div class="absolute inset-0 bg-slate-950/75 backdrop-blur-[2px] -z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent -z-10"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {{-- Breadcrumb --}}
-        <nav class="flex items-center gap-2 text-xs font-semibold text-slate-400 mb-6">
+    <div class="max-w-7xl mx-auto w-full pt-10 sm:pt-12">
+        <nav class="flex items-center gap-2 text-xs font-semibold text-slate-300 mb-6 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
             <a href="{{ route('home') }}" class="hover:text-aw-gold transition-colors">Beranda</a>
             <span>/</span>
             <span class="text-teal-300">Dokumentasi &amp; Galeri Rombongan</span>
@@ -27,45 +21,42 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-8 space-y-5">
-                {{-- Super Badge --}}
-                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-teal-500/15 border border-teal-400/30 text-teal-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-sm">
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-teal-400/40 text-teal-300 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
                     <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
                     <span>Portofolio &amp; Dokumentasi Perjalanan Nyata</span>
                 </div>
 
-                <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight">
+                <h1 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                     Setiap Rombongan Memiliki <br class="hidden sm:inline">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-aw-gold to-amber-200">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-aw-gold to-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                         Kenangan &amp; Cerita Terbaik
                     </span>
                 </h1>
 
-                <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
+                <p class="text-slate-200 text-sm sm:text-base max-w-2xl leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] font-medium">
                     Lihat koleksi foto dan video asli perjalanan rombongan korporat, instansi BUMN, kampus terkemuka (UNAIR, ITS, UNESA), dan komunitas keluarga yang telah menjelajahi berbagai destinasi bersama AW Tour Operator Surabaya.
                 </p>
 
-                {{-- Fast Proof Stats Pills --}}
                 <div class="pt-2 flex flex-wrap items-center gap-4 text-xs font-bold text-slate-200">
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md">
+                    <div class="flex items-center gap-2 bg-slate-900/80 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md shadow-sm">
                         <span class="text-aw-gold font-display text-base">50+</span>
-                        <span class="text-slate-300">Rombongan Sukses</span>
+                        <span class="text-slate-200">Rombongan Sukses</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md">
+                    <div class="flex items-center gap-2 bg-slate-900/80 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md shadow-sm">
                         <span class="text-teal-300 font-display text-base">{{ number_format($totalPax, 0, ',', '.') }}+</span>
-                        <span class="text-slate-300">Peserta Terlayani</span>
+                        <span class="text-slate-200">Peserta Terlayani</span>
                     </div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md">
+                    <div class="flex items-center gap-2 bg-slate-900/80 border border-white/10 px-3.5 py-2 rounded-xl backdrop-blur-md shadow-sm">
                         <span class="text-emerald-400 font-display text-base">100%</span>
-                        <span class="text-slate-300">Dokumentasi Nyata</span>
+                        <span class="text-slate-200">Dokumentasi Nyata</span>
                     </div>
                 </div>
             </div>
 
-            {{-- Quick Hero Card / Quotation Teaser --}}
             <div class="lg:col-span-4">
-                <div class="rounded-3xl bg-slate-900/70 border border-white/15 p-6 backdrop-blur-xl shadow-2xl space-y-4 text-center lg:text-left">
-                    <div class="w-12 h-12 rounded-2xl bg-aw-gold/20 text-aw-gold flex items-center justify-center text-2xl mx-auto lg:mx-0 shadow-inner">
-                        🚌
+                <div class="rounded-3xl bg-slate-900/80 border border-white/15 p-6 backdrop-blur-xl shadow-2xl space-y-4 text-center lg:text-left">
+                    <div class="w-12 h-12 rounded-2xl bg-aw-gold/20 text-aw-gold flex items-center justify-center mx-auto lg:mx-0 shadow-inner">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
                     </div>
                     <div>
                         <h2 class="text-white font-bold text-base">Rencanakan Rombongan Anda</h2>
@@ -206,23 +197,17 @@
                                 {{-- Dark Overlay Gradient --}}
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-black/30 pointer-events-none"></div>
 
-                                {{-- TOP BADGES --}}
-                                <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2 pointer-events-none">
-                                    {{-- Left Badge --}}
-                                    @if($doc->badge_text)
-                                        <span class="px-2.5 py-1 rounded-full bg-slate-950/85 text-amber-300 font-bold text-[10px] tracking-wide border border-amber-400/40 backdrop-blur-md shadow flex items-center gap-1">
-                                            <span>⭐</span>
-                                            <span class="truncate max-w-[150px]">{{ $doc->badge_text }}</span>
-                                        </span>
-                                    @else
-                                        <span></span>
-                                    @endif
-
-                                    {{-- Right Badge: JUMLAH MEMORI DALAM KOTAK --}}
+                                {{-- TOP BADGE: JUMLAH MEMORI DALAM KOTAK --}}
+                                <div class="absolute top-3 right-3 pointer-events-none">
                                     <span class="px-2.5 py-1 rounded-full bg-slate-950/90 text-teal-300 font-extrabold text-[11px] border border-teal-400/50 backdrop-blur-md shadow-lg flex items-center gap-1.5">
-                                        <span>📸 {{ $photoCount }} Foto</span>
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        <span>{{ $photoCount }} Foto</span>
                                         @if($videoCount > 0)
-                                            <span class="text-amber-300">· 🎥 {{ $videoCount }} Video</span>
+                                            <span class="text-amber-300 flex items-center gap-1">
+                                                ·
+                                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                                {{ $videoCount }} Video
+                                            </span>
                                         @endif
                                     </span>
                                 </div>
@@ -237,8 +222,9 @@
                                 {{-- BOTTOM DESTINATION CHIP --}}
                                 @if($doc->destination)
                                     <div class="absolute bottom-3 left-3 pointer-events-none">
-                                        <span class="px-2.5 py-1 rounded-lg bg-black/75 text-white font-semibold text-[10px] border border-white/15 backdrop-blur-md">
-                                            📍 {{ $doc->destination->name }}
+                                        <span class="px-2.5 py-1 rounded-lg bg-black/75 text-white font-semibold text-[10px] border border-white/15 backdrop-blur-md flex items-center gap-1">
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                            {{ $doc->destination->name }}
                                         </span>
                                     </div>
                                 @endif
@@ -275,44 +261,35 @@
                                 </div>
                             </div>
 
-                            {{-- 3. CARD BODY (INFO ROMBONGAN) --}}
-                            <div class="p-5 space-y-3">
+                            {{-- 3. CARD BODY (INFO ROMBONGAN) - SIMPLIFIED --}}
+                            <div class="p-5 space-y-2">
+                                @if($doc->badge_text || $doc->participant_count)
+                                    <div class="flex items-center gap-2 flex-wrap">
+                                        @if($doc->badge_text)
+                                            <span class="px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30 text-[10px] font-bold">
+                                                {{ $doc->badge_text }}
+                                            </span>
+                                        @endif
+                                        @if($doc->participant_count)
+                                            <span class="px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 text-[10px] font-semibold">
+                                                {{ $doc->participant_count }} Pax
+                                            </span>
+                                        @endif
+                                    </div>
+                                @endif
                                 <h3 class="font-display font-bold text-white text-base leading-snug group-hover:text-teal-300 transition-colors line-clamp-2"
                                     title="{{ $doc->title }}">
                                     {{ $doc->title }}
                                 </h3>
-
-                                @if($doc->description)
-                                    <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">
-                                        {{ $doc->description }}
-                                    </p>
-                                @endif
-
-                                {{-- Meta Badges: Tanggal & Pax --}}
-                                <div class="pt-2 flex items-center gap-3 text-xs text-slate-400 border-t border-white/10">
-                                    @if($doc->trip_date)
-                                        <span class="flex items-center gap-1">
-                                            <span>📅</span>
-                                            <span>{{ $doc->trip_date->format('d M Y') }}</span>
-                                        </span>
-                                    @endif
-                                    @if($doc->participant_count)
-                                        <span class="flex items-center gap-1">
-                                            <span>👥</span>
-                                            <span class="font-semibold text-teal-300">{{ $doc->participant_count }} Pax</span>
-                                        </span>
-                                    @endif
-                                </div>
                             </div>
                         </div>
 
                         {{-- 4. CARD FOOTER CALL-TO-ACTION --}}
-                        <div class="p-4 bg-slate-900/90 border-t border-white/10 flex items-center justify-between gap-3">
+                        <div class="p-4 bg-slate-900/90 border-t border-white/10">
                             <button type="button" 
                                     @click="openModal({{ json_encode($albumPayload) }}, 0)"
                                     class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-teal-500/20 to-teal-400/10 hover:from-teal-500 hover:to-teal-400 hover:text-slate-950 border border-teal-500/30 text-teal-300 font-bold text-xs text-center transition-all duration-300 flex items-center justify-center gap-2 shadow-sm">
-                                <span>Lihat Semua {{ $totalMediaCount }} Foto &amp; Video</span>
-                                <span>→</span>
+                                <span>Lihat Foto/Video →</span>
                             </button>
                         </div>
 
@@ -356,7 +333,10 @@
                               x-text="currentDoc ? currentDoc.badge_text || 'Dokumentasi Rombongan' : ''"></span>
                         
                         <template x-if="currentDoc && currentDoc.destination">
-                            <span class="text-xs text-slate-400" x-text="'📍 ' + currentDoc.destination"></span>
+                            <span class="text-xs text-slate-400 flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                <span x-text="currentDoc.destination"></span>
+                            </span>
                         </template>
 
                         <template x-if="currentDoc && currentDoc.trip_date">
@@ -376,9 +356,9 @@
 
                     <button type="button" 
                             @click="closeModal()" 
-                            class="w-9 h-9 rounded-full bg-white/10 hover:bg-rose-500 hover:text-white text-slate-300 flex items-center justify-center transition-all text-sm font-bold"
+                            class="w-9 h-9 rounded-full bg-white/10 hover:bg-rose-500 hover:text-white text-slate-300 flex items-center justify-center transition-all"
                             title="Tutup (ESC)">
-                        ✕
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
             </div>
@@ -440,8 +420,10 @@
 
                         {{-- Caption Overlay --}}
                         <template x-if="currentMedia.caption">
-                            <p class="mt-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-white/10 text-xs text-amber-300 text-center max-w-xl backdrop-blur-sm shadow"
-                               x-text="'🎥 ' + currentMedia.caption"></p>
+                            <p class="mt-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-white/10 text-xs text-amber-300 text-center max-w-xl backdrop-blur-sm shadow flex items-center gap-1.5 justify-center">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                                <span x-text="currentMedia.caption"></span>
+                            </p>
                         </template>
                     </div>
                 </template>
@@ -490,7 +472,8 @@
                    target="_blank" 
                    rel="noopener"
                    class="shrink-0 px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition-all">
-                    <span>💬 Tanya Paket Seperti Ini via WA</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    <span>Tanya Paket Seperti Ini via WA</span>
                 </a>
             </div>
 

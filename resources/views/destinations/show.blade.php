@@ -30,7 +30,10 @@
                     {{ $destination->name }}
                 </h1>
                 <p class="text-slate-300 text-xs sm:text-sm flex items-center gap-2">
-                    <span>📍 {{ $destination->location }}</span>
+                    <span class="flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        {{ $destination->location }}
+                    </span>
                     <span>•</span>
                     <span>Min. Peserta: <strong>{{ $destination->min_pax }} Pax</strong></span>
                 </p>
@@ -70,7 +73,8 @@
                 @if(optional($destination->detail)->itinerary)
                     <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
                         <h2 class="font-display font-bold text-xl text-aw-navy border-b border-slate-100 pb-3 flex items-center gap-2">
-                            <span>🗺️</span> Rencana Perjalanan (Itinerary)
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                            Rencana Perjalanan (Itinerary)
                         </h2>
 
                         <div class="space-y-4 relative before:absolute before:inset-0 before:left-3 before:w-0.5 before:bg-aw-gold/30">
@@ -115,7 +119,8 @@
                         @if(optional($destination->detail)->exclusions)
                             <div class="bg-rose-50/70 rounded-3xl p-6 border border-rose-200 space-y-3">
                                 <h3 class="font-display font-bold text-sm text-rose-900 flex items-center gap-2 uppercase tracking-wider">
-                                    <span>❌</span> Tidak Termasuk (Exclusions)
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                    Tidak Termasuk (Exclusions)
                                 </h3>
                                 <ul class="space-y-2 text-xs text-rose-800">
                                     @foreach($destination->detail->exclusions as $exc)
@@ -164,7 +169,8 @@
                         <a href="{{ $siteSettings->whatsapp_url }}?text={{ urlencode('Halo Admin AW Tour, saya tertarik konsultasi paket ' . $destination->name) }}" 
                            target="_blank"
                            class="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 px-4 rounded-full transition-all text-xs">
-                            <span>💬 Chat WA Admin (+{{ $siteSettings->whatsapp_number }})</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                            <span>Chat WA Admin (+{{ $siteSettings->whatsapp_number }})</span>
                         </a>
                     </div>
 

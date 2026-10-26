@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CalendarController as AdminCalendarController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DestinationController as AdminDestinationController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
+use App\Http\Controllers\Admin\OpenTripController as AdminOpenTripController;
 use App\Http\Controllers\Admin\RequestController as AdminRequestController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\TransportController as AdminTransportController;
@@ -46,6 +47,7 @@ Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index
 Route::get('/quotation/builder', [CustomRequestController::class, 'create'])->name('quotation.create');
 Route::post('/quotation/builder', [CustomRequestController::class, 'store'])->name('quotation.store');
 Route::get('/quotation/success/{ticket_number}', [CustomRequestController::class, 'success'])->name('quotation.success');
+Route::get('/quotation/status/{ticket_number}', [CustomRequestController::class, 'checkStatus'])->name('quotation.status');
 
 // Jadwal Open Trip (Lead Generator)
 Route::get('/open-trips', [OpenTripController::class, 'index'])->name('open-trips.index');
@@ -93,6 +95,9 @@ Route::prefix(config('awtour.admin_path', 'admin'))->name('admin.')->middleware(
 
     // CRUD Katalog Destinasi Wisata
     Route::resource('destinations', AdminDestinationController::class);
+
+    // CRUD Jadwal Open Trip
+    Route::resource('open-trips', AdminOpenTripController::class);
 
     // CRUD Dokumentasi & Galeri Foto
     Route::delete('/gallery/media/{mediaId}', [AdminGalleryController::class, 'destroyMedia'])->name('gallery.media.destroy');

@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="id" class="h-full bg-slate-950">
+﻿<!DOCTYPE html>
+<html lang="id" class="h-full bg-[#060608]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +21,13 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="h-full font-sans antialiased text-slate-100 bg-slate-950 flex items-center justify-center p-4">
+<body class="h-full font-sans antialiased text-zinc-100 bg-[#060608] flex items-center justify-center p-4">
 
     <div class="max-w-md w-full space-y-8" x-data="{ showPass: false }">
         
         {{-- BRAND LOGO & SECURITY HEADER --}}
         <div class="text-center space-y-3">
-            <div class="inline-flex items-center justify-center p-3 rounded-2xl bg-aw-navy border border-slate-800 shadow-2xl">
+            <div class="inline-flex items-center justify-center p-3 rounded-2xl bg-[#0B0B0E] border border-white/[0.07] shadow-2xl">
                 <img src="{{ asset('images/logo.png') }}" 
                      alt="AW Tour" 
                      class="h-12 w-auto object-contain"
@@ -41,18 +41,19 @@
                 <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide">
                     Portal Executive Admin
                 </h2>
-                <p class="text-xs text-slate-400">
+                <p class="text-xs text-zinc-400">
                     AW Tour Operator Surabaya — Executive Access Only
                 </p>
             </div>
 
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 text-[11px] font-semibold">
-                🔒 Area Akses Terbatas & Terenkripsi
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                Area Akses Terbatas &amp; Terenkripsi
             </div>
         </div>
 
         {{-- LOGIN CARD FORM --}}
-        <div class="bg-aw-navy/90 rounded-3xl p-8 shadow-2xl border border-slate-800 space-y-6 backdrop-blur-md">
+        <div class="bg-[#0B0B0E]/90 rounded-3xl p-8 shadow-2xl border border-white/[0.07] space-y-6 backdrop-blur-md">
             
             {{-- Flash Alert Errors --}}
             @if($errors->any())
@@ -67,8 +68,9 @@
             @endif
 
             @if(session('success'))
-                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs">
-                    ✓ {{ session('success') }}
+                <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs flex items-center gap-2">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                    <span>{{ session('success') }}</span>
                 </div>
             @endif
 
@@ -83,7 +85,7 @@
 
                 {{-- Email Input --}}
                 <div class="space-y-1">
-                    <label for="email" class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                    <label for class="block text-xs md:text-sm font-medium text-zinc-400 mb-2">
                         Email Administrator <span class="text-rose-400">*</span>
                     </label>
                     <div class="relative">
@@ -94,13 +96,13 @@
                                required 
                                autofocus
                                placeholder="admin@awtour.com" 
-                               class="w-full rounded-xl bg-slate-900 border-slate-700 text-white placeholder-slate-500 text-xs py-3 px-4 focus:border-aw-gold focus:ring-aw-gold">
+                               class="block w-full bg-zinc-950/80 border border-white/10 text-zinc-100 placeholder-zinc-500 rounded-xl px-4 py-3 text-sm transition-all focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 shadow-inner">
                     </div>
                 </div>
 
                 {{-- Password Input with Visibility Toggle --}}
                 <div class="space-y-1">
-                    <label for="password" class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                    <label for class="block text-xs md:text-sm font-medium text-zinc-400 mb-2">
                         Kata Sandi / Password <span class="text-rose-400">*</span>
                     </label>
                     <div class="relative">
@@ -109,20 +111,20 @@
                                name="password" 
                                required
                                placeholder="••••••••" 
-                               class="w-full rounded-xl bg-slate-900 border-slate-700 text-white placeholder-slate-500 text-xs py-3 px-4 pr-10 focus:border-aw-gold focus:ring-aw-gold">
+                               class="block w-full bg-zinc-950/80 border border-white/10 text-zinc-100 placeholder-zinc-500 rounded-xl px-4 py-3 text-sm transition-all focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 shadow-inner">
                         
                         <button type="button" 
                                 @click="showPass = !showPass" 
-                                class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs">
+                                class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-white text-xs">
                             <span x-text="showPass ? 'Sembunyikan' : 'Lihat'"></span>
                         </button>
                     </div>
                 </div>
 
                 {{-- Remember Me & Help --}}
-                <div class="flex items-center justify-between text-xs text-slate-400">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" name="remember" class="rounded bg-slate-900 border-slate-700 text-aw-gold focus:ring-aw-gold">
+                <div class="flex items-center justify-between text-xs text-zinc-400">
+                    <label class="block text-xs md:text-sm font-medium text-zinc-400 mb-2">
+                        <input type="checkbox" name="remember" class="block w-full bg-zinc-950/80 border border-white/10 text-zinc-100 placeholder-zinc-500 rounded-xl px-4 py-3 text-sm transition-all focus:border-amber-500/50 focus:ring-1 focus:ring-amber-500/50 shadow-inner">
                         <span>Ingat Saya di Perangkat Ini</span>
                     </label>
                 </div>
@@ -143,7 +145,7 @@
 
         {{-- FOOTER BACK TO WEBSITE LINK --}}
         <div class="text-center">
-            <a href="{{ route('home') }}" class="text-xs text-slate-500 hover:text-aw-gold transition-colors inline-flex items-center gap-1">
+            <a href="{{ route('home') }}" class="text-xs text-zinc-500 hover:text-aw-gold transition-colors inline-flex items-center gap-1">
                 &larr; Kembali ke Halaman Utama Website Publik
             </a>
         </div>

@@ -5,31 +5,31 @@
 
 @section('content')
 {{-- HERO BANNER --}}
-<section class="bg-aw-navy text-white pt-12 pb-16 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D39252_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<section class="relative z-10 min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] flex flex-col justify-center items-center text-center border-b border-white/10 overflow-hidden bg-cover bg-center px-4 sm:px-6 lg:px-8 py-16 pt-28 sm:pt-32" style="background-image: url('{{ asset('images/laut-bg.png') }}');">
+    <div class="absolute inset-0 bg-slate-950/45 backdrop-blur-[1px] -z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent -z-10"></div>
+    <div class="max-w-7xl mx-auto w-full relative z-10 pt-10 sm:pt-12">
         <div class="text-center max-w-3xl mx-auto">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-aw-gold/20 text-aw-gold text-xs font-semibold uppercase tracking-wider mb-4 border border-aw-gold/30">
-                📅 Live Availability Tracker
+            <span class="inline-block px-4 py-1.5 rounded-full bg-slate-900/80 text-aw-gold text-xs font-semibold uppercase tracking-wider mb-4 border border-aw-gold/40 shadow-md">
+                Live Availability Tracker
             </span>
-            <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 Kalender Ketersediaan Tanggal Tour
             </h1>
-            <p class="text-gray-300 text-base sm:text-lg mb-6">
+            <p class="text-gray-200 text-base sm:text-lg mb-6 leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] font-medium">
                 Pantau ketersediaan slot tour rombongan B2B kampus, sekolah, dan perusahaan secara <span class="text-aw-gold font-semibold">real-time</span>. Pilih tanggal yang masih hijau untuk mengajukan Custom Tour!
             </p>
 
-            {{-- Quick Info Badges --}}
             <div class="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-gray-200">
-                <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10 shadow-sm">
                     <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span><strong>Hijau:</strong> Slot Kunjungan/Tour Tersedia</span>
                 </div>
-                <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10 shadow-sm">
                     <span class="w-3 h-3 rounded-full bg-rose-500"></span>
                     <span><strong>Merah:</strong> Fully Booked / Kuota Terisi</span>
                 </div>
-                <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-lg backdrop-blur-sm">
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10 shadow-sm">
                     <span class="w-3 h-3 rounded-full bg-gray-400"></span>
                     <span><strong>Abu-abu:</strong> Tanggal Terlampaui</span>
                 </div>

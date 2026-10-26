@@ -31,9 +31,57 @@ class DestinationSeeder extends Seeder
         // ── Daftar Destinasi ───────────────────────────────────────────────
         $destinations = [
 
+            // ── Destinasi Luar Negeri (Internasional) ───────────────────────
+            [
+                'category_id'       => $studiTour->id,
+                'location_type'     => 'luar_negeri',
+                'name'              => 'Singapore City Tour & Universal Studios',
+                'slug'              => 'singapore-city-tour-universal-studios',
+                'location'          => 'Singapore',
+                'short_description' => 'Paket eksplorasi keindahan Marina Bay Sands, Jewel Changi, Merlion Park, hingga keseruan di Universal Studios Singapore untuk rombongan B2B & sekolah.',
+                'min_price'         => 4500000,
+                'max_price'         => 7500000,
+                'min_pax'           => 15,
+                'is_featured'       => true,
+                'is_active'         => true,
+                'cover_image'       => 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1000&q=80',
+                'inclusions'        => ['Tiket Pesawat PP', 'Hotel Bintang 3 (2 Malam)', 'Tiket Universal Studios Singapore', 'Makan 3x Sehari', 'Tour Guide Berpengalaman', 'Transportasi Bus AC Eksklusif'],
+                'exclusions'        => ['Paspor & Pengeluaran Pribadi', 'Tip Guide & Driver Sukarela'],
+                'itinerary'         => [
+                    ['hari' => 1, 'judul' => 'Surabaya → Changi Airport → Marina Bay', 'kegiatan' => 'Terbang ke Singapura, kunjungan Jewel Changi, foto di Marina Bay Sands & Merlion Park'],
+                    ['hari' => 2, 'judul' => 'Universal Studios Singapore (USS) & Sentosa', 'kegiatan' => 'Full day seharian seru di Universal Studios Singapore dan Sentosa Island'],
+                    ['hari' => 3, 'judul' => 'Bugis Street → Surabaya', 'kegiatan' => 'Belanja oleh-oleh di Bugis Street & Orchard Road, transfer ke Changi Airport, kembali ke Surabaya'],
+                ],
+                'notes' => 'Peserta wajib memiliki paspor yang masih berlaku minimal 6 bulan sebelum keberangkatan.',
+            ],
+
+            [
+                'category_id'       => $studiTour->id,
+                'location_type'     => 'luar_negeri',
+                'name'              => 'Kuala Lumpur & Genting Highlands',
+                'slug'              => 'kuala-lumpur-genting-highlands',
+                'location'          => 'Kuala Lumpur, Malaysia',
+                'short_description' => 'Jelajahi ikon Menara Kembar Petronas, Batu Caves, hingga menikmati kereta gantung dan hiburan puncak Genting Highlands.',
+                'min_price'         => 3800000,
+                'max_price'         => 6200000,
+                'min_pax'           => 15,
+                'is_featured'       => true,
+                'is_active'         => true,
+                'cover_image'       => 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1000&q=80',
+                'inclusions'        => ['Tiket Pesawat PP', 'Hotel Bintang 3 (2 Malam)', 'Tiket Awana SkyWay Genting', 'Makan 3x Sehari', 'Tour Guide Profesional', 'Transportasi Bus Pariwisata AC'],
+                'exclusions'        => ['Paspor & Pengeluaran Pribadi', 'Tip Guide & Driver'],
+                'itinerary'         => [
+                    ['hari' => 1, 'judul' => 'Surabaya → Kuala Lumpur', 'kegiatan' => 'Penerbangan ke KLIA, city tour singkat Dataran Merdeka & Petronas Twin Towers'],
+                    ['hari' => 2, 'judul' => 'Genting Highlands & Batu Caves', 'kegiatan' => 'Kunjungan ke kuil suci Batu Caves, naik kereta gantung Awana SkyWay ke puncak Genting Highlands'],
+                    ['hari' => 3, 'judul' => 'Bukit Bintang → Surabaya', 'kegiatan' => 'Belanja di Bukit Bintang / Petaling Street, transfer ke bandara untuk penerbangan pulang ke Surabaya'],
+                ],
+                'notes' => 'Pastikan paspor valid dan membawa mata uang Ringgit Malaysia (MYR) secukupnya.',
+            ],
+
             // ── Studi Tour ─────────────────────────────────────────────────
             [
                 'category_id'       => $studiTour->id,
+                'location_type'     => 'lokal',
                 'name'              => 'Bromo Tengger Semeru',
                 'slug'              => 'bromo-tengger-semeru',
                 'location'          => 'Malang, Jawa Timur',
@@ -57,6 +105,7 @@ class DestinationSeeder extends Seeder
 
             [
                 'category_id'       => $studiTour->id,
+                'location_type'     => 'lokal',
                 'name'              => 'Kawah Ijen & Banyuwangi',
                 'slug'              => 'kawah-ijen-banyuwangi',
                 'location'          => 'Banyuwangi, Jawa Timur',
@@ -79,6 +128,7 @@ class DestinationSeeder extends Seeder
             // ── Capacity Building ──────────────────────────────────────────
             [
                 'category_id'       => $capacityBuild->id,
+                'location_type'     => 'lokal',
                 'name'              => 'Outbound Batu Malang',
                 'slug'              => 'outbound-batu-malang',
                 'location'          => 'Batu, Malang, Jawa Timur',
@@ -100,6 +150,7 @@ class DestinationSeeder extends Seeder
             // ── Family Gathering ───────────────────────────────────────────
             [
                 'category_id'       => $familyGathering->id,
+                'location_type'     => 'lokal',
                 'name'              => 'Lombok & Gili Islands',
                 'slug'              => 'lombok-gili-islands',
                 'location'          => 'Lombok, Nusa Tenggara Barat',

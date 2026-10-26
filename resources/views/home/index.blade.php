@@ -1,90 +1,67 @@
 @extends('layouts.app')
 
-@section('title', 'AW Tour Operator Surabaya — Spesialis Group Customized Tour')
+@section('title', $siteSettings->site_title ?? 'AW Tour Operator Surabaya — Spesialis Group Customized Tour')
 
 @section('content')
 
 <!-- ========================================================================= -->
 <!-- 1. HERO SECTION (Header Utama Landing Page) -->
 <!-- ========================================================================= -->
-<section class="relative isolate min-h-[min(85vh,58rem)] w-full max-w-full overflow-hidden text-white pt-12 pb-16 sm:pb-24 lg:pt-20 lg:pb-32 flex items-center">
-    
-    <!-- Cinematic Background Photo -->
-    <div class="absolute inset-0 z-0 h-full w-full overflow-hidden">
-        <img src="{{ asset('images/Bromo.jpg') }}"
-             alt="Pemandangan Bromo Indonesia"
-             class="absolute inset-0 block h-full w-full max-w-none object-cover object-center"
-             onerror="this.style.display='none'; document.getElementById('hero-fallback').classList.remove('hidden');"
-             loading="eager">
-        <!-- Fallback gradient if image fails -->
-        <div id="hero-fallback" class="hidden absolute inset-0 bg-gradient-to-br from-aw-navy via-aw-forest to-aw-navy"></div>
-        <!-- Dark cinematic overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-aw-navy/85 via-aw-navy/70 to-aw-forest/60"></div>
-        <!-- Extra bottom gradient for text readability -->
-        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-aw-navy/80 to-transparent"></div>
-    </div>
+<section class="relative w-full min-h-screen bg-cover bg-center overflow-hidden flex items-center justify-center pt-28 sm:pt-32" style="background-image: url('{{ asset('images/hero-bg.jpg') }}');">
+    <!-- 1. OVERLAY GELAP (Wajib berada tepat di atas background) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/70 to-slate-900/30 z-10 pointer-events-none"></div>
 
-    <!-- Glassmorphism Glow Orbs -->
-    <div class="absolute -top-12 -right-12 h-56 w-56 rounded-full bg-aw-gold/15 blur-3xl pointer-events-none z-0 sm:-top-20 sm:-right-20 sm:h-80 sm:w-80 lg:h-96 lg:w-96"></div>
-    <div class="absolute bottom-0 left-4 h-48 w-48 rounded-full bg-aw-sage/15 blur-3xl pointer-events-none z-0 sm:left-10 sm:h-64 sm:w-64 lg:h-80 lg:w-80"></div>
-
-    <div class="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <!-- 2. KONTEN (Harus menggunakan z-20 agar berada DI ATAS overlay) -->
+    <div class="relative z-20 container mx-auto px-4 py-20 lg:py-24 flex items-center justify-center">
+        <div class="w-full max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <!-- LEFT COLUMN: Headline & CTA -->
-            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                
-                <!-- Badge Tagline -->
-                <div class="inline-flex items-center gap-2 bg-aw-forest/80 border border-aw-sage/40 px-3.5 py-1.5 rounded-full text-xs font-semibold text-aw-mint">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Spesialis Group Customized Tour Surabaya (B2B)</span>
-                </div>
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left relative">
+                <!-- Thin Dark Gradient Layer Behind Text -->
+                <div class="absolute -inset-6 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-transparent rounded-3xl blur-2xl -z-10 pointer-events-none"></div>
 
                 <!-- Main Title -->
-                <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                    Wujudkan Perjalanan Rombongan Impian bersama <span class="text-aw-gold italic">AW Tour Operator</span>
+                @php
+                    $heading = $siteSettings->hero_heading ?? 'Wujudkan Perjalanan Rombongan Impian bersama AW Tour Operator';
+                    $heading = str_replace('Rombongan Impian', '<span class="text-teal-400 font-extrabold drop-shadow-[0_2px_10px_rgba(45,212,191,0.5)]">Rombongan Impian</span>', $heading);
+                    $heading = str_replace('AW Tour Operator', '<span class="text-amber-400 font-extrabold drop-shadow-[0_2px_10px_rgba(251,191,36,0.5)]">AW Tour Operator</span>', $heading);
+                @endphp
+                <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
+                    {!! $heading !!}
                 </h1>
 
                 <!-- Subtitle Description -->
-                <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                    Solusi kustomisasi paket <strong class="text-white">Studi Tour, Capacity Building, & Family Gathering</strong> untuk kampus, sekolah, dan perusahaan. Pilih destinasi serta armada yang sesuai dengan kebutuhan rombongan.
+                <p class="text-slate-100 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 drop-shadow-[0_2px_8px_rgba(0,0,0,1)] font-semibold">
+                    {{ $siteSettings->hero_subheading ?? 'Solusi kustomisasi paket Studi Tour, Capacity Building, & Family Gathering untuk kampus, sekolah, dan perusahaan. Pilih destinasi serta armada yang sesuai dengan kebutuhan rombongan.' }}
                 </p>
 
                 <!-- CTA Action Buttons -->
-                <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start">
                     
                     <a href="{{ route('quotation.create') }}" 
-                       class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-aw-gold hover:bg-aw-gold-600 text-white font-bold px-7 py-3.5 rounded-full shadow-xl shadow-aw-gold/20 hover:scale-105 active:scale-95 transition-all text-sm">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                       class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-amber-500 text-slate-950 font-bold px-7 py-3.5 rounded-full shadow-xl shadow-amber-500/25 hover:bg-amber-400 hover:scale-105 active:scale-95 transition-all text-sm">
+                        <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
                         </svg>
                         <span>Buat Custom Quotation</span>
-                    </a>
-
-                    <a href="{{ $siteSettings->whatsapp_url }}?text={{ urlencode('Halo Admin AW Tour, saya tertarik konsultasi paket tour rombongan') }}" 
-                       target="_blank"
-                       class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800/80 hover:bg-slate-700 text-white border border-slate-600/80 font-semibold px-6 py-3.5 rounded-full hover:border-emerald-400 transition-all text-sm">
-                        <svg class="w-5 h-5 text-emerald-400 fill-current" viewBox="0 0 24 24">
-                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.157 4.228 4.223-1.111z"/>
-                        </svg>
-                        <span>Konsultasi WA Admin</span>
                     </a>
 
                 </div>
 
                 <!-- Stats Quick Counter -->
-                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-800 text-center lg:text-left">
+                <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-600/80 text-center lg:text-left">
                     <div>
-                        <p class="font-display font-extrabold text-2xl text-aw-gold">50+</p>
-                        <p class="text-xs text-slate-400">Rombongan Terlayani</p>
+                        <p class="font-display font-extrabold text-2xl sm:text-3xl text-amber-400 drop-shadow-[0_2px_6px_rgba(0,0,0,1)]">50+</p>
+                        <p class="text-xs sm:text-sm text-slate-100 font-bold drop-shadow-[0_1px_4px_rgba(0,0,0,1)]">Rombongan Terlayani</p>
                     </div>
                     <div>
-                        <p class="font-display font-extrabold text-2xl text-aw-mint">100%</p>
-                        <p class="text-xs text-slate-400">Custom Itinerary</p>
+                        <p class="font-display font-extrabold text-2xl sm:text-3xl text-teal-400 drop-shadow-[0_2px_6px_rgba(0,0,0,1)]">100%</p>
+                        <p class="text-xs sm:text-sm text-slate-100 font-bold drop-shadow-[0_1px_4px_rgba(0,0,0,1)]">Custom Itinerary</p>
                     </div>
                     <div>
-                        <p class="font-display font-extrabold text-2xl text-white">&lt; 15 Mnt</p>
-                        <p class="text-xs text-slate-400">Respon Quotation WA</p>
+                        <p class="font-display font-extrabold text-2xl sm:text-3xl text-amber-300 drop-shadow-[0_2px_6px_rgba(0,0,0,1)]">&lt; 15 Mnt</p>
+                        <p class="text-xs sm:text-sm text-slate-100 font-bold drop-shadow-[0_1px_4px_rgba(0,0,0,1)]">Respon Quotation WA</p>
                     </div>
                 </div>
 
@@ -93,75 +70,38 @@
             <!-- RIGHT COLUMN: Interactive Documentation Gallery Preview Card -->
             <div class="lg:col-span-5 relative">
                 
-                {{-- Floating Background Glow --}}
-                <div class="absolute -inset-1 rounded-3xl bg-gradient-to-r from-teal-500/20 via-aw-gold/20 to-emerald-500/20 blur-xl opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                {{-- Smooth Bright/Soft Gradient Behind Gallery Card --}}
+                <div class="absolute -inset-4 bg-gradient-to-tr from-teal-400/25 via-emerald-400/20 to-sky-300/30 rounded-3xl blur-3xl -z-10 pointer-events-none"></div>
 
-                <div class="relative rounded-3xl bg-slate-900/50 backdrop-blur-xl border border-white/15 shadow-2xl shadow-slate-950/60 p-4 sm:p-5 space-y-4 hover:scale-[1.02] hover:border-teal-400/40 hover:shadow-[0_0_35px_rgba(45,212,191,0.18)] transition-all duration-300 group">
+                <div class="relative rounded-3xl bg-slate-900/75 backdrop-blur-xl border border-teal-500/30 shadow-2xl shadow-teal-950/60 p-6 space-y-5 hover:scale-[1.01] hover:border-teal-400/60 hover:shadow-[0_0_35px_rgba(45,212,191,0.25)] transition-all duration-300 group">
                     
                     {{-- Header Top Bar --}}
-                    <div class="flex items-center justify-between border-b border-white/10 pb-3">
-                        <div class="flex items-center gap-2">
-                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                            <span class="text-xs font-bold text-white tracking-wide">DOKUMENTASI RESMI ROMBONGAN</span>
-                        </div>
-                        <span class="text-[10px] font-mono text-teal-300 font-bold uppercase tracking-wider bg-teal-500/10 px-2.5 py-1 rounded-full border border-teal-400/30">
-                            50+ Trip
-                        </span>
+                    <div class="text-center pb-1">
+                        <h3 class="text-sm font-semibold text-white tracking-wider uppercase">Gallery Tour</h3>
                     </div>
 
                     {{-- Main Photo Showcase --}}
-                    <div class="relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 border border-white/10 shadow-lg">
+                    <div class="relative aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 shadow-xl">
                         <img src="{{ $heroDocumentation ? $heroDocumentation->image_url : asset('images/Bromo.jpg') }}" 
                              alt="{{ $heroDocumentation ? $heroDocumentation->title : 'Dokumentasi Tour Rombongan AW Tour' }}" 
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                              loading="eager">
                         
-                        {{-- Dark Gradient Overlay for Readability --}}
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-black/30"></div>
-
-                        {{-- Top Badge: "Rombongan Tour Terbanyak - 50+ Trip" --}}
-                        <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2">
-                            <span class="px-3 py-1 rounded-full bg-slate-950/85 text-teal-300 font-extrabold text-[11px] tracking-wide border border-teal-400/40 backdrop-blur-md shadow-md flex items-center gap-1.5">
-                                <span>🏆</span>
-                                <span>{{ $heroDocumentation && $heroDocumentation->badge_text ? $heroDocumentation->badge_text : 'Rombongan Tour Terbanyak - 50+ Trip' }}</span>
-                            </span>
-
-                            <span class="px-2 py-0.5 rounded-md bg-black/60 text-slate-300 text-[10px] font-medium border border-white/10 backdrop-blur-sm">
-                                Real Photo
-                            </span>
-                        </div>
-
-                        {{-- Bottom Photo Info --}}
-                        <div class="absolute bottom-3 inset-x-3 space-y-1">
-                            @if($heroDocumentation && $heroDocumentation->destination)
-                                <span class="inline-block text-[10px] font-bold text-amber-300 bg-black/70 px-2 py-0.5 rounded border border-amber-400/30 backdrop-blur-sm">
-                                    📍 {{ $heroDocumentation->destination->name }}
-                                </span>
-                            @else
-                                <span class="inline-block text-[10px] font-bold text-amber-300 bg-black/70 px-2 py-0.5 rounded border border-amber-400/30 backdrop-blur-sm">
-                                    📍 Gunung Bromo &amp; Malang Tour
-                                </span>
-                            @endif
-                            <p class="text-xs font-bold text-white line-clamp-1 drop-shadow-md">
-                                {{ $heroDocumentation ? $heroDocumentation->title : 'Studi Tour & Gathering Rombongan B2B Surabaya' }}
-                            </p>
-                        </div>
+                        {{-- Soft Gradient Overlay --}}
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-black/20"></div>
                     </div>
 
-                    {{-- Mini Strip: Trust Points --}}
-                    <div class="grid grid-cols-2 gap-2 text-center text-[11px] font-semibold text-slate-300 py-1">
-                        <div class="bg-slate-950/40 border border-white/10 rounded-xl py-1.5 px-2 flex items-center justify-center gap-1.5">
-                            <span class="text-teal-300">✓</span> <span>Dokumentasi Asli</span>
-                        </div>
-                        <div class="bg-slate-950/40 border border-white/10 rounded-xl py-1.5 px-2 flex items-center justify-center gap-1.5">
-                            <span class="text-amber-300">★</span> <span>Review B2B 5.0</span>
-                        </div>
+                    {{-- Photo Title --}}
+                    <div>
+                        <p class="text-sm font-medium text-white line-clamp-2 leading-relaxed">
+                            {{ $heroDocumentation ? $heroDocumentation->title : 'Corporate Gathering PT Semen Indonesia' }}
+                        </p>
                     </div>
 
                     {{-- Action Button: Buka Dokumentasi & Galeri Foto --}}
-                    <div class="pt-1">
+                    <div>
                         <a href="{{ route('gallery.index') }}" 
-                           class="w-full flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-2xl bg-gradient-to-r from-teal-500/20 via-teal-400/30 to-emerald-500/20 hover:from-teal-500/30 hover:to-emerald-500/30 text-teal-200 hover:text-white border border-teal-400/40 font-bold text-xs shadow-lg shadow-teal-950/40 transition-all duration-200 group-hover:border-teal-300">
+                           class="w-full flex items-center justify-center gap-2.5 py-3 px-5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs shadow-md shadow-teal-900/30 transition-all duration-200">
                             <span>Buka Dokumentasi &amp; Galeri Foto</span>
                             <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
                         </a>
@@ -170,6 +110,7 @@
                 </div>
             </div>
 
+            </div>
         </div>
     </div>
 </section>
@@ -195,15 +136,16 @@
 <!-- ========================================================================= -->
 <!-- 3. HIGHLIGHT 3 LAYANAN UTAMA -->
 <!-- ========================================================================= -->
-<section class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 bg-slate-950 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-slate-950 to-slate-950 relative overflow-hidden">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
-            <span class="text-xs font-bold uppercase tracking-widest text-aw-gold">Solusi Spesialis Kami</span>
-            <h2 class="font-display text-3xl sm:text-4xl font-bold text-aw-navy">
+        <div class="text-center max-w-2xl mx-auto space-y-3 mb-16">
+            <span class="text-emerald-400 font-semibold tracking-widest text-xs uppercase">Solusi Spesialis Kami</span>
+            <h2 class="text-white font-bold text-3xl md:text-4xl tracking-tight">
                 3 Pilar Layanan Tour Rombongan
             </h2>
-            <p class="text-slate-600 text-sm sm:text-base">
+            <p class="text-slate-400 font-normal text-sm max-w-2xl mx-auto">
                 Dirancang khusus untuk memenuhi kebutuhan perjalanan kelompok dengan fleksibilitas jadwal dan armada.
             </p>
         </div>
@@ -211,34 +153,41 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             @foreach($categories as $category)
-                <div class="bg-[#FBF9F7] rounded-2xl p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-14 h-14 rounded-2xl bg-aw-navy text-aw-gold flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform">
-                            @if($category->slug === 'studi-tour')
-                                🎓
-                            @elseif($category->slug === 'capacity-building')
-                                🏢
-                            @else
-                                👨‍👩‍👧‍👦
-                            @endif
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-aw-navy group-hover:text-aw-gold transition-colors">
-                            {{ $category->name }}
-                        </h3>
-                        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                            {{ $category->description }}
-                        </p>
+                <div class="bg-slate-900/70 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-emerald-500/30 group">
+                    
+                    <div class="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300
+                        @if($category->slug === 'studi-tour')
+                            bg-sky-500/10 border border-sky-500/30 text-sky-400 shadow-[0_0_15px_rgba(56,189,248,0.2)]
+                        @elseif($category->slug === 'capacity-building')
+                            bg-amber-500/10 border border-amber-500/30 text-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.2)]
+                        @else
+                            bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.2)]
+                        @endif">
+                        
+                        @if($category->slug === 'studi-tour')
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                            </svg>
+                        @elseif($category->slug === 'capacity-building')
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                        @else
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                        @endif
                     </div>
 
-                    <div class="pt-6 border-t border-slate-200/60 mt-6">
-                        <a href="{{ route('destinations.index') }}?category={{ $category->slug }}" 
-                           class="inline-flex items-center gap-2 text-xs font-bold text-aw-navy hover:text-aw-gold transition-colors">
-                            <span>Lihat Paket {{ $category->name }}</span>
-                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                            </svg>
-                        </a>
-                    </div>
+                    <h3 class="text-white font-bold text-xl mb-3 mt-6">
+                        {{ $category->name }}
+                    </h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        {{ $category->description }}
+                    </p>
+
                 </div>
             @endforeach
 
@@ -280,7 +229,7 @@
                             
                             <!-- Category Badge -->
                             <span class="absolute top-3 left-3 z-20 bg-aw-navy/90 backdrop-blur-sm text-aw-mint text-[11px] font-semibold px-2.5 py-1 rounded-full border border-aw-sage/30">
-                                {{ $destination->category->name }}
+                                {{ $destination->location_type === 'luar_negeri' ? 'Luar Negeri' : 'Lokal' }}
                             </span>
 
                             <!-- Destination Name Overlay -->
@@ -288,8 +237,12 @@
                                 <h3 class="font-display font-bold text-lg text-white group-hover:text-aw-gold transition-colors leading-tight">
                                     {{ $destination->name }}
                                 </h3>
-                                <p class="text-xs text-slate-300 flex items-center gap-1">
-                                    <span>📍</span> {{ $destination->location }}
+                                <p class="text-xs text-slate-300 flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                    {{ $destination->location }}
                                 </p>
                             </div>
                         </div>
@@ -444,7 +397,7 @@
             Rencanakan Perjalanan Rombongan Anda Hari Ini
         </h2>
         <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-            Dapatkan penawaran harga terbaik (*quotation*) yang disesuaikan dengan anggaran dan jumlah peserta acara Anda.
+            Dapatkan penawaran harga terbaik (quotation) yang disesuaikan dengan anggaran dan jumlah peserta acara Anda.
         </p>
         <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="{{ route('quotation.create') }}" 

@@ -23,7 +23,12 @@ class DestinationController extends Controller
     {
         $query = Destination::active()->with('category');
 
-        // Filter berdasarkan kategori (jika ada parameter category di URL)
+        // Filter berdasarkan location_type (lokal atau luar_negeri)
+        if ($request->has('location_type') && $request->location_type != '') {
+            $query->where('location_type', $request->location_type);
+        }
+
+        // Filter berdasarkan kategori (jika ada parameter category di URL) - BACKWARD COMPATIBILITY
         if ($request->has('category') && $request->category != '') {
             $query->whereHas('category', function ($q) use ($request) {
                 $q->where('slug', $request->category);
@@ -42,7 +47,7 @@ class DestinationController extends Controller
         // Pagination 9 item per halaman
         $destinations = $query->latest()->paginate(9)->withQueryString();
 
-        // Ambil semua kategori untuk filter dropdown/tabs
+        // Ambil semua kategori untuk filter dropdown/tabs (kept for backward compatibility)
         $categories = Category::active()->ordered()->get();
 
         return view('destinations.index', compact('destinations', 'categories'));

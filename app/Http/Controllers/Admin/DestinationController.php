@@ -21,7 +21,7 @@ class DestinationController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Destination::with('category')->latest();
+        $query = Destination::latest();
 
         if ($request->filled('search')) {
             $search = $request->search;
@@ -29,6 +29,10 @@ class DestinationController extends Controller
                 $q->where('name', 'like', "%{$search}%")
                   ->orWhere('location', 'like', "%{$search}%");
             });
+        }
+
+        if ($request->filled('location_type')) {
+            $query->where('location_type', $request->location_type);
         }
 
         if ($request->filled('category_id')) {
@@ -44,7 +48,7 @@ class DestinationController extends Controller
         }
 
         $destinations = $query->paginate(10)->withQueryString();
-        $categories   = Category::ordered()->get();
+        $categories = Category::orderBy('order')->get();
 
         return view('admin.destinations.index', compact('destinations', 'categories'));
     }
@@ -54,7 +58,7 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        $categories = Category::active()->ordered()->get();
+        $categories = Category::orderBy('order')->get();
         return view('admin.destinations.create', compact('categories'));
     }
 
@@ -64,7 +68,8 @@ class DestinationController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category_id'       => 'required|exists:categories,id',
+            'category_id'       => 'nullable|exists:categories,id',
+            'location_type'     => 'nullable|in:lokal,luar_negeri',
             'name'              => 'required|string|max:255',
             'location'          => 'required|string|max:255',
             'short_description' => 'required|string',
@@ -93,9 +98,11 @@ class DestinationController extends Controller
             $slug = "{$baseSlug}-{$counter}";
             $counter++;
         }
-        $validated['slug']        = $slug;
-        $validated['is_featured'] = $request->boolean('is_featured');
-        $validated['is_active']   = $request->boolean('is_active');
+        $validated['slug']          = $slug;
+        $validated['category_id']   = $validated['category_id'] ?? Category::first()?->id ?? 1;
+        $validated['location_type'] = $validated['location_type'] ?? 'lokal';
+        $validated['is_featured']   = $request->boolean('is_featured');
+        $validated['is_active']     = $request->boolean('is_active');
 
         // Handle cover image
         if ($request->hasFile('cover_image')) {
@@ -141,7 +148,7 @@ class DestinationController extends Controller
     public function edit(int $id)
     {
         $destination = Destination::with('detail')->findOrFail($id);
-        $categories  = Category::ordered()->get();
+        $categories = Category::orderBy('order')->get();
 
         return view('admin.destinations.edit', compact('destination', 'categories'));
     }
@@ -154,7 +161,8 @@ class DestinationController extends Controller
         $destination = Destination::findOrFail($id);
 
         $validated = $request->validate([
-            'category_id'       => 'required|exists:categories,id',
+            'category_id'       => 'nullable|exists:categories,id',
+            'location_type'     => 'nullable|in:lokal,luar_negeri',
             'name'              => 'required|string|max:255',
             'location'          => 'required|string|max:255',
             'short_description' => 'required|string',

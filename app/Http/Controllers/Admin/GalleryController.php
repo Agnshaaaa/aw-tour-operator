@@ -64,14 +64,14 @@ class GalleryController extends Controller
         $validated = $request->validate([
             'title'             => 'required|string|max:255',
             'destination_id'    => 'nullable|exists:destinations,id',
-            'image'             => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'photos.*'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'video_url'         => 'nullable|url',
-            'video_caption'     => 'nullable|string|max:255',
             'description'       => 'nullable|string',
             'trip_date'         => 'nullable|date',
             'participant_count' => 'nullable|integer|min:1',
             'badge_text'        => 'nullable|string|max:100',
+            'image'             => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'photos.*'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'video_url'         => 'nullable|string',
+            'video_caption'     => 'nullable|string|max:255',
             'is_featured'       => 'nullable|boolean',
             'is_active'         => 'nullable|boolean',
             'sort_order'        => 'nullable|integer',
@@ -84,7 +84,6 @@ class GalleryController extends Controller
             'photos.*.max'      => 'Ukuran masing-masing foto maksimal 5MB.',
         ]);
 
-        // 1. Upload Cover Image
         $imagePath = $request->file('image')->store('gallery', 'public');
 
         $doc = Documentation::create([
@@ -94,7 +93,7 @@ class GalleryController extends Controller
             'description'       => $validated['description'] ?? null,
             'trip_date'         => $validated['trip_date'] ?? null,
             'participant_count' => $validated['participant_count'] ?? null,
-            'badge_text'        => $validated['badge_text'] ?: 'Rombongan Tour Terbanyak - 50+ Trip',
+            'badge_text'        => $validated['badge_text'] ?? null,
             'is_featured'       => $request->has('is_featured'),
             'is_active'         => $request->has('is_active') ? true : ($request->exists('is_active') ? false : true),
             'sort_order'        => $validated['sort_order'] ?? 0,
@@ -157,14 +156,14 @@ class GalleryController extends Controller
         $validated = $request->validate([
             'title'             => 'required|string|max:255',
             'destination_id'    => 'nullable|exists:destinations,id',
-            'image'             => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'photos.*'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'video_url'         => 'nullable|url',
-            'video_caption'     => 'nullable|string|max:255',
             'description'       => 'nullable|string',
             'trip_date'         => 'nullable|date',
             'participant_count' => 'nullable|integer|min:1',
             'badge_text'        => 'nullable|string|max:100',
+            'image'             => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'photos.*'          => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'video_url'         => 'nullable|string',
+            'video_caption'     => 'nullable|string|max:255',
             'is_featured'       => 'nullable|boolean',
             'is_active'         => 'nullable|boolean',
             'sort_order'        => 'nullable|integer',
@@ -190,7 +189,7 @@ class GalleryController extends Controller
             'description'       => $validated['description'] ?? null,
             'trip_date'         => $validated['trip_date'] ?? null,
             'participant_count' => $validated['participant_count'] ?? null,
-            'badge_text'        => $validated['badge_text'] ?: 'Rombongan Tour Terbanyak - 50+ Trip',
+            'badge_text'        => $validated['badge_text'] ?? null,
             'is_featured'       => $request->has('is_featured'),
             'is_active'         => $request->has('is_active'),
             'sort_order'        => $validated['sort_order'] ?? 0,

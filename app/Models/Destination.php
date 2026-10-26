@@ -30,6 +30,7 @@ class Destination extends Model
      */
     protected $fillable = [
         'category_id',
+        'location_type',
         'name',
         'slug',
         'location',

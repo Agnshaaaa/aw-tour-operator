@@ -5,35 +5,35 @@
 
 @section('content')
 {{-- HERO BANNER --}}
-<section class="bg-aw-navy text-white pt-12 pb-16 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D39252_1px,transparent_1px)] [background-size:16px_16px]"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<section class="relative z-10 min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] flex flex-col justify-center items-center text-center border-b border-white/10 overflow-hidden bg-cover bg-center px-4 sm:px-6 lg:px-8 py-16 pt-28 sm:pt-32" style="background-image: url('{{ asset('images/laut-bg.png') }}');">
+    <div class="absolute inset-0 bg-slate-950/45 backdrop-blur-[1px] -z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent -z-10"></div>
+    <div class="max-w-7xl mx-auto w-full relative z-10 pt-10 sm:pt-12">
         <div class="text-center max-w-3xl mx-auto space-y-4">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-aw-gold/20 text-aw-gold text-xs font-semibold uppercase tracking-wider border border-aw-gold/30">
-                🚀 Fixed Schedule Open Trip
+            <span class="inline-block px-4 py-1.5 rounded-full bg-slate-900/80 text-aw-gold text-xs font-semibold uppercase tracking-wider border border-aw-gold/40 shadow-md">
+                Fixed Schedule Open Trip
             </span>
-            <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+            <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 Jadwal Keberangkatan Open Trip
             </h1>
-            <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+            <p class="text-slate-200 text-base sm:text-lg leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] font-medium">
                 Gabung bersama perjalanan wisata seru tanpa batas minimum peserta! Solusi ekonomis bagi individu, pasangan, atau kelompok kecil dengan fasilitas kelas pangeran.
             </p>
 
-            {{-- Trust Badges --}}
-            <div class="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm text-slate-300">
-                <div class="flex items-center gap-2">
+            <div class="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm text-slate-200 font-medium">
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10 shadow-sm">
                     <svg class="w-5 h-5 text-aw-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                     </svg>
                     <span>Pasti Berangkat</span>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10 shadow-sm">
                     <svg class="w-5 h-5 text-aw-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                     </svg>
                     <span>Penjemputan Surabaya & Malang</span>
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-lg backdrop-blur-sm border border-white/10 shadow-sm">
                     <svg class="w-5 h-5 text-aw-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
@@ -83,8 +83,9 @@
 
                             {{-- Category Badge --}}
                             <div class="absolute top-4 left-4">
-                                <span class="bg-aw-navy/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20">
-                                    📍 {{ $trip->destination->location }}
+                                <span class="bg-aw-navy/90 backdrop-blur-md text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                    {{ $trip->destination->location }}
                                 </span>
                             </div>
 

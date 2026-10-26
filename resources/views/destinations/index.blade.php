@@ -5,34 +5,45 @@
 @section('content')
 
 <!-- HEADER BANNER -->
-<div class="bg-aw-navy text-white py-12 border-b border-aw-sage/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
-        <span class="text-xs font-bold uppercase tracking-widest text-aw-gold">Group Tour Catalog</span>
-        <h1 class="font-display text-3xl sm:text-4xl font-extrabold">Katalog Destinasi Tour Rombongan</h1>
-        <p class="text-slate-300 text-xs sm:text-sm max-w-2xl mx-auto">
-            Jelajahi berbagai pilihan destinasi wisata populer untuk paket Studi Tour, Capacity Building, dan Family Gathering.
-        </p>
+<section class="relative z-10 min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] flex flex-col justify-center items-center text-center border-b border-white/10 overflow-hidden bg-cover bg-center px-4 sm:px-6 lg:px-8 py-16 pt-28 sm:pt-32" style="background-image: url('{{ asset('images/laut-bg.png') }}');">
+    <div class="absolute inset-0 bg-slate-950/45 backdrop-blur-[1px] -z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent -z-10"></div>
+    <div class="max-w-7xl mx-auto w-full relative z-10 pt-10 sm:pt-12">
+        <div class="text-center max-w-3xl mx-auto">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-slate-900/80 text-aw-gold text-xs font-semibold uppercase tracking-wider mb-4 border border-aw-gold/40 shadow-md">
+                Katalog Wisata B2B
+            </span>
+            <h1 class="font-serif sm:font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                Katalog Destinasi Tour Rombongan
+            </h1>
+            <p class="text-gray-200 text-base sm:text-lg mb-2 leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] font-medium max-w-2xl mx-auto">
+                Jelajahi berbagai pilihan destinasi wisata populer untuk paket Studi Tour, Capacity Building, dan Family Gathering.
+            </p>
+        </div>
     </div>
-</div>
+</section>
 
 <!-- FILTER & SEARCH BAR SECTION -->
-<div class="py-8 bg-white border-b border-slate-200 sticky top-16 z-40 shadow-sm">
+<div class="relative w-full py-8 bg-white border-b border-slate-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <form action="{{ route('destinations.index') }}" method="GET" class="flex flex-col md:flex-row items-center justify-between gap-4">
             
-            <!-- Category Filter Tabs -->
+            <!-- Location Type Filter Tabs -->
             <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
                 <a href="{{ route('destinations.index') }}" 
-                   class="px-4 py-2 rounded-full text-xs font-semibold transition-all {{ !request('category') ? 'bg-aw-navy text-aw-gold shadow-md' : 'bg-slate-100 text-slate-700 hover:bg-slate-200' }}">
-                    Semua Kategori
+                   class="px-4 py-2 rounded-full text-xs font-semibold transition-all {{ !request('location_type') ? 'bg-aw-navy text-aw-gold shadow-md' : 'bg-slate-100 text-slate-700 hover:bg-slate-200' }}">
+                    Semua Destinasi
                 </a>
 
-                @foreach($categories as $cat)
-                    <a href="{{ route('destinations.index', ['category' => $cat->slug]) }}" 
-                       class="px-4 py-2 rounded-full text-xs font-semibold transition-all {{ request('category') === $cat->slug ? 'bg-aw-navy text-aw-gold shadow-md' : 'bg-slate-100 text-slate-700 hover:bg-slate-200' }}">
-                        {{ $cat->name }}
-                    </a>
-                @endforeach
+                <a href="{{ route('destinations.index', ['location_type' => 'lokal']) }}" 
+                   class="px-4 py-2 rounded-full text-xs font-semibold transition-all {{ request('location_type') === 'lokal' ? 'bg-aw-navy text-aw-gold shadow-md' : 'bg-slate-100 text-slate-700 hover:bg-slate-200' }}">
+                    Destinasi Lokal (Domestik)
+                </a>
+
+                <a href="{{ route('destinations.index', ['location_type' => 'luar_negeri']) }}" 
+                   class="px-4 py-2 rounded-full text-xs font-semibold transition-all {{ request('location_type') === 'luar_negeri' ? 'bg-aw-navy text-aw-gold shadow-md' : 'bg-slate-100 text-slate-700 hover:bg-slate-200' }}">
+                    Destinasi Luar Negeri (Internasional)
+                </a>
             </div>
 
             <!-- Search Bar -->
@@ -66,7 +77,7 @@
                                 <div class="absolute inset-0 bg-gradient-to-t from-aw-navy/90 via-transparent to-transparent z-10"></div>
                                 
                                 <span class="absolute top-3 left-3 z-20 bg-aw-navy/90 backdrop-blur-sm text-aw-mint text-[11px] font-semibold px-3 py-1 rounded-full border border-aw-sage/30">
-                                    {{ $dest->category->name }}
+                                    {{ $dest->location_type === 'luar_negeri' ? 'Luar Negeri' : 'Lokal' }}
                                 </span>
 
                                 <div class="absolute bottom-3 left-3 right-3 z-20">
@@ -74,7 +85,8 @@
                                         {{ $dest->name }}
                                     </h3>
                                     <p class="text-xs text-slate-300 flex items-center gap-1 mt-1">
-                                        <span>📍</span> {{ $dest->location }}
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        {{ $dest->location }}
                                     </p>
                                 </div>
                             </div>

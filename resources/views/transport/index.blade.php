@@ -4,11 +4,21 @@
 @section('meta_description', 'Pilihan armada transportasi untuk perjalanan rombongan AW Tour Operator.')
 
 @section('content')
-<section class="bg-aw-navy text-white py-14">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-        <span class="inline-block px-4 py-1.5 rounded-full bg-aw-gold/20 text-aw-gold text-xs font-semibold uppercase tracking-wider border border-aw-gold/30">Armada Perjalanan</span>
-        <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold">Pilihan Transportasi</h1>
-        <p class="max-w-2xl mx-auto text-slate-300">Informasi armada dan tipe kendaraan untuk membantu menyesuaikan perjalanan rombongan Anda.</p>
+<section class="relative z-10 min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] flex flex-col justify-center items-center text-center border-b border-white/10 overflow-hidden bg-cover bg-center px-4 sm:px-6 lg:px-8 py-16 pt-28 sm:pt-32" style="background-image: url('{{ asset('images/laut-bg.png') }}');">
+    <div class="absolute inset-0 bg-slate-950/45 backdrop-blur-[1px] -z-10"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent -z-10"></div>
+    <div class="max-w-7xl mx-auto w-full relative z-10 pt-10 sm:pt-12">
+        <div class="text-center max-w-3xl mx-auto">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-slate-900/80 text-aw-gold text-xs font-semibold uppercase tracking-wider mb-4 border border-aw-gold/40 shadow-md">
+                Armada Perjalanan
+            </span>
+            <h1 class="font-serif sm:font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                Pilihan Transportasi
+            </h1>
+            <p class="text-gray-200 text-base sm:text-lg mb-2 leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] font-medium max-w-2xl mx-auto">
+                Informasi armada dan tipe kendaraan untuk membantu menyesuaikan perjalanan rombongan Anda.
+            </p>
+        </div>
     </div>
 </section>
 
@@ -60,25 +70,7 @@
             @endif
         </div>
 
-        @if($bodyTypes->isNotEmpty())
-            <div class="bg-white rounded-3xl p-7 sm:p-10 border border-slate-200 shadow-lg">
-                <div class="text-center mb-8">
-                    <p class="text-xs font-bold uppercase tracking-widest text-aw-gold">Tipe bodi</p>
-                    <h2 class="font-display font-bold text-2xl text-aw-navy">Pilihan Armada</h2>
-                    <p class="text-sm text-slate-500 mt-2">Informasi tipe kendaraan yang tersedia dalam jaringan operasional.</p>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
-                    @foreach($bodyTypes as $type)
-                        <article class="bg-aw-cream/40 border border-slate-200 rounded-2xl p-6 text-center space-y-2">
-                            @if($type->image)<img src="{{ $type->image }}" alt="{{ $type->name }}" class="w-full h-36 object-cover rounded-xl">@else<div class="text-3xl">🚌</div>@endif
-                            <h3 class="font-display font-bold text-lg text-aw-navy">{{ $type->name }}</h3>
-                            @if($type->unit_count !== null)<span class="inline-block px-3 py-1 rounded-full bg-aw-gold/20 text-aw-gold text-xs font-extrabold">{{ $type->unit_count }} unit</span>@endif
-                            @if($type->description)<p class="text-xs text-slate-500">{{ $type->description }}</p>@endif
-                        </article>
-                    @endforeach
-                </div>
-            </div>
-        @endif
+
 
         <div class="bg-aw-navy text-white rounded-3xl p-8 sm:p-12 text-center space-y-5">
             <h2 class="font-display text-2xl sm:text-3xl font-bold">Belum yakin armada yang sesuai?</h2>

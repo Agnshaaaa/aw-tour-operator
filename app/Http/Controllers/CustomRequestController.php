@@ -26,8 +26,10 @@ class CustomRequestController extends Controller
      */
     public function create(Request $request)
     {
-        // Ambil semua destinasi aktif
-        $destinations = Destination::active()->with('category')->get();
+        // Ambil destinasi lokal dan luar negeri secara terpisah
+        $destinations      = Destination::active()->with('category')->get();
+        $destinationsLokal = Destination::active()->where('location_type', 'lokal')->with('category')->get();
+        $destinationsLuar  = Destination::active()->where('location_type', 'luar_negeri')->with('category')->get();
 
         $transportOfferings = TransportOffering::active()->vehicles()->orderBy('sort_order')->orderBy('name')->get();
 
@@ -36,7 +38,7 @@ class CustomRequestController extends Controller
         $selectedDate          = $request->query('date');
         $selectedTransport     = $request->query('transport');
 
-        return view('quotation.create', compact('destinations', 'transportOfferings', 'selectedDestinationId', 'selectedDate', 'selectedTransport'));
+        return view('quotation.create', compact('destinations', 'destinationsLokal', 'destinationsLuar', 'transportOfferings', 'selectedDestinationId', 'selectedDate', 'selectedTransport'));
     }
 
     /**
@@ -168,12 +170,32 @@ class CustomRequestController extends Controller
 
             DB::commit();
 
+            if ($request->wantsJson() || $request->ajax() || $request->header('X-Requested-With') === 'XMLHttpRequest') {
+                $destName = $customRequest->destination ? $customRequest->destination->name : ($request->custom_destination ?: 'Destinasi Custom');
+                $token = $customRequest->ticket_number;
+                $waText = "Halo Admin AW Tour,\n\nSaya ingin mengirimkan permintaan Quotation Rombongan:\n\n*No. Tiket:* {$customRequest->ticket_number}\n*Quotation ID:* {$token}\n*Nama PIC:* {$customRequest->client_name}\n*Instansi:* {$customRequest->institution_name}\n*No. WhatsApp:* {$customRequest->phone}\n*Jenis Acara:* {$customRequest->event_type}\n*Destinasi:* {$destName}\n*Tanggal:* " . \Carbon\Carbon::parse($customRequest->event_date)->format('d M Y') . "\n*Jumlah Peserta:* {$customRequest->pax} orang\n*Transportasi:* {$customRequest->transport_mode}\n\nMohon konfirmasi dan bantuan perhitungannya. Terima kasih!";
+
+                return response()->json([
+                    'success' => true,
+                    'ticket_number' => $customRequest->ticket_number,
+                    'quotation_id' => $token,
+                    'redirect_url' => route('quotation.success', ['ticket_number' => $customRequest->ticket_number]),
+                    'whatsapp_url' => 'https://wa.me/6282233119092?text=' . urlencode($waText) . '?quotation_id=' . $token
+                ]);
+            }
+
             // Redirect ke halaman sukses dengan nomor tiket
             return redirect()->route('quotation.success', ['ticket_number' => $customRequest->ticket_number])
                 ->with('success', 'Permintaan quotation berhasil dikirim!');
 
         } catch (\Exception $e) {
             DB::rollBack();
+            if ($request->wantsJson() || $request->ajax() || $request->header('X-Requested-With') === 'XMLHttpRequest') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Gagal mengirim permintaan: ' . $e->getMessage()
+                ], 422);
+            }
             return back()->withInput()->with('error', 'Gagal mengirim permintaan: ' . $e->getMessage());
         }
     }
@@ -188,5 +210,20 @@ class CustomRequestController extends Controller
             ->firstOrFail();
 
         return view('quotation.success', compact('customRequest'));
+    }
+
+    public function checkStatus(string $ticketNumber)
+    {
+        $customRequest = CustomRequest::where('ticket_number', $ticketNumber)->first();
+        if (!$customRequest) {
+            return response()->json(['success' => false], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'status' => $customRequest->status,
+            'status_label' => strtoupper($customRequest->status),
+            'is_deal' => in_array($customRequest->status, ['confirmed', 'deal', 'disetujui'])
+        ]);
     }
 }
